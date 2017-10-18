@@ -13,21 +13,17 @@ using Plugin.TextToSpeech;
 namespace XFApp1.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class Home : ContentPage
     {
     
 		ItemsViewModel viewModel;
         private int count = 1;
         int tapCount = 0;
 
-        public Page1()
+        public Home()
 		{
             count = Navigation.NavigationStack.Count;
             InitializeComponent();
-            SwipeableImage.SwipedUp += (sender, args) => { Info.Text = "UP"; };
-            SwipeableImage.SwipedDown += (sender, args) => { Info.Text = "DOWN"; };
-            
-            SwipeableImage.SwipedRight += (sender, args) => { Info.Text = "RIGHT"; };
             BindingContext = viewModel = new ItemsViewModel();
             Title = "Home";
         }
@@ -38,20 +34,18 @@ namespace XFApp1.Views
 			if (item == null)
 				return;
 
-			await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
 			// Manually deselect item
 			//ItemsListView.SelectedItem = null;
 		}
         private bool flag = true;
-		async void Clock_Clicked(object sender, EventArgs e)
+		async void GoToCallPage(object sender, EventArgs e)
 		{
            
             if (flag)
             {
                 flag = false;
                     count = Navigation.NavigationStack.Count;
-               await Navigation.PushAsync(new Page2());
+               await Navigation.PushAsync(new CallPage());
             }
         }
 

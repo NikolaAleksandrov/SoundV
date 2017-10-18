@@ -12,9 +12,8 @@
 
             <Button x:Name="ClockTime"  Clicked="ClockTime_Requested"
                                             BorderWidth="2"
-                                            BorderColor="Pink"
                                             HeightRequest="300"
-                                            TextColor="LightYellow"
+                                            TextColor="Yellow"
                                             BackgroundColor="Black"
                                             Margin="10"
                                             FontSize="48"
