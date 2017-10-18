@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XFApp1.Views.Page2">
+    <ContentPage.Content>
+        <StackLayout Spacing="20" Padding="15">
+            <Label x:Name="med" Text="" FontSize="Medium"/>
+            <Label x:Name="smal"  Text="" FontSize="Small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
