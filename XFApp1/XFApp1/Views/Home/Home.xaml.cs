@@ -10,7 +10,7 @@ using XFApp1.Models;
 using XFApp1.ViewModels;
 
 using Plugin.TextToSpeech;
-namespace XFApp1.Views
+namespace XFApp1.Views.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Home : ContentPage

@@ -8,44 +8,39 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFApp1.Views
+namespace XFApp1.Views.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CallPage : ContentPage
+    public partial class FavouritePlacePage : ContentPage
     {
         bool flag;
-        public CallPage()
+        public FavouritePlacePage()
         {
             InitializeComponent();
-            flag = true;
-            CrossTextToSpeech.Current.Speak("Emergency call");
+            CrossTextToSpeech.Current.Speak("Go to my favourite place!");
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Navigation.NavigationStack.Count < 3)
-            {
-                CrossTextToSpeech.Current.Speak("Emergency call");
-            }
             flag = true;
         }
 
-        private async void GoToTaxiPage(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                await Navigation.PushAsync(new TaxiPage());
-            }
-        }
-
-        private async void PreviousPage(object sender, EventArgs e)
+        async void PreviousPage(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 await Navigation.PopAsync();
+            }
+        }
+
+        async void ClearNavigationStack(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                await Navigation.PopToRootAsync();
             }
         }
     }

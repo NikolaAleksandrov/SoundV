@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFApp1.Views
+namespace XFApp1.Views.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NavigateToHomePage : ContentPage
@@ -19,20 +19,21 @@ namespace XFApp1.Views
             InitializeComponent();
 
             flag = true;
-            CrossTextToSpeech.Current.Speak("Navigate me to home");
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             flag = true;
+            CrossTextToSpeech.Current.Speak("Navigate me to home");
         }
 
         async void GotoFavouritePlace(object sender, EventArgs e)
         {
             if (flag)
             {
-                //await Navigation.PushAsync();
+                flag = false;
+                await Navigation.PushAsync(new FavouritePlacePage());
             }
         }
 
