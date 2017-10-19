@@ -21,13 +21,22 @@ namespace XFApp1.Views
             CrossTextToSpeech.Current.Speak("Emergency call");
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (Navigation.NavigationStack.Count < 3)
+            {
+                CrossTextToSpeech.Current.Speak("Emergency call");
+            }
+            flag = true;
+        }
+
         private async void GoToTaxiPage(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 await Navigation.PushAsync(new TaxiPage());
-
             }
         }
 
@@ -37,7 +46,6 @@ namespace XFApp1.Views
             {
                 flag = false;
                 await Navigation.PopAsync();
-
             }
         }
     }

@@ -15,40 +15,16 @@ namespace XFApp1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Home : ContentPage
     {
-    
-		ItemsViewModel viewModel;
-        private int count = 1;
-        int tapCount = 0;
-
+        private bool flag;
+        ItemsViewModel viewModel;
         public Home()
 		{
-            count = Navigation.NavigationStack.Count;
+            
             InitializeComponent();
             BindingContext = viewModel = new ItemsViewModel();
             Title = "Home";
+            flag = true;
         }
-
-		async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-		{
-			var item = args.SelectedItem as Item;
-			if (item == null)
-				return;
-
-			// Manually deselect item
-			//ItemsListView.SelectedItem = null;
-		}
-        private bool flag = true;
-		async void GoToCallPage(object sender, EventArgs e)
-		{
-           
-            if (flag)
-            {
-                flag = false;
-                    count = Navigation.NavigationStack.Count;
-               await Navigation.PushAsync(new CallPage());
-            }
-        }
-
 		protected override void OnAppearing()
 		{
 			base.OnAppearing();
@@ -62,12 +38,24 @@ namespace XFApp1.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            tapCount = 0;
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        async void GoToCallPage(object sender, EventArgs e)
+		{
+            if (flag)
+            {
+                flag = false;
+               await Navigation.PushAsync(new CallPage());
+            }
+        }
+
+        async void GoToSubLevel(object sender, EventArgs e)
         {
-            CrossTextToSpeech.Current.Speak("Clock Page");
+            if (flag)
+            {
+                flag = false;
+                //await Navigation.PushAsync();
+            }
         }
     }
-    }
+}
