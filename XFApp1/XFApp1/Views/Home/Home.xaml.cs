@@ -54,7 +54,7 @@ namespace XFApp1.Views
             if (flag)
             {
                 flag = false;
-                //await Navigation.PushAsync();
+                await Navigation.PushAsync(new NavigateToHomePage());
             }
         }
     }

@@ -9,8 +9,8 @@
             <custom:SwipeableImage x:Name="SwipeableImage" 
                                    Margin="10" 
                                    Source="__arrow_up_green.png"
-                                   HeightRequest="150"
-                                   WidthRequest="150"
+                                   HeightRequest="120"
+                                   WidthRequest="120"
                                    SwipedLeft="GoToTaxiPage"
                                    SwipedRight="PreviousPageMainLevel">
             </custom:SwipeableImage>
