@@ -25,7 +25,7 @@ namespace XFApp1.Views.Home
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Navigate me to home");
+            CrossTextToSpeech.Current.Speak("Navigate to home page");
         }
 
         async void GotoFavouritePlace(object sender, EventArgs e)
@@ -43,6 +43,15 @@ namespace XFApp1.Views.Home
             {
                 flag = false;
                 await Navigation.PopToRootAsync();
+            }
+        }
+
+        async void CautionMessage(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
             }
         }
     }

@@ -62,8 +62,17 @@
     <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\TaxiViewModel.cs" />
     <Compile Include="ViewModels\WeatherViewModel.cs" />
-    <Compile Include="Views\CallPage.xaml.cs">
+    <Compile Include="Views\Call\CallAssistance.xaml.cs">
+      <DependentUpon>CallAssistance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\CallPage.xaml.cs">
       <DependentUpon>CallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\CallTrustedPersonPage.xaml.cs">
+      <DependentUpon>CallTrustedPersonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\VideoCallPage.xaml.cs">
+      <DependentUpon>VideoCallPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ClockTimePage.xaml.cs">
       <DependentUpon>ClockTimePage.xaml</DependentUpon>
@@ -119,7 +128,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CallPage.xaml">
+    <EmbeddedResource Include="Views\Call\CallPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -138,6 +147,24 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Home\FavouritePlacePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Call\CallTrustedPersonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Call\CallAssistance.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Call\VideoCallPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

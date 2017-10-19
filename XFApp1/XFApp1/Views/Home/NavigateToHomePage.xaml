@@ -19,7 +19,8 @@
                                        HeightRequest="120"
                                        WidthRequest="120"
                                        SwipedDown="ClearNavigationStack"
-                                       SwipedLeft="GotoFavouritePlace">
+                                       SwipedLeft="GotoFavouritePlace"
+                                       SwipedRight="CautionMessage">
                 </custom:SwipeableImage>
             </StackLayout>
 

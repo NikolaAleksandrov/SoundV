@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Views.Home;
 
-namespace XFApp1.Views
+namespace XFApp1.Views.Call
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CallPage : ContentPage
@@ -18,33 +19,27 @@ namespace XFApp1.Views
         {
             InitializeComponent();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Emergency call");
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (Navigation.NavigationStack.Count < 3)
-            {
-                CrossTextToSpeech.Current.Speak("Emergency call");
-            }
+            CrossTextToSpeech.Current.Speak("Call page");
             flag = true;
         }
 
-        private async void GoToTaxiPage(object sender, EventArgs e)
+        private async void GoToSubLevel(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
-                await Navigation.PushAsync(new TaxiPage());
+                await Navigation.PushAsync(new CallTrustedPersonPage());
             }
         }
-
         private async void PreviousPage(object sender, EventArgs e)
         {
             if (flag)
             {
-                flag = false;
                 await Navigation.PopAsync();
             }
         }

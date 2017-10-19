@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XFApp1.Models;
 using XFApp1.ViewModels;
 
 using Plugin.TextToSpeech;
+using XFApp1.Views.Call;
+
 namespace XFApp1.Views.Home
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,7 +20,6 @@ namespace XFApp1.Views.Home
         ItemsViewModel viewModel;
         public Home()
 		{
-            
             InitializeComponent();
             BindingContext = viewModel = new ItemsViewModel();
             Title = "Home";
@@ -29,7 +29,7 @@ namespace XFApp1.Views.Home
 		{
 			base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Welcome to Home Page");
+            CrossTextToSpeech.Current.Speak("Welcome to home page");
 
             if (viewModel.Items.Count == 0)
 				viewModel.LoadItemsCommand.Execute(null);

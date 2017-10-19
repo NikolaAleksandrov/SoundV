@@ -8,31 +8,23 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFApp1.Views.Home
+namespace XFApp1.Views.Call
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FavouritePlacePage : ContentPage
+    public partial class CallTrustedPersonPage : ContentPage
     {
         bool flag;
-        public FavouritePlacePage()
+        public CallTrustedPersonPage()
         {
             InitializeComponent();
-            CrossTextToSpeech.Current.Speak("Go to my favourite place!");
+            flag = true;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             flag = true;
-        }
-
-        async void PreviousPage(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                await Navigation.PopAsync();
-            }
+            CrossTextToSpeech.Current.Speak("Would you like to call Trusted person 1");
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)
@@ -41,6 +33,15 @@ namespace XFApp1.Views.Home
             {
                 flag = false;
                 await Navigation.PopToRootAsync();
+            }
+        }
+
+        async void VideoCall(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                await Navigation.PushAsync(new VideoCallPage());
             }
         }
 
