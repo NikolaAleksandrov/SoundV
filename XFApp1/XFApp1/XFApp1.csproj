@@ -93,8 +93,11 @@
     <Compile Include="Views\Home\NavigateToHomePage.xaml.cs">
       <DependentUpon>NavigateToHomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TaxiPage.xaml.cs">
+    <Compile Include="Views\Taxi\TaxiPage.xaml.cs">
       <DependentUpon>TaxiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Taxi\TaxiCompanyPage.xaml.cs">
+      <DependentUpon>TaxiCompanyPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -141,12 +144,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\TaxiPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Views\Home\NavigateToHomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -184,6 +181,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Emergency\EmergencySubLevel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Taxi\TaxiPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Taxi\TaxiCompanyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

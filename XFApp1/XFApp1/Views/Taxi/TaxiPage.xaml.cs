@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XFApp1.Views.Taxi;
 
-namespace XFApp1.Views.Emergency
+namespace XFApp1.Views.Taxi
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EmergencyPage : ContentPage
+    public partial class TaxiPage : ContentPage
     {
         private bool flag;
-        public EmergencyPage()
+        public TaxiPage()
         {
             InitializeComponent();
             flag = true;
@@ -24,7 +23,7 @@ namespace XFApp1.Views.Emergency
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Call an emergency number");
+            CrossTextToSpeech.Current.Speak("Do you need a ride home? Double tap to call a taxi");
             flag = true;
         }
 
@@ -33,7 +32,7 @@ namespace XFApp1.Views.Emergency
             if (flag)
             {
                 flag = false;
-                await Navigation.PushAsync(new EmergencySubLevel());
+                await Navigation.PushAsync(new TaxiCompanyPage());
             }
         }
 
@@ -46,14 +45,9 @@ namespace XFApp1.Views.Emergency
             }
         }
 
-        private async void GoToTaxiPage(object sender, EventArgs e)
+        private void BatteryPage(object sender, EventArgs e)
         {
-            if (flag)
-            {
-                flag = false;
-                await Navigation.PushAsync(new TaxiPage());
-            }
-        }
 
+        }
     }
 }
