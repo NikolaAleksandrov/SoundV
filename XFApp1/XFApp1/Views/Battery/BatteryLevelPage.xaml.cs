@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XFApp1.Views.Battery;
 using XFApp1.Views.Settings;
 
-namespace XFApp1.Views.Taxi
+namespace XFApp1.Views.Battery
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaxiPage : ContentPage
+    public partial class BatteryLevelPage : ContentPage
     {
         private bool flag;
-        public TaxiPage()
+        public BatteryLevelPage()
         {
             InitializeComponent();
             flag = true;
@@ -25,17 +24,8 @@ namespace XFApp1.Views.Taxi
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Double tap to call a taxi");
+            CrossTextToSpeech.Current.Speak("Check your battery level");
             flag = true;
-        }
-
-        private async void GoToSubLevel(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                await Navigation.PushAsync(new TaxiCompanyPage());
-            }
         }
 
         private async void PreviousPage(object sender, EventArgs e)
@@ -47,12 +37,12 @@ namespace XFApp1.Views.Taxi
             }
         }
 
-        private async void GoToBatteryLevelPage(object sender, EventArgs e)
+        private async void GoToSettings(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
-                await Navigation.PushAsync(new BatteryLevelPage());
+                await Navigation.PushAsync(new SettingsPage());
             }
         }
     }
