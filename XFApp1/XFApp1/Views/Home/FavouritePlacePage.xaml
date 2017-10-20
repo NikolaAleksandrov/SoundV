@@ -37,7 +37,9 @@
                                        HeightRequest="200"
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
-                                       SwipedLeft="ClearNavigationStack">
+                                       SwipedDown="ClearNavigationStack"
+                                       SwipedRight="PreviousPage"
+                                       SwipedLeft="CautionMessage">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

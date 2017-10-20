@@ -26,8 +26,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="BatteryLabel" Text="Battery level" FontSize="36" XAlign="Center"></Label>
-                    <Label  Grid.Row="1" x:Name="BatteryLevelLabel" Text="50% - BatteryLevel" FontSize="36" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="BatteryLabel" Text="Settings" FontSize="36" XAlign="Center"></Label>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" VerticalOptions="Center">
@@ -36,7 +35,10 @@
                                        Source="__cogwheel_gray.png"
                                        HeightRequest="200"
                                        WidthRequest="200"
-                                       Margin="5,20,5,20">
+                                       Margin="5,20,5,20"
+                                       SwipedLeft="ClearNavigationStack"
+                                       SwipedRight="PreviousPage"
+                                       SwipedUp="GoToSubLevel">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

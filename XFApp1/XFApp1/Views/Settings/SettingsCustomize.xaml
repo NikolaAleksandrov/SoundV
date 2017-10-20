@@ -6,10 +6,11 @@
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
-                <Grid RowSpacing="10">
+                <Grid RowSpacing="15">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
                         <RowDefinition Height="1.5*"></RowDefinition>
                         <RowDefinition Height="1.5*"></RowDefinition>
                     </Grid.RowDefinitions>
@@ -27,16 +28,25 @@
                         </custom:SwipeableImage>
                     </StackLayout>
 
+                    <StackLayout Grid.Row="1">
+                        <Label  Grid.Row="1" Text="My Settings" TextColor="White" FontSize="48" XAlign="Center"></Label>
+                    </StackLayout>
+
                     <StackLayout Grid.Row="2" VerticalOptions="Center">
-                        <Label Grid.Row="2" x:Name="TaxiSeparator" Text="Taxi" XAlign="Center" FontSize="Large"/>
+                        <Label Grid.Row="2" x:Name="TaxiSeparator" Text="Taxi" TextColor="White" XAlign="Center" FontSize="Large"/>
                         <Entry Grid.Row="2" x:Name="TaxiCompanyName" Placeholder="Enter Taxi company's name..." Margin="5"/>
                         <Entry Grid.Row="2" x:Name="TaxiCompanyNumber" Placeholder="Enter Taxi company's number..." Margin="5"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="3" VerticalOptions="Center">
-                        <Label Grid.Row="3" x:Name="TrustedPersonSeparator" Text="TrustedPerson" XAlign="Center" FontSize="Large"/>
+                        <Label Grid.Row="3" x:Name="TrustedPersonSeparator" Text="Trusted Person"  TextColor="White" XAlign="Center" FontSize="Large"/>
                         <Entry Grid.Row="3" x:Name="TrustedPersonName" Placeholder="Enter person's name..." Margin="5"/>
                         <Entry Grid.Row="3" x:Name="TruestedPersonNumber" Placeholder="Enter person's number..." Margin="5"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" VerticalOptions="Center">
+                        <Label Grid.Row="4" x:Name="NavigationSeparator" Text="Navigation"  TextColor="White" XAlign="Center" FontSize="Large"/>
+                        <Entry Grid.Row="4" x:Name="HomePlace" Placeholder="Str, City" Margin="5"/>
                     </StackLayout>
                 </Grid>
             </ScrollView>

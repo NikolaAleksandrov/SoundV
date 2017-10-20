@@ -35,7 +35,10 @@
                                        Source="__taxy_yellow.png"
                                        HeightRequest="200"
                                        WidthRequest="200"
-                                       Margin="5,20,5,20">
+                                       Margin="5,20,5,20"
+                                       SwipedLeft="GoToBatteryLevelPage"
+                                       SwipedUp="GoToSubLevel"
+                                       SwipedRight="PreviousPage">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

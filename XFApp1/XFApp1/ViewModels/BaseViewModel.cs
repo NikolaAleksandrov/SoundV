@@ -3,15 +3,17 @@ using XFApp1.Models;
 using XFApp1.Services;
 
 using Xamarin.Forms;
+using System.ComponentModel;
 
 namespace XFApp1.ViewModels
 {
-	public class BaseViewModel : ObservableObject
+	public class BaseViewModel : ObservableObject, INotifyPropertyChanged
 	{
-		/// <summary>
-		/// Get the azure service instance
-		/// </summary>
-		public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Get the azure service instance
+        /// </summary>
+        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
 		bool isBusy = false;
 		public bool IsBusy
@@ -31,6 +33,11 @@ namespace XFApp1.ViewModels
 			get { return title; }
 			set { SetProperty(ref title, value); }
 		}
-	}
+        protected void NotifyPropertyChanged(string info)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
+        }
+
+    }
 }
 

@@ -24,7 +24,7 @@ namespace XFApp1.Views.Taxi
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Double tap to call company - Yellow Taxi");
+            CrossTextToSpeech.Current.Speak("Double tap to call company - {0}");
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)
