@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XFApp1.Views.Call
+namespace XFApp1.Views.Emergency
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CallAssistance : ContentPage
+    public partial class EmergencySubLevel : ContentPage
     {
-        bool flag;
-        public CallAssistance()
+        private bool flag;
+        public EmergencySubLevel()
         {
             InitializeComponent();
             flag = true;
@@ -24,16 +24,7 @@ namespace XFApp1.Views.Call
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Do you need any help? Double tap to call an assistant");
-        }
-
-        async void PreviousPage(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                await Navigation.PopAsync();
-            }
+            CrossTextToSpeech.Current.Speak("Would you like to call the police?");
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)
@@ -44,7 +35,6 @@ namespace XFApp1.Views.Call
                 await Navigation.PopToRootAsync();
             }
         }
-
         async void CautionMessage(object sender, EventArgs e)
         {
             if (flag)

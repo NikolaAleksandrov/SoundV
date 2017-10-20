@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XFApp1.Views.Call.CallAssistance"
-             xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
+             x:Class="XFApp1.Views.Emergency.EmergencySubLevel"
+              xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
         <StackLayout>
             <Grid RowSpacing="10">
@@ -16,23 +16,23 @@
                     <custom:SwipeableImage Grid.Row="0"
                                            x:Name="SwipeableImage"
                                            Margin="5,20,5,0"
-                                           Source="__arrow_down_green.png"
+                                           Source="__arrow_down_red.png"
                                            HeightRequest="120"
                                            WidthRequest="120"
+                                           SwipedRight="CautionMessage"
                                            SwipedLeft="CautionMessage"
-                                           SwipedDown="ClearNavigationStack"
-                                           SwipedRight="PreviousPage">
+                                           SwipedDown="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Call Assistance" FontSize="48" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Emergency" FontSize="48" XAlign="Center"></Label>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" VerticalOptions="Center">
                     <custom:SwipeableImage Grid.Row="2"
                                            x:Name="WalkerPicture"
-                                           Source="__assistant_green.png"
+                                           Source="__cross_red.png"
                                            HeightRequest="200"
                                            WidthRequest="200"
                                            Margin="5,20,5,20">

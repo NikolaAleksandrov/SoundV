@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XFApp1.Views.Home;
-using XFApp1.Views.Emergency;
 
-namespace XFApp1.Views.Call
+namespace XFApp1.Views.Emergency
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CallPage : ContentPage
+    public partial class EmergencyPage : ContentPage
     {
-        bool flag;
-        public CallPage()
+        private bool flag;
+        public EmergencyPage()
         {
             InitializeComponent();
             flag = true;
@@ -25,7 +23,7 @@ namespace XFApp1.Views.Call
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Call page");
+            CrossTextToSpeech.Current.Speak("Call an emergency number");
             flag = true;
         }
 
@@ -34,23 +32,16 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                await Navigation.PushAsync(new CallTrustedPersonPage());
+                await Navigation.PushAsync(new EmergencySubLevel());
             }
         }
+
         private async void PreviousPage(object sender, EventArgs e)
         {
             if (flag)
             {
-                await Navigation.PopAsync();
-            }
-        }
-
-        private async void GoToEmergency(object sender, EventArgs e)
-        {
-            if (flag)
-            {
                 flag = false;
-                await Navigation.PushAsync(new EmergencyPage());
+                await Navigation.PopAsync();
             }
         }
     }
