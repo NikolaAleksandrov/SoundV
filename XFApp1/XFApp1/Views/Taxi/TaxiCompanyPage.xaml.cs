@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.TextToSpeech;
+using System.Threading;
 
 namespace XFApp1.Views.Taxi
 {
@@ -14,6 +15,7 @@ namespace XFApp1.Views.Taxi
     public partial class TaxiCompanyPage : ContentPage
     {
         private bool flag;
+        CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public TaxiCompanyPage()
         {
             InitializeComponent();
@@ -24,9 +26,14 @@ namespace XFApp1.Views.Taxi
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Double tap to call company - {0}");
+            CrossTextToSpeech.Current.Speak("Double tap to call company", null, null, 1.5f, null, cancelSrc.Token);
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            cancelSrc.Cancel();
+        }
         async void ClearNavigationStack(object sender, EventArgs e)
         {
             if (flag)

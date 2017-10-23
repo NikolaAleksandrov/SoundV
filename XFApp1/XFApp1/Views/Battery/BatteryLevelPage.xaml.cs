@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -15,18 +16,28 @@ namespace XFApp1.Views.Battery
     public partial class BatteryLevelPage : ContentPage
     {
         private bool flag;
+        CancellationTokenSource cancelSrc;
         public BatteryLevelPage()
         {
             InitializeComponent();
             flag = true;
+            cancelSrc = new CancellationTokenSource();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Check your battery level");
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak("Check your battery level", null, null, 1.5f, null, cancelSrc.Token);
             flag = true;
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            cancelSrc.Cancel();
+        }
+
 
         private async void PreviousPage(object sender, EventArgs e)
         {

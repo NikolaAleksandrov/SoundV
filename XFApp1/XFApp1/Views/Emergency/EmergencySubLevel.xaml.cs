@@ -24,7 +24,7 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Would you like to call the police?");
+            CrossTextToSpeech.Current.Speak("Would you like to call the police?", null, null, 1.5f);
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)

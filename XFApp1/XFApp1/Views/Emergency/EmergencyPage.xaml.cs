@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -15,17 +16,27 @@ namespace XFApp1.Views.Emergency
     public partial class EmergencyPage : ContentPage
     {
         private bool flag;
+        CancellationTokenSource cancelSrc;
         public EmergencyPage()
         {
             InitializeComponent();
             flag = true;
+            cancelSrc = new CancellationTokenSource();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Call an emergency number");
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak("Call an emergency number", null, null, 1.5f,null, cancelSrc.Token);
             flag = true;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            cancelSrc.Cancel();
+            cancelSrc.Dispose();
         }
 
         private async void GoToSubLevel(object sender, EventArgs e)

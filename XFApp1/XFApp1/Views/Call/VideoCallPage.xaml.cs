@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace XFApp1.Views.Call
     public partial class VideoCallPage : ContentPage
     {
         bool flag;
+        CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public VideoCallPage()
         {
             InitializeComponent();
@@ -24,7 +26,13 @@ namespace XFApp1.Views.Call
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Double tap for a video call");
+            CrossTextToSpeech.Current.Speak("Double tap for a video call", null, null, 1.5f, null, cancelSrc.Token);
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            cancelSrc.Cancel();
         }
 
         async void PreviousPage(object sender, EventArgs e)

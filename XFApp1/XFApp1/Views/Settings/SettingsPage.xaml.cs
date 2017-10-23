@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -14,18 +15,27 @@ namespace XFApp1.Views.Settings
     public partial class SettingsPage : ContentPage
     {
         private bool flag;
+        CancellationTokenSource cancelSrc;
         public SettingsPage()
         {
             InitializeComponent();
             flag = true;
+            cancelSrc = new CancellationTokenSource();
         }
 
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Please call an assistant to use this page");
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak("Please call an assistant to use this page", null, null, 1.5f, null, cancelSrc.Token);
             flag = true;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            cancelSrc.Cancel();
         }
 
         private async void PreviousPage(object sender, EventArgs e)

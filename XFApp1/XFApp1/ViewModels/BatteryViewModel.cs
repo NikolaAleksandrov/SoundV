@@ -8,5 +8,11 @@ namespace XFApp1.ViewModels
 {
     class BatteryViewModel : BaseViewModel
     {
+        int BatteryLevel;
+
+        public BatteryViewModel()
+        {
+            this.BatteryLevel = 0;
+        }
     }
 }
