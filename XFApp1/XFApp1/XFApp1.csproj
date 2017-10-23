@@ -54,6 +54,7 @@
     <Compile Include="Services\MockDataStore.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BatteryViewModel.cs" />
     <Compile Include="ViewModels\BluetoothViewModel.cs" />
     <Compile Include="ViewModels\CallViewModel.cs" />
     <Compile Include="ViewModels\ClockTimeViewModel.cs" />
@@ -62,17 +63,50 @@
     <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\TaxiViewModel.cs" />
     <Compile Include="ViewModels\WeatherViewModel.cs" />
-    <Compile Include="Views\CallPage.xaml.cs">
+    <Compile Include="Views\Battery\BatteryLevelPage.xaml.cs">
+      <DependentUpon>BatteryLevelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\CallAssistance.xaml.cs">
+      <DependentUpon>CallAssistance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\CallPage.xaml.cs">
       <DependentUpon>CallPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\CallTrustedPersonPage.xaml.cs">
+      <DependentUpon>CallTrustedPersonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Call\VideoCallPage.xaml.cs">
+      <DependentUpon>VideoCallPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ClockTimePage.xaml.cs">
       <DependentUpon>ClockTimePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Home.xaml.cs">
+    <Compile Include="Views\Emergency\EmergencySubLevel.xaml.cs">
+      <DependentUpon>EmergencySubLevel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Emergency\EmergencyPage.xaml.cs">
+      <DependentUpon>EmergencyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\FavouritePlacePage.xaml.cs">
+      <DependentUpon>FavouritePlacePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TaxiPage.xaml.cs">
+    <Compile Include="Views\Home\NavigateToHomePage.xaml.cs">
+      <DependentUpon>NavigateToHomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsCustomize.xaml.cs">
+      <DependentUpon>SettingsCustomize.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Taxi\TaxiPage.xaml.cs">
       <DependentUpon>TaxiPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Taxi\TaxiCompanyPage.xaml.cs">
+      <DependentUpon>TaxiCompanyPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -101,7 +135,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\Home.xaml">
+    <EmbeddedResource Include="Views\Home\Home.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -113,13 +147,79 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\CallPage.xaml">
+    <EmbeddedResource Include="Views\Call\CallPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\TaxiPage.xaml">
+    <EmbeddedResource Include="Views\Home\NavigateToHomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Home\FavouritePlacePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Call\CallTrustedPersonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Call\CallAssistance.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Call\VideoCallPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Emergency\EmergencyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Emergency\EmergencySubLevel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Taxi\TaxiPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Taxi\TaxiCompanyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Battery\BatteryLevelPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Settings\SettingsCustomize.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Settings\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

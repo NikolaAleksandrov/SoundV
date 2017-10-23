@@ -4,7 +4,9 @@ using System.Text;
 
 namespace SoundV.Models
 {
-    class Taxi
+    public class Taxi
     {
+        public string Name { get; set; }
+        public string Number { get; set; }
     }
 }

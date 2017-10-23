@@ -5,6 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 using XFApp1.Views;
+using XFApp1.Views.Home;
 
 namespace XFApp1
 {
