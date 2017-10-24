@@ -28,14 +28,13 @@ namespace XFApp1.Views.Battery
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Check your battery level", null, null, 1.5f, null, cancelSrc.Token);
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Check your battery level", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
         }
 
 
@@ -43,6 +42,9 @@ namespace XFApp1.Views.Battery
         {
             if (flag)
             {
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 flag = false;
                 await Navigation.PopAsync();
             }
@@ -52,6 +54,9 @@ namespace XFApp1.Views.Battery
         {
             if (flag)
             {
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 flag = false;
                 await Navigation.PushAsync(new SettingsPage());
             }

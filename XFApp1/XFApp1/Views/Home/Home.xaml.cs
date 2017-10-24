@@ -21,37 +21,39 @@ namespace XFApp1.Views.Home
         ItemsViewModel viewModel;
         CancellationTokenSource cancelSrc;
         public Home()
-		{
+        {
             InitializeComponent();
             BindingContext = viewModel = new ItemsViewModel();
             Title = "Home";
             flag = true;
             cancelSrc = new CancellationTokenSource();
         }
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Welcome to home page", null, null, 1.5f, null, cancelSrc.Token);
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to home page", null, null, 1.5f, null, cancelSrc.Token));
+
 
             if (viewModel.Items.Count == 0)
-				viewModel.LoadItemsCommand.Execute(null);
-		}
+                viewModel.LoadItemsCommand.Execute(null);
+        }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
-            cancelSrc.Dispose();
         }
 
         async void GoToCallPage(object sender, EventArgs e)
-		{
+        {
             if (flag)
             {
                 flag = false;
-               await Navigation.PushAsync(new CallPage());
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
+                await Navigation.PushAsync(new CallPage());
             }
         }
 
@@ -60,7 +62,20 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new NavigateToHomePage());
+            }
+        }
+
+        private void GoToSetting(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                var a = Navigation.ModalStack.Last();
+                var b = a.GetType();
             }
         }
     }

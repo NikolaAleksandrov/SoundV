@@ -28,15 +28,14 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Call an emergency number", null, null, 1.5f,null, cancelSrc.Token);
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call an emergency number", null, null, 1.5f,null, cancelSrc.Token));
             flag = true;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
-            cancelSrc.Dispose();
+         
         }
 
         private async void GoToSubLevel(object sender, EventArgs e)
@@ -44,6 +43,9 @@ namespace XFApp1.Views.Emergency
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new EmergencySubLevel());
             }
         }
@@ -53,6 +55,12 @@ namespace XFApp1.Views.Emergency
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
+
+                var a = Navigation.NavigationStack.Last();
+                var b = a.GetType();
                 await Navigation.PopAsync();
             }
         }
@@ -62,6 +70,9 @@ namespace XFApp1.Views.Emergency
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new TaxiPage());
             }
         }

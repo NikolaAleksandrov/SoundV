@@ -19,7 +19,8 @@ namespace XFApp1.Views.Home
         public FavouritePlacePage()
         {
             InitializeComponent();
-            CrossTextToSpeech.Current.Speak("Go to my favourite place!", null, null, 1.5f,null, cancelSrc.Token);
+            cancelSrc = new CancellationTokenSource();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to my favourite place!", null, null, 1.5f,null, cancelSrc.Token));
         }
 
         protected override void OnAppearing()
@@ -30,7 +31,6 @@ namespace XFApp1.Views.Home
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
         }
 
         async void PreviousPage(object sender, EventArgs e)
@@ -38,6 +38,9 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -47,6 +50,9 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopToRootAsync();
             }
         }
@@ -56,6 +62,9 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
             }
         }

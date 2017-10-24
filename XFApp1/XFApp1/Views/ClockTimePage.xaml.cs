@@ -29,7 +29,7 @@ namespace XFApp1.Views
         {
             base.OnAppearing();
             viewModel.currentTime = DateTime.Now;
-            CrossTextToSpeech.Current.Speak("Welcome to Clock Page");
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to Clock Page"));
         }
 
         async void ClockTime_Requested(object sender, EventArgs e)

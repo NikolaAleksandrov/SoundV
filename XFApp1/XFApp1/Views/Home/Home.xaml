@@ -18,6 +18,7 @@
                                        Source="__arrow_up_white.png"
                                        HeightRequest="120"
                                        WidthRequest="120"
+                                       SwipedRight="GoToSetting" 
                                        SwipedLeft="GoToCallPage"
                                        SwipedUp="GoToSubLevel">
                 </custom:SwipeableImage>

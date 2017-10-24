@@ -26,19 +26,22 @@ namespace XFApp1.Views.Taxi
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Double tap to call company", null, null, 1.5f, null, cancelSrc.Token);
+            cancelSrc = new CancellationTokenSource();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to call company", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
         }
         async void ClearNavigationStack(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopToRootAsync();
             }
         }
@@ -47,6 +50,9 @@ namespace XFApp1.Views.Taxi
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
             }
         }

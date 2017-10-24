@@ -28,14 +28,9 @@ namespace XFApp1.Views.Taxi
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Speak();
-            cancelSrc = null;
+            cancelSrc = new CancellationTokenSource();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to call a taxi", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
-        }
-
-        private async void Speak()
-        {
-            await CrossTextToSpeech.Current.Speak("Double tap to call a taxi", null, null, 1.5f, null, cancelSrc.Token);
         }
 
         protected override void OnDisappearing()
@@ -48,6 +43,9 @@ namespace XFApp1.Views.Taxi
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new TaxiCompanyPage());
             }
         }
@@ -57,6 +55,9 @@ namespace XFApp1.Views.Taxi
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -66,6 +67,9 @@ namespace XFApp1.Views.Taxi
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new BatteryLevelPage());
             }
         }

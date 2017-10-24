@@ -28,14 +28,13 @@ namespace XFApp1.Views.Settings
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Please call an assistant to use this page", null, null, 1.5f, null, cancelSrc.Token);
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Please call an assistant to use this page", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
         }
 
         private async void PreviousPage(object sender, EventArgs e)
@@ -43,6 +42,9 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -52,6 +54,9 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopToRootAsync();
             }
         }
@@ -61,6 +66,9 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new SettingsCustomize());
             }
         }

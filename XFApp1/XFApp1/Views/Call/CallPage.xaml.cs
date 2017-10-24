@@ -28,14 +28,15 @@ namespace XFApp1.Views.Call
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CrossTextToSpeech.Current.Speak("Call page", null, null, 1.5f, null, cancelSrc.Token);
+            cancelSrc = new CancellationTokenSource();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call page", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
+         
         }
 
         private async void GoToSubLevel(object sender, EventArgs e)
@@ -43,6 +44,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new CallTrustedPersonPage());
             }
         }
@@ -59,6 +63,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new EmergencyPage());
             }
         }

@@ -27,7 +27,8 @@ namespace XFApp1.Views.Home
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Navigate to home page",null, null, 1.5f, null, cancelSrc.Token);
+            cancelSrc = new CancellationTokenSource();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Navigate to home page",null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -40,6 +41,9 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new FavouritePlacePage());
             }
         }
@@ -49,6 +53,9 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopToRootAsync();
             }
         }

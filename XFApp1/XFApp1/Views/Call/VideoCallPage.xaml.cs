@@ -26,13 +26,13 @@ namespace XFApp1.Views.Call
         {
             base.OnAppearing();
             flag = true;
-            CrossTextToSpeech.Current.Speak("Double tap for a video call", null, null, 1.5f, null, cancelSrc.Token);
+            cancelSrc = new CancellationTokenSource();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap for a video call", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
         }
 
         async void PreviousPage(object sender, EventArgs e)
@@ -40,6 +40,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -49,6 +52,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PushAsync(new CallAssistance());
             }
         }
@@ -58,6 +64,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopToRootAsync();
             }
         }
