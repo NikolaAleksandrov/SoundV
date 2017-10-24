@@ -34,7 +34,6 @@ namespace XFApp1.Views.Home
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            cancelSrc.Cancel();
         }
         async void GotoFavouritePlace(object sender, EventArgs e)
         {
