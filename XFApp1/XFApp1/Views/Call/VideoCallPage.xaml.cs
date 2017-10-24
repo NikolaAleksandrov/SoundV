@@ -67,7 +67,11 @@ namespace XFApp1.Views.Call
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await Navigation.PopToRootAsync();
+                for (var counter = 1; counter < 2; counter++)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                }
+                await Navigation.PopAsync();
             }
         }
     }

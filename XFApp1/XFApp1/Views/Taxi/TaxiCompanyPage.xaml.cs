@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.TextToSpeech;
 using System.Threading;
+using SoundV.ViewModels;
 
 namespace XFApp1.Views.Taxi
 {
@@ -20,14 +21,16 @@ namespace XFApp1.Views.Taxi
         {
             InitializeComponent();
             flag = true;
+            this.BindingContext = new TaxiViewModel();
         }
 
         protected override void OnAppearing()
         {
+            var vm = this.BindingContext as TaxiViewModel;
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to call company", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to call" + vm.CompanyName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -42,7 +45,7 @@ namespace XFApp1.Views.Taxi
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await Navigation.PopToRootAsync();
+                await Navigation.PopAsync();
             }
         }
         async void CautionMessage(object sender, EventArgs e)
@@ -53,7 +56,7 @@ namespace XFApp1.Views.Taxi
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Taxi page");
             }
         }
     }

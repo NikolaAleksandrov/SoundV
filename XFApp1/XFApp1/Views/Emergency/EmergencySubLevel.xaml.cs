@@ -38,7 +38,7 @@ namespace XFApp1.Views.Emergency
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await Navigation.PopToRootAsync();
+                await Navigation.PopAsync();
             }
         }
         async void CautionMessage(object sender, EventArgs e)

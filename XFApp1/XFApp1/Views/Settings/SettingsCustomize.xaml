@@ -48,6 +48,10 @@
                         <Label Grid.Row="4" x:Name="NavigationSeparator" Text="Navigation"  TextColor="White" XAlign="Center" FontSize="Large"/>
                         <Entry Grid.Row="4" x:Name="HomePlace" Placeholder="Str, City" Margin="5"/>
                     </StackLayout>
+
+                    <StackLayout>
+                        <Button Clicked="SaveData" Text="Save"/>
+                    </StackLayout>
                 </Grid>
             </ScrollView>
         </StackLayout>

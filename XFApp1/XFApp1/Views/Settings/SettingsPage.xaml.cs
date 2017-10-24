@@ -54,9 +54,7 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PopToRootAsync();
             }
         }

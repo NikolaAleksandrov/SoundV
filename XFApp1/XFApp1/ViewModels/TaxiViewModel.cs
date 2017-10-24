@@ -7,13 +7,11 @@ namespace SoundV.ViewModels
 {
     class TaxiViewModel
     {
-        public string CompanyName { get; set; }
-        public int CompanyPhoneNumer { get; set; }
+        public string CompanyName { get; set; } = "Yellow Taxi";
+        public int CompanyPhoneNumer { get; set; } = 0;
 
         public TaxiViewModel()
         {
-            this.CompanyName = string.Empty;
-            this.CompanyPhoneNumer = 0;
         }
     }
 }

@@ -62,7 +62,6 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
                 await Navigation.PushAsync(new NavigateToHomePage());
@@ -74,8 +73,8 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
-                var a = Navigation.ModalStack.Last();
-                var b = a.GetType();
+                //var a = Navigation.ModalStack.Last();
+                //var b = a.GetType();
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Plugin.TextToSpeech;
+using SoundV.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace XFApp1.Views.Settings
         {
             InitializeComponent();
             flag = true;
+            BindingContext = new TaxiViewModel();
         }
 
         protected override void OnAppearing()
@@ -43,7 +45,7 @@ namespace XFApp1.Views.Settings
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await Navigation.PopToRootAsync();
+                await Navigation.PopAsync();
             }
         }
         async void CautionMessage(object sender, EventArgs e)
@@ -56,6 +58,18 @@ namespace XFApp1.Views.Settings
                 cancelSrc = null;
                 await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
             }
+        }
+
+        private void GetTaxiData()
+        {
+            var vm = (this.BindingContext as TaxiViewModel);
+            vm.CompanyName = TaxiCompanyName.Text;
+            vm.CompanyPhoneNumer = Convert.ToInt32(TaxiCompanyNumber.Text);
+        }
+
+        private void SaveData(object sender, EventArgs e)
+        {
+            GetTaxiData();
         }
     }
 }

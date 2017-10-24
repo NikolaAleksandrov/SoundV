@@ -44,10 +44,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PushAsync(new CallTrustedPersonPage());
+                flag = true;
             }
         }
         private async void PreviousPage(object sender, EventArgs e)

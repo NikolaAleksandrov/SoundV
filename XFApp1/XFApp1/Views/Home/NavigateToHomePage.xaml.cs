@@ -15,20 +15,23 @@ namespace XFApp1.Views.Home
     public partial class NavigateToHomePage : ContentPage
     {
         bool flag;
+        int count = 0;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public NavigateToHomePage()
         {
             InitializeComponent();
 
             flag = true;
+            count = 1;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             flag = true;
+            count = count + 1;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Navigate to home page",null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Navigate me to home",null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -64,7 +67,9 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page"
+                    , null, null, 1.5f, null, cancelSrc.Token);
+                flag = true;
             }
         }
     }
