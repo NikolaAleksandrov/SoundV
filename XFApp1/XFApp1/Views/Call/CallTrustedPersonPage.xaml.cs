@@ -1,4 +1,5 @@
-﻿using Plugin.TextToSpeech;
+﻿using Android.Content;
+using Plugin.TextToSpeech;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Interface;
 
 namespace XFApp1.Views.Call
 {
@@ -15,6 +17,7 @@ namespace XFApp1.Views.Call
     public partial class CallTrustedPersonPage : ContentPage
     {
         bool flag;
+        
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public CallTrustedPersonPage()
         {
@@ -33,6 +36,17 @@ namespace XFApp1.Views.Call
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak(TrustedPersonLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+        }
+
+        private void Call(object sender, EventArgs e)
+        {
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)

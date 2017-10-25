@@ -119,6 +119,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderer\SwipeableImage.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MakePhoneCall.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

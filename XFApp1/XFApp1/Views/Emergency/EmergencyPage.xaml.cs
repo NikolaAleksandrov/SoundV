@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Interface;
 using XFApp1.Views.Taxi;
 
 namespace XFApp1.Views.Emergency
@@ -77,5 +78,15 @@ namespace XFApp1.Views.Emergency
             }
         }
 
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak(CallLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+        }
+
+        private void Call(object sender, EventArgs e)
+        {
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Interface;
 
 namespace XFApp1.Views.Call
 {
@@ -28,6 +29,17 @@ namespace XFApp1.Views.Call
             flag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Do you need any help? Double tap to call an assistant", null, null, 1.5f, null, cancelSrc.Token));
+        }
+
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak(CallLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+        }
+
+        private void Call(object sender, EventArgs e)
+        {
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
         }
 
         async void PreviousPage(object sender, EventArgs e)

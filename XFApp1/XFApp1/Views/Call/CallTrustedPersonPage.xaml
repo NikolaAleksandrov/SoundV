@@ -26,8 +26,12 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Call" FontSize="48" XAlign="Center"></Label>
-                    <Label  Grid.Row="1" x:Name="TrustedPersonLabel" Text="Trustederson!" FontSize="48" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="TrustedPersonLabel" Text="Call Trusted Person" FontSize="48" XAlign="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Call"/>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" VerticalOptions="Center">
