@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Interface;
 
 namespace XFApp1.Views.Emergency
 {
@@ -27,7 +28,18 @@ namespace XFApp1.Views.Emergency
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Would you like to call the police?", null, null, 1.5f, null,cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call 112", null, null, 1.5f, null,cancelSrc.Token));
+        }
+
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak("Call 112", null, null, 1.5f, null, cancelSrc.Token);
+        }
+
+        private void Call(object sender, EventArgs e)
+        {
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("112");
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)
@@ -49,7 +61,8 @@ namespace XFApp1.Views.Emergency
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Emergency menu");
+                flag = true;
             }
         }
     }

@@ -27,7 +27,8 @@ namespace XFApp1.Views.Call
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap for a video call", null, null, 1.5f, null, cancelSrc.Token));
+            //TODO: get name from viewModel
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Video call: ", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()

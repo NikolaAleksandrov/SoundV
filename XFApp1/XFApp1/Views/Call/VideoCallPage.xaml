@@ -26,8 +26,8 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Call" FontSize="48" XAlign="Center"></Label>
-                    <Label  Grid.Row="1" x:Name="TrustedPersonLabel" Text="Trustederson!" FontSize="48" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="CallLabel" Text="VIDEO CALL" TextColor="Gray" FontSize="48" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="TrustedPersonLabel" Text="Binding" FontFamily="Roboto" FontSize="48" XAlign="Center"></Label>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" VerticalOptions="Center">

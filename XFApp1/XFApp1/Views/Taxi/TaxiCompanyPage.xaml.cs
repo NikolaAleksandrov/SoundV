@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using Plugin.TextToSpeech;
 using System.Threading;
 using SoundV.ViewModels;
+using XFApp1.Interface;
 
 namespace XFApp1.Views.Taxi
 {
@@ -30,12 +31,26 @@ namespace XFApp1.Views.Taxi
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to call" + vm.CompanyName, null, null, 1.5f, null, cancelSrc.Token));
+            //TODO: call company from view model + speak it
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call" + vm.CompanyName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            //TODO: get name from ViewModel
+            CrossTextToSpeech.Current.Speak("Call: ", null, null, 1.5f, null, cancelSrc.Token);
+        }
+
+        private void Call(object sender, EventArgs e)
+        {
+            //TODO: Get number from view model
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
         }
         async void ClearNavigationStack(object sender, EventArgs e)
         {

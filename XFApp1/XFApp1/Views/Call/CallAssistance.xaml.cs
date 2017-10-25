@@ -15,7 +15,7 @@ namespace XFApp1.Views.Call
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CallAssistance : ContentPage
     {
-        bool flag;
+        private bool flag = false;
         CancellationTokenSource cancelSrc;
         public CallAssistance()
         {
@@ -28,7 +28,7 @@ namespace XFApp1.Views.Call
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Do you need any help? Double tap to call an assistant", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call Assistance", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         private void ReadPageText(object sender, EventArgs e)
@@ -75,8 +75,7 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page"
-                    , null, null, 1.5f, null, cancelSrc.Token);
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call menu", null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }
         }

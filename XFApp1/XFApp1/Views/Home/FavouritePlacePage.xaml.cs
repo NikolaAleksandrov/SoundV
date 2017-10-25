@@ -20,7 +20,8 @@ namespace XFApp1.Views.Home
         {
             InitializeComponent();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to my favourite place!", null, null, 1.5f,null, cancelSrc.Token));
+            //TO DO: read it with the favourite place from viewModel
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to: ", null, null, 1.5f,null, cancelSrc.Token));
         }
 
         protected override void OnAppearing()

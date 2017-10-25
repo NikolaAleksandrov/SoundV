@@ -29,7 +29,7 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call an emergency number", null, null, 1.5f,null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f,null, cancelSrc.Token));
             flag = true;
         }
 
@@ -81,12 +81,12 @@ namespace XFApp1.Views.Emergency
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak(CallLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)
         {
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("112");
         }
     }
 }

@@ -31,7 +31,8 @@ namespace XFApp1.Views.Home
             flag = true;
             count = count + 1;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Navigate me to home",null, null, 1.5f, null, cancelSrc.Token));
+            //TO DO: add home address and read it (concatenation)
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to",null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()

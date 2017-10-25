@@ -30,7 +30,8 @@ namespace XFApp1.Views.Call
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Would you like to call Trusted person 1", null, null, 1.5f, null, cancelSrc.Token));
+            //TODO: get trustedperson from ViewModel and speak with his name
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: ", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -46,6 +47,7 @@ namespace XFApp1.Views.Call
 
         private void Call(object sender, EventArgs e)
         {
+            //TODO: get number from VM
             DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
         }
 
@@ -78,7 +80,7 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call page"
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call menu"
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }

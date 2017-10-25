@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Interface;
 using XFApp1.Views.Battery;
 using XFApp1.Views.Settings;
 
@@ -29,13 +30,19 @@ namespace XFApp1.Views.Taxi
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to call a taxi", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call a Taxi Menu", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+        }
+
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            CrossTextToSpeech.Current.Speak("Call a Taxi Menu", null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private async void GoToSubLevel(object sender, EventArgs e)

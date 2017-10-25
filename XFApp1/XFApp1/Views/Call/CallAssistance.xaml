@@ -26,7 +26,8 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Call Assistance" FontSize="48" XAlign="Center">
+                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="CALL" FontSize="48" XAlign="Center"/>
+                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Call: Assistance" FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
                             <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Call"/>

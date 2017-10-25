@@ -33,7 +33,8 @@ namespace XFApp1.Views.Home
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to home page", null, null, 1.5f, null, cancelSrc.Token));
+            //TO DO: add current location from Services and then read it with the address (concatenation)
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Current location: ", null, null, 1.5f, null, cancelSrc.Token));
 
 
             if (viewModel.Items.Count == 0)

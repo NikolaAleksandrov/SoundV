@@ -29,7 +29,7 @@ namespace XFApp1.Views.Call
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call page", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call Menu", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 

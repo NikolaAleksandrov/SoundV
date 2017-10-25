@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.Interface;
 using XFApp1.Views.Settings;
 
 namespace XFApp1.Views.Battery
@@ -28,7 +29,8 @@ namespace XFApp1.Views.Battery
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Check your battery level", null, null, 1.5f, null, cancelSrc.Token));
+            //TODO: get battery level from viewmodel
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Battery level menu: ", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
@@ -37,6 +39,12 @@ namespace XFApp1.Views.Battery
             base.OnDisappearing();
         }
 
+        private void ReadPageText(object sender, EventArgs e)
+        {
+            cancelSrc = new CancellationTokenSource();
+            //TODO:Battery level
+            CrossTextToSpeech.Current.Speak("Binding batery level", null, null, 1.5f, null, cancelSrc.Token);
+        }
 
         private async void PreviousPage(object sender, EventArgs e)
         {
