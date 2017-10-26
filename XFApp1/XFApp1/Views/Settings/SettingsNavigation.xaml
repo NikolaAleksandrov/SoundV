@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XFApp1.Views.Settings.SettingsCustomize"
+             x:Class="XFApp1.Views.Settings.SettingsNavigation"
              xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
         <StackLayout>
@@ -20,25 +20,28 @@
                                                Source="__arrow_down_gray.png"
                                                HeightRequest="120"
                                                WidthRequest="120"
-                                               SwipedRight="PreviousPage"
-                                               SwipedLeft="GoToSettingsTaxi"
+                                               SwipedRight="CautionMessage"
+                                               SwipedLeft="GoToSettingsTrustedPerson"
                                                SwipedDown="ClearNavigationStack">
                         </custom:SwipeableImage>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1">
-                        <Label  Grid.Row="1" Text="Trusted Person" TextColor="White" FontSize="48" XAlign="Center"></Label>
-                        <Label  Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
-
+                        <Label  Grid.Row="1" Text="Navigation" TextColor="White" FontSize="48" XAlign="Center"></Label>
+                        <Label Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" VerticalOptions="Center">
-                        <Entry Grid.Row="2" x:Name="TrustedPersonNameLabel" TextColor="White" Placeholder="Enter a Trusted Person name..." FontSize="Large"/>
-                        <Entry Grid.Row="2" x:Name="TrustedPersonNumberLabel" Placeholder="Enter a Trusted Person number..." Margin="5"/>
+                        <Label Grid.Row="1" Text="Home" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Entry Grid.Row="2" x:Name="HomePlaceLabel" Placeholder="Enter Str, City" Margin="5"/>
+                        
+                        <Label Grid.Row="1" Text="Favourite places" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Entry Grid.Row="2" x:Name="SavedPlace1Label" Placeholder="Enter Str, City" Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="SavedPlace2Label" Placeholder="Str, City" Margin="5"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="3">
-                        <Button  Grid.Row="3" Clicked="SaveData" Text="Save"/>
+                        <Button Grid.Row="3" Clicked="SaveData" Text="Save"/>
                     </StackLayout>
                 </Grid>
             </ScrollView>

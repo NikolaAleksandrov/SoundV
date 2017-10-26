@@ -1,4 +1,5 @@
 ﻿using Plugin.TextToSpeech;
+using SoundV.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,59 +9,45 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFApp1.ViewModels;
 
-namespace XFApp1.Views.Call
+namespace XFApp1.Views.Settings
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VideoCallPage : ContentPage
+    public partial class SettingsNavigation : ContentPage
     {
-        bool flag;
-        string trustedPersonName = string.Empty;
+        private bool flag;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
-        public VideoCallPage()
+        public SettingsNavigation()
         {
             InitializeComponent();
             flag = true;
+            BindingContext = new HomeViewModel();
             NavigationPage.SetHasNavigationBar(this, false);
         }
+ 
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
             flag = true;
-            TrustedPersonLabel.Text = trustedPersonName;
             cancelSrc = new CancellationTokenSource();
-            //TODO: get name from viewModel
-           
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Video call: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Change your settings", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
         }
-
-        async void PreviousPage(object sender, EventArgs e)
+        async void CautionMessage(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
-                await Navigation.PopAsync();
-            }
-        }
-
-        async void CallAssistance(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await Navigation.PushAsync(new CallAssistance());
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
+                flag = true;
             }
         }
 
@@ -71,13 +58,30 @@ namespace XFApp1.Views.Call
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
-                for (var counter = 1; counter < 2; counter++)
-                {
-                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-                }
                 await Navigation.PopAsync();
             }
+        }
+        async void GoToSettingsTrustedPerson(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                await Navigation.PushAsync(new SettingsCustomize());
+            }
+        }
+
+        private void GetHomeData()
+        {
+            Application.Current.Properties["HomePlace"] = HomePlaceLabel.Text;
+            Application.Current.Properties["SavedPlace1"] = SavedPlace1Label.Text;
+            Application.Current.Properties["SavedPlace2"] = SavedPlace2Label.Text;
+        }
+
+        private void SaveData(object sender, EventArgs e)
+        {
+            GetHomeData();
         }
     }
 }

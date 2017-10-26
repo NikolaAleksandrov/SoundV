@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XFApp1.Views.Settings.SettingsCustomize"
-             xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
+             x:Class="XFApp1.Views.Settings.SettingsTaxi" xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
         <StackLayout>
             <ScrollView>
@@ -10,6 +9,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
                         <RowDefinition Height="1.5*"></RowDefinition>
                     </Grid.RowDefinitions>
 
@@ -21,24 +21,28 @@
                                                HeightRequest="120"
                                                WidthRequest="120"
                                                SwipedRight="PreviousPage"
-                                               SwipedLeft="GoToSettingsTaxi"
+                                               SwipedLeft="CautionMessage"
                                                SwipedDown="ClearNavigationStack">
                         </custom:SwipeableImage>
                     </StackLayout>
 
                     <StackLayout Grid.Row="1">
-                        <Label  Grid.Row="1" Text="Trusted Person" TextColor="White" FontSize="48" XAlign="Center"></Label>
-                        <Label  Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
-
+                        <Label  Grid.Row="1" Text="Taxi Companies" TextColor="White" FontSize="48" XAlign="Center"></Label>
+                        <Label Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" VerticalOptions="Center">
-                        <Entry Grid.Row="2" x:Name="TrustedPersonNameLabel" TextColor="White" Placeholder="Enter a Trusted Person name..." FontSize="Large"/>
-                        <Entry Grid.Row="2" x:Name="TrustedPersonNumberLabel" Placeholder="Enter a Trusted Person number..." Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="TaxiCompany1NameLabel" Placeholder="Enter taxi company 1 name..." Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="TaxiCompany1NumberLabel" Placeholder="Enter taxi company 1 number..." Margin="5"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <Entry Grid.Row="3" x:Name="TaxiCompany2NameLabel" Placeholder="Enter taxi company 1 name..." Margin="5"/>
+                        <Entry Grid.Row="3" x:Name="TaxiCompany2NumberLabel" Placeholder="Enter taxi company 1 number..." Margin="5"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="3">
-                        <Button  Grid.Row="3" Clicked="SaveData" Text="Save"/>
+
+                    <StackLayout Grid.Row="4">
+                        <Button Grid.Row="4" Clicked="SaveData" Text="Save"/>
                     </StackLayout>
                 </Grid>
             </ScrollView>

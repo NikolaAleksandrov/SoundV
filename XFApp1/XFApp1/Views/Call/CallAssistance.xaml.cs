@@ -40,7 +40,7 @@ namespace XFApp1.Views.Call
 
         private void Call(object sender, EventArgs e)
         {
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("0878447898");
         }
 
         async void PreviousPage(object sender, EventArgs e)
@@ -50,7 +50,6 @@ namespace XFApp1.Views.Call
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -62,7 +61,6 @@ namespace XFApp1.Views.Call
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 for (var counter = 1; counter < 3; counter++)
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);

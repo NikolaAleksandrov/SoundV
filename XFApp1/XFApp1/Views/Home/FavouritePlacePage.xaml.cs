@@ -23,6 +23,8 @@ namespace XFApp1.Views.Home
             //TO DO: read it with the favourite place from viewModel
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to: ", null, null, 1.5f,null, cancelSrc.Token));
             NavigationPage.SetHasNavigationBar(this, false);
+
+
         }
 
         protected override void OnAppearing()

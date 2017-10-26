@@ -60,6 +60,7 @@
     <Compile Include="ViewModels\CallViewModel.cs" />
     <Compile Include="ViewModels\ClockTimeViewModel.cs" />
     <Compile Include="ViewModels\DateTimeViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ItemDetailViewModel.cs" />
     <Compile Include="ViewModels\ItemsViewModel.cs" />
     <Compile Include="ViewModels\TaxiViewModel.cs" />
@@ -100,8 +101,14 @@
     <Compile Include="Views\Settings\SettingsCustomize.xaml.cs">
       <DependentUpon>SettingsCustomize.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Settings\SettingsNavigation.xaml.cs">
+      <DependentUpon>SettingsNavigation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Settings\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SettingsTaxi.xaml.cs">
+      <DependentUpon>SettingsTaxi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Taxi\TaxiPage.xaml.cs">
       <DependentUpon>TaxiPage.xaml</DependentUpon>
@@ -232,6 +239,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Settings\SettingsNavigation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Settings\SettingsTaxi.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

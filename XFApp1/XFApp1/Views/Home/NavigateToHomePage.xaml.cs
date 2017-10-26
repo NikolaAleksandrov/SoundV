@@ -16,6 +16,7 @@ namespace XFApp1.Views.Home
     {
         bool flag;
         int count = 0;
+        string homePlaceAddress = string.Empty;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public NavigateToHomePage()
         {
@@ -33,7 +34,10 @@ namespace XFApp1.Views.Home
             count = count + 1;
             cancelSrc = new CancellationTokenSource();
             //TO DO: add home address and read it (concatenation)
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to",null, null, 1.5f, null, cancelSrc.Token));
+            homePlaceAddress = Application.Current.Properties["HomePlace"].ToString();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to" + homePlaceAddress, null, null, 1.5f, null, cancelSrc.Token));
+
+            GoHomeLabel.Text = Application.Current.Properties["HomePlace"].ToString(); 
         }
 
         protected override void OnDisappearing()

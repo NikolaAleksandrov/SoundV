@@ -32,7 +32,7 @@
                 <StackLayout Grid.Row="2" VerticalOptions="Center">
                     <custom:SwipeableImage Grid.Row="2"
                                        x:Name="WalkerPicture"
-                                       Source="__cogwheel_gray.png"
+                                       Source="__pencil_gray.png"
                                        HeightRequest="200"
                                        WidthRequest="200"
                                        Margin="5,20,5,20"

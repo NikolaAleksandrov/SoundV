@@ -17,7 +17,7 @@ namespace XFApp1.Views.Call
     public partial class CallTrustedPersonPage : ContentPage
     {
         bool flag;
-        
+        string trustedPersonName = string.Empty;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public CallTrustedPersonPage()
         {
@@ -32,7 +32,9 @@ namespace XFApp1.Views.Call
             flag = true;
             cancelSrc = new CancellationTokenSource();
             //TODO: get trustedperson from ViewModel and speak with his name
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: ", null, null, 1.5f, null, cancelSrc.Token));
+            trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
+            TrustedPersonLabel.Text = trustedPersonName;
+           Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -49,7 +51,8 @@ namespace XFApp1.Views.Call
         private void Call(object sender, EventArgs e)
         {
             //TODO: get number from VM
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
+            var number = Application.Current.Properties["TrustedPersonPhoneNumber"];
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)

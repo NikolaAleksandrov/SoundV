@@ -18,12 +18,10 @@ namespace XFApp1.Views.Home
     public partial class Home : ContentPage
     {
         private bool flag;
-        ItemsViewModel viewModel;
         CancellationTokenSource cancelSrc;
         public Home()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ItemsViewModel();
             Title = "Home";
             flag = true;
             cancelSrc = new CancellationTokenSource();
@@ -35,11 +33,7 @@ namespace XFApp1.Views.Home
             flag = true;
             cancelSrc = new CancellationTokenSource();
             //TO DO: add current location from Services and then read it with the address (concatenation)
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Current location: ", null, null, 1.5f, null, cancelSrc.Token));
-
-
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to get location", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -75,7 +69,6 @@ namespace XFApp1.Views.Home
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PushAsync(new CallPage());
             }
         }
@@ -86,18 +79,7 @@ namespace XFApp1.Views.Home
             {
                 flag = false;
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PushAsync(new NavigateToHomePage());
-            }
-        }
-
-        private void GoToSetting(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                //var a = Navigation.ModalStack.Last();
-                //var b = a.GetType();
             }
         }
     }

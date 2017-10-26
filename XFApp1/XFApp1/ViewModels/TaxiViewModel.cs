@@ -5,13 +5,13 @@ using System.Windows.Input;
 
 namespace SoundV.ViewModels
 {
-    class TaxiViewModel
+    static class TaxiViewModel
     {
-        public string CompanyName { get; set; } = "Yellow Taxi";
-        public int CompanyPhoneNumer { get; set; } = 0;
+        public static  string Company1Name = "Yellow Taxi";
+        public static int Company1PhoneNumer = 91119;
 
-        public TaxiViewModel()
-        {
-        }
+        public static string Company2Name  = "OK Taxi";
+        public static int Company2PhoneNumer = 9732121;
+
     }
 }

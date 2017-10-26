@@ -50,7 +50,6 @@ namespace XFApp1.Views.Settings
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -73,7 +72,7 @@ namespace XFApp1.Views.Settings
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 cancelSrc = null;
-                await Navigation.PushAsync(new SettingsCustomize());
+                await Navigation.PushAsync(new SettingsNavigation());
             }
         }
     }

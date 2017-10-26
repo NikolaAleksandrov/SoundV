@@ -22,18 +22,17 @@ namespace XFApp1.Views.Taxi
         {
             InitializeComponent();
             flag = true;
-            this.BindingContext = new TaxiViewModel();
             NavigationPage.SetHasNavigationBar(this, false);
+            TaxiCompanyLabel.Text = Application.Current.Properties["Company1Name"].ToString();
         }
 
         protected override void OnAppearing()
         {
-            var vm = this.BindingContext as TaxiViewModel;
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
             //TODO: call company from view model + speak it
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call" + vm.CompanyName, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call" + TaxiCompanyLabel.Text, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -60,7 +59,6 @@ namespace XFApp1.Views.Taxi
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -71,8 +69,8 @@ namespace XFApp1.Views.Taxi
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Taxi page");
+                flag = true;
             }
         }
     }
