@@ -23,6 +23,7 @@ namespace XFApp1.Views.Battery
             InitializeComponent();
             flag = true;
             cancelSrc = new CancellationTokenSource();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()

@@ -23,6 +23,7 @@ namespace XFApp1.Views.Home
 
             flag = true;
             count = 1;
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()

@@ -21,6 +21,7 @@ namespace XFApp1.Views.Call
         {
             InitializeComponent();
             flag = true;
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()

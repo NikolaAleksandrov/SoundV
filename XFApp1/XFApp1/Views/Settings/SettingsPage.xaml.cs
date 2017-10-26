@@ -21,6 +21,7 @@ namespace XFApp1.Views.Settings
             InitializeComponent();
             flag = true;
             cancelSrc = new CancellationTokenSource();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
 

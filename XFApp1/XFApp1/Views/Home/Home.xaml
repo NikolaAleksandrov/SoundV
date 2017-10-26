@@ -25,8 +25,12 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                <Label  Grid.Row="1" x:Name="Address" Text="Go to" FontSize="36" XAlign="Center"></Label>
-                <Label  Grid.Row="1" x:Name="WorldDirectons" Text="NorthEast!" FontSize="48" XAlign="Center"></Label>
+                <Label  Grid.Row="1" x:Name="AddressLabel" Text="CURRENT LOCATION" FontSize="36" XAlign="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
+                        <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="GetLocation"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
             
             <StackLayout Grid.Row="2" VerticalOptions="Center">

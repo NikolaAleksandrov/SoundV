@@ -21,6 +21,7 @@ namespace XFApp1.Views.Emergency
         {
             InitializeComponent();
             flag = true;
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()
@@ -47,9 +48,6 @@ namespace XFApp1.Views.Emergency
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -60,7 +58,6 @@ namespace XFApp1.Views.Emergency
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Emergency menu");
                 flag = true;
             }

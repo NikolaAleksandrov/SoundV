@@ -19,11 +19,13 @@ namespace XFApp1.Views.Taxi
     {
         private bool flag;
         CancellationTokenSource cancelSrc;
+
         public TaxiPage()
         {
             InitializeComponent();
             flag = true;
             cancelSrc = new CancellationTokenSource();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()

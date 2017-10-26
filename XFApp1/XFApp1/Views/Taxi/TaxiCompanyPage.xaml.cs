@@ -23,6 +23,7 @@ namespace XFApp1.Views.Taxi
             InitializeComponent();
             flag = true;
             this.BindingContext = new TaxiViewModel();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()
