@@ -71,9 +71,8 @@ namespace XFApp1.Views.Taxi
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Taxi page");
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call menu"
+                    , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }
         }

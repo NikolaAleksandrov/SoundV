@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XFApp1.Interface;
+using XFApp1.Views.Emergency;
 
 namespace XFApp1.Views.Call
 {
@@ -74,7 +75,9 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call menu", null, null, 1.5f, null, cancelSrc.Token);
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                await Navigation.PushAsync(new EmergencySubLevel());
                 flag = true;
             }
         }

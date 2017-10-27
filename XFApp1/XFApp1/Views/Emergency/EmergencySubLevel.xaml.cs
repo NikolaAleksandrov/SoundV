@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XFApp1.Interface;
+using XFApp1.Views.Call;
 
 namespace XFApp1.Views.Emergency
 {

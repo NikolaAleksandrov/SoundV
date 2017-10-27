@@ -52,9 +52,8 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page");
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Settings menu"
+                    , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }
         }
