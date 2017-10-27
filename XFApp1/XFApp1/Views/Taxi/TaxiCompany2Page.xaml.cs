@@ -1,5 +1,4 @@
-﻿using Android.Content;
-using Plugin.TextToSpeech;
+﻿using Plugin.TextToSpeech;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,30 +10,30 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XFApp1.Interface;
 
-namespace XFApp1.Views.Call
+namespace XFApp1.Views.Taxi
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CallTrustedPersonPage : ContentPage
+    public partial class TaxiCompany2Page : ContentPage
     {
-        bool flag;
-        string trustedPersonName = string.Empty;
+        private bool flag;
+        string taxiCompany2Name = string.Empty;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
-        public CallTrustedPersonPage()
+        public TaxiCompany2Page()
         {
             InitializeComponent();
             flag = true;
             NavigationPage.SetHasNavigationBar(this, false);
         }
-
+       
         protected override void OnAppearing()
         {
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            //TODO: get trustedperson from ViewModel and speak with his name
-            trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
-            TrustedPersonLabel.Text = trustedPersonName;
-           Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
+
+            taxiCompany2Name = Application.Current.Properties["Company2Name"].ToString();
+            TaxiCompanyLabel.Text = taxiCompany2Name;
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + taxiCompany2Name, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -45,13 +44,13 @@ namespace XFApp1.Views.Call
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak(TrustedPersonLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak(TaxiCompanyLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)
         {
             //TODO: get number from VM
-            var number = Application.Current.Properties["TrustedPersonPhoneNumber"];
+            var number = Application.Current.Properties["Company2PhoneNumer"];
             DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
         }
 
@@ -62,19 +61,11 @@ namespace XFApp1.Views.Call
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
+                for (var counter = 1; counter < 2; counter++)
+                {
+                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                }
                 await Navigation.PopAsync();
-            }
-        }
-
-        async void VideoCall(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await Navigation.PushAsync(new VideoCallPage());
             }
         }
 
@@ -88,5 +79,17 @@ namespace XFApp1.Views.Call
                 flag = true;
             }
         }
+
+        async void PreviousPage(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                await Navigation.PopAsync();
+            }
+        }
+
     }
 }

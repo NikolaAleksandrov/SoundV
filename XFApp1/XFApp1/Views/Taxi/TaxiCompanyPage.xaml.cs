@@ -17,13 +17,15 @@ namespace XFApp1.Views.Taxi
     public partial class TaxiCompanyPage : ContentPage
     {
         private bool flag;
+        string taxiCompanyName = string.Empty;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public TaxiCompanyPage()
         {
             InitializeComponent();
             flag = true;
             NavigationPage.SetHasNavigationBar(this, false);
-            TaxiCompanyLabel.Text = Application.Current.Properties["Company1Name"].ToString();
+            taxiCompanyName = Application.Current.Properties["Company1Name"].ToString();
+            TaxiCompanyLabel.Text = taxiCompanyName;
         }
 
         protected override void OnAppearing()
@@ -44,13 +46,15 @@ namespace XFApp1.Views.Taxi
         {
             cancelSrc = new CancellationTokenSource();
             //TODO: get name from ViewModel
-            CrossTextToSpeech.Current.Speak("Call: ", null, null, 1.5f, null, cancelSrc.Token);
+            taxiCompanyName = Application.Current.Properties["Company1Name"].ToString();
+            CrossTextToSpeech.Current.Speak("Call: " + taxiCompanyName, null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)
         {
             //TODO: Get number from view model
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("123");
+            var number = Application.Current.Properties["Company1PhoneNumer"].ToString();
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number);
         }
         async void ClearNavigationStack(object sender, EventArgs e)
         {
@@ -71,6 +75,17 @@ namespace XFApp1.Views.Taxi
                 cancelSrc.Dispose();
                 await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Taxi page");
                 flag = true;
+            }
+        }
+
+        async void GoToTaxiCompany2(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                await Navigation.PushAsync(new TaxiCompany2Page());
             }
         }
     }
