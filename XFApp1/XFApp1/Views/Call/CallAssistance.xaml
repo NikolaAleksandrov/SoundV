@@ -19,7 +19,7 @@
                                            Source="__arrow_down_green.png"
                                            HeightRequest="120"
                                            WidthRequest="120"
-                                           SwipedLeft="CautionMessage"
+                                           SwipedLeft="GoToEmergencyCall"
                                            SwipedDown="ClearNavigationStack"
                                            SwipedRight="PreviousPage">
                     </custom:SwipeableImage>
@@ -42,7 +42,7 @@
                                            HeightRequest="200"
                                            WidthRequest="200"
                                            Margin="5,20,5,20"
-                                           SwipedLeft="CautionMessage"
+                                           SwipedLeft="GoToEmergencyCall"
                                            SwipedDown="ClearNavigationStack"
                                            SwipedRight="PreviousPage">
                     </custom:SwipeableImage>

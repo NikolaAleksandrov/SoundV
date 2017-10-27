@@ -69,7 +69,7 @@ namespace XFApp1.Views.Call
             }
         }
 
-        async void CautionMessage(object sender, EventArgs e)
+        async void GoToEmergencyCall(object sender, EventArgs e)
         {
             if (flag)
             {
