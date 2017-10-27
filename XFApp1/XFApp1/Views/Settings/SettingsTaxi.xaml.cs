@@ -31,6 +31,15 @@ namespace XFApp1.Views.Settings
             flag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Add Taxi Companies Data", null, null, 1.5f, null, cancelSrc.Token));
+
+            if (Application.Current.Properties != null)
+            {
+                TaxiCompany1NameLabel.Text = Application.Current.Properties["Company1Name"].ToString();
+                TaxiCompany1NumberLabel.Text = Application.Current.Properties["Company1PhoneNumer"].ToString().Trim();
+
+                TaxiCompany2NameLabel.Text = Application.Current.Properties["Company2Name"].ToString();
+                TaxiCompany2NumberLabel.Text = Application.Current.Properties["Company2PhoneNumer"].ToString().Trim();
+            }
         }
 
         protected override void OnDisappearing()
@@ -81,9 +90,6 @@ namespace XFApp1.Views.Settings
             Application.Current.Properties["Company1PhoneNumer"] = TaxiCompany1NumberLabel.Text;
             Application.Current.Properties["Company2Name"] = TaxiCompany2NameLabel.Text;
             Application.Current.Properties["Company2PhoneNumer"] = TaxiCompany2NumberLabel.Text;
-
-
-
         }
 
         private void SaveData(object sender, EventArgs e)

@@ -52,9 +52,9 @@ namespace XFApp1.Views.Taxi
 
         private void Call(object sender, EventArgs e)
         {
-            //TODO: Get number from view model
-            var number = Application.Current.Properties["Company1PhoneNumer"].ToString();
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number);
+            //TODO: get number from VM
+            var number = Application.Current.Properties["Company1PhoneNumer"];
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
         }
         async void ClearNavigationStack(object sender, EventArgs e)
         {

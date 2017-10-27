@@ -30,6 +30,12 @@ namespace XFApp1.Views.Settings
             flag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Add Trusted Person Data", null, null, 1.5f, null, cancelSrc.Token));
+
+            if(Application.Current.Properties != null)
+            {
+                TrustedPersonNameLabel.Text = Application.Current.Properties["TrustedPersonName"].ToString();
+                TrustedPersonNumberLabel.Text = Application.Current.Properties["TrustedPersonPhoneNumber"].ToString().Trim();
+            }
         }
 
         protected override void OnDisappearing()
@@ -65,7 +71,7 @@ namespace XFApp1.Views.Settings
         private void GetTrustedPersonData()
         { 
             Application.Current.Properties["TrustedPersonName"] = TrustedPersonNameLabel.Text;
-            Application.Current.Properties["TrustedPersonPhoneNumber"] = TrustedPersonNumberLabel.Text;
+            Application.Current.Properties["TrustedPersonPhoneNumber"] = TrustedPersonNumberLabel.Text.Trim();
         }
 
         private void SaveData(object sender, EventArgs e)

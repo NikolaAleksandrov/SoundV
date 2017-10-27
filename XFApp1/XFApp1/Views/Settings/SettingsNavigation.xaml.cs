@@ -33,6 +33,14 @@ namespace XFApp1.Views.Settings
             flag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Change your settings", null, null, 1.5f, null, cancelSrc.Token));
+
+            if (Application.Current.Properties != null)
+            {
+                HomePlaceLabel.Text = Application.Current.Properties["HomePlace"].ToString();
+
+                SavedPlace1Label.Text = Application.Current.Properties["SavedPlace1"].ToString();
+                SavedPlace2Label.Text = Application.Current.Properties["SavedPlace2"].ToString();
+            }
         }
 
         protected override void OnDisappearing()

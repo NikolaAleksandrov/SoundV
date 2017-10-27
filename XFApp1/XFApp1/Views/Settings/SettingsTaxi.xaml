@@ -36,8 +36,8 @@
                         <Entry Grid.Row="2" x:Name="TaxiCompany1NumberLabel" Placeholder="Enter taxi company 1 number..." Margin="5"/>
                     </StackLayout>
                     <StackLayout Grid.Row="3" Margin="0,20,0,0">
-                        <Entry Grid.Row="3" x:Name="TaxiCompany2NameLabel" Placeholder="Enter taxi company 1 name..." Margin="5"/>
-                        <Entry Grid.Row="3" x:Name="TaxiCompany2NumberLabel" Placeholder="Enter taxi company 1 number..." Margin="5"/>
+                        <Entry Grid.Row="3" x:Name="TaxiCompany2NameLabel" Placeholder="Enter taxi company 2 name..." Margin="5"/>
+                        <Entry Grid.Row="3" x:Name="TaxiCompany2NumberLabel" Placeholder="Enter taxi company 2 number..." Margin="5"/>
                     </StackLayout>
 
 

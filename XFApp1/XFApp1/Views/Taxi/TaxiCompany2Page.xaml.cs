@@ -44,7 +44,7 @@ namespace XFApp1.Views.Taxi
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak(TaxiCompanyLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Call: " + TaxiCompanyLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)

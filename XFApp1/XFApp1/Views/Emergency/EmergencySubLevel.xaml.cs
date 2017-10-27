@@ -40,7 +40,8 @@ namespace XFApp1.Views.Emergency
 
         private void Call(object sender, EventArgs e)
         {
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("112");
+            var number = "112";
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)
