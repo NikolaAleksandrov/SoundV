@@ -1,4 +1,5 @@
-﻿using Plugin.TextToSpeech;
+﻿using Plugin.Settings;
+using Plugin.TextToSpeech;
 using SoundV.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,11 +32,10 @@ namespace XFApp1.Views.Settings
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Add Trusted Person Data", null, null, 1.5f, null, cancelSrc.Token));
 
-            if(Application.Current.Properties != null)
-            {
-                TrustedPersonNameLabel.Text = Application.Current.Properties["TrustedPersonName"].ToString();
-                TrustedPersonNumberLabel.Text = Application.Current.Properties["TrustedPersonPhoneNumber"].ToString().Trim();
-            }
+
+            TrustedPersonNameLabel.Text = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");
+            TrustedPersonNumberLabel.Text = CrossSettings.Current.GetValueOrDefault("TrustedPersonPhoneNumber", "0000");
+
         }
 
         protected override void OnDisappearing()
@@ -69,9 +69,17 @@ namespace XFApp1.Views.Settings
         }
 
         private void GetTrustedPersonData()
-        { 
-            Application.Current.Properties["TrustedPersonName"] = TrustedPersonNameLabel.Text;
-            Application.Current.Properties["TrustedPersonPhoneNumber"] = TrustedPersonNumberLabel.Text.Trim();
+        {
+            //Application.Current.Properties["TrustedPersonName"] = TrustedPersonNameLabel.Text;
+            //Application.Current.Properties["TrustedPersonPhoneNumber"] = TrustedPersonNumberLabel.Text.Trim();
+
+
+            //add some data to the local storage i guess
+            CrossSettings.Current.AddOrUpdateValue("TrustedPersonName", TrustedPersonNameLabel.Text);
+            CrossSettings.Current.AddOrUpdateValue("TrustedPersonPhoneNumber", TrustedPersonNumberLabel.Text);
+            CrossTextToSpeech.Current.Speak("Saved");
+
+
         }
 
         private void SaveData(object sender, EventArgs e)

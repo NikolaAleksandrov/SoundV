@@ -2,26 +2,51 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFApp1.Views.ClockTimePage"
-             xmlns:vm="clr-namespace:SoundV.ViewModels;">
-    <ContentPage.BindingContext>
-        <vm:ClockTimeViewModel />
-    </ContentPage.BindingContext>
+             xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
 
-        <StackLayout BackgroundColor="Black" HeightRequest="600">
+        <StackLayout>
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-            <Button x:Name="ClockTime"  Clicked="ClockTime_Requested"
-                                            BorderWidth="2"
-                                            HeightRequest="300"
-                                            TextColor="Yellow"
-                                            BackgroundColor="Black"
-                                            Margin="10"
-                                            FontSize="48"
-                                            Text="Tell me the time!"/>
+                <StackLayout Grid.Row="0" >
+                    <custom:SwipeableImage Grid.Row="0"
+                                       x:Name="SwipeableImage"
+                                       Margin="5,20,5,0"
+                                       Source=""
+                                       HeightRequest="120"
+                                       WidthRequest="120"
+                                       SwipedRight="CautionMessage"
+                                       SwipedDown="CautionMessage"
+                                       SwipedUp="CautionMessage"
+                                       SwipedLeft="GoToHome">
+                    </custom:SwipeableImage>
+                </StackLayout>
 
-            <Label Margin="10" BackgroundColor="White" Style="{StaticResource Primary}" FontSize="Large" Text="{Binding currentTime}"></Label>
+                <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
+                    <Label  Grid.Row="1" x:Name="TellTheTimeLabel" Text="" FontSize="48" XAlign="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TellTheTime"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
 
-
+                <StackLayout Grid.Row="2" VerticalOptions="Center">
+                    <custom:SwipeableImage Grid.Row="2"
+                                       x:Name="WalkerPicture"
+                                       Source="__clock_pink.png"
+                                       HeightRequest="200"
+                                       WidthRequest="200"
+                                       Margin="5,20,5,20"
+                                       SwipedLeft="GoToHome">
+                    </custom:SwipeableImage>
+                </StackLayout>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

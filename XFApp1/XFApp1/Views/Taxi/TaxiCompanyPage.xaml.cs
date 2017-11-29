@@ -10,6 +10,7 @@ using Plugin.TextToSpeech;
 using System.Threading;
 using SoundV.ViewModels;
 using XFApp1.Interface;
+using Plugin.Settings;
 
 namespace XFApp1.Views.Taxi
 {
@@ -24,7 +25,7 @@ namespace XFApp1.Views.Taxi
             InitializeComponent();
             flag = true;
             NavigationPage.SetHasNavigationBar(this, false);
-            taxiCompanyName = Application.Current.Properties["Company1Name"].ToString();
+            taxiCompanyName = CrossSettings.Current.GetValueOrDefault("Company1Name", "No name");
             TaxiCompanyLabel.Text = taxiCompanyName;
         }
 
@@ -45,16 +46,16 @@ namespace XFApp1.Views.Taxi
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            //TODO: get name from ViewModel
-            taxiCompanyName = Application.Current.Properties["Company1Name"].ToString();
+            //taxiCompanyName = Application.Current.Properties["Company1Name"].ToString();
+            taxiCompanyName = CrossSettings.Current.GetValueOrDefault("Company1Name", "No name");
             CrossTextToSpeech.Current.Speak("Call: " + taxiCompanyName, null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)
         {
-            //TODO: get number from VM
-            var number = Application.Current.Properties["Company1PhoneNumer"];
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
+            //var number = Application.Current.Properties["Company1PhoneNumer"];
+            var number = CrossSettings.Current.GetValueOrDefault("Company1PhoneNumer", "0000");
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number);
         }
         async void ClearNavigationStack(object sender, EventArgs e)
         {

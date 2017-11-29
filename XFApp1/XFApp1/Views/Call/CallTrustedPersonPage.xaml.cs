@@ -1,4 +1,5 @@
 ﻿using Android.Content;
+using Plugin.Settings;
 using Plugin.TextToSpeech;
 using System;
 using System.Collections.Generic;
@@ -31,10 +32,11 @@ namespace XFApp1.Views.Call
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            //TODO: get trustedperson from ViewModel and speak with his name
-            trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
+            //trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
+            trustedPersonName = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");
+
             TrustedPersonLabel.Text = trustedPersonName;
-           Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -51,8 +53,9 @@ namespace XFApp1.Views.Call
         private void Call(object sender, EventArgs e)
         {
             //TODO: get number from VM
-            var number = Application.Current.Properties["TrustedPersonPhoneNumber"];
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
+            //var number = Application.Current.Properties["TrustedPersonPhoneNumber"];
+            var number = CrossSettings.Current.GetValueOrDefault("TrustedPersonPhoneNumber", "0000");
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number);
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)

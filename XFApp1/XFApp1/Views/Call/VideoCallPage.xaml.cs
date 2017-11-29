@@ -1,4 +1,5 @@
-﻿using Plugin.TextToSpeech;
+﻿using Plugin.Settings;
+using Plugin.TextToSpeech;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,9 @@ namespace XFApp1.Views.Call
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
+            //trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
+            
+            trustedPersonName = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");
             flag = true;
             TrustedPersonLabel.Text = trustedPersonName;
             cancelSrc = new CancellationTokenSource();

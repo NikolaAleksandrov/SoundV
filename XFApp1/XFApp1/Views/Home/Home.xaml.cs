@@ -41,7 +41,15 @@ namespace XFApp1.Views.Home
             base.OnDisappearing();
         }
 
-        async void ReadPageText(object sender, EventArgs e)
+        private async void PreviousPage(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                await Navigation.PopAsync();
+            }
+        }
+
+            async void ReadPageText(object sender, EventArgs e)
         {
             await CrossTextToSpeech.Current.Speak("Double tap to get location", null, null, 1.5f, null, cancelSrc.Token);
         }
@@ -51,7 +59,7 @@ namespace XFApp1.Views.Home
             cancelSrc = new CancellationTokenSource();
             await Task.Run(async () => await CrossTextToSpeech.Current.Speak("Getting location.Please wait", null, null, 1.5f, null, cancelSrc.Token));
             var locator = CrossGeolocator.Current;
-            locator.DesiredAccuracy = 15;
+            locator.DesiredAccuracy = 30;
             var position = await locator.GetPositionAsync();
             var address = await locator.GetAddressesForPositionAsync(position);
 

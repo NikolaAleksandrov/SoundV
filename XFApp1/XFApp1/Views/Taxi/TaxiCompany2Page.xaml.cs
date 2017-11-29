@@ -1,4 +1,5 @@
-﻿using Plugin.TextToSpeech;
+﻿using Plugin.Settings;
+using Plugin.TextToSpeech;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,9 @@ namespace XFApp1.Views.Taxi
             flag = true;
             cancelSrc = new CancellationTokenSource();
 
-            taxiCompany2Name = Application.Current.Properties["Company2Name"].ToString();
+            //taxiCompany2Name = Application.Current.Properties["Company2Name"].ToString();
+            taxiCompany2Name = CrossSettings.Current.GetValueOrDefault("Company2Name", "No name");
+
             TaxiCompanyLabel.Text = taxiCompany2Name;
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + taxiCompany2Name, null, null, 1.5f, null, cancelSrc.Token));
         }
@@ -50,8 +53,9 @@ namespace XFApp1.Views.Taxi
         private void Call(object sender, EventArgs e)
         {
             //TODO: get number from VM
-            var number = Application.Current.Properties["Company2PhoneNumer"];
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
+            //var number = Application.Current.Properties["Company2PhoneNumer"];
+            var number = CrossSettings.Current.GetValueOrDefault("Company2PhoneNumer", "No name");
+            DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number);
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)

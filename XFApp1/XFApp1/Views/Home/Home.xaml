@@ -15,11 +15,11 @@
                 <custom:SwipeableImage Grid.Row="0"
                                        x:Name="SwipeableImage"
                                        Margin="5,20,5,0"
-                                       Source="__arrow_up_white.png"
+                                       Source=""
                                        HeightRequest="120"
                                        WidthRequest="120"
-                                       SwipedLeft="GoToCallPage"
-                                       SwipedUp="GoToSubLevel">
+                                       SwipedRight="PreviousPage"
+                                       SwipedLeft="GoToCallPage">
                 </custom:SwipeableImage>
             </StackLayout>
 
@@ -40,7 +40,7 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedLeft="GoToCallPage"
-                                       SwipedUp="GoToSubLevel">
+                                       SwipedRight="PreviousPage">
                 </custom:SwipeableImage>
             </StackLayout>
         </Grid>

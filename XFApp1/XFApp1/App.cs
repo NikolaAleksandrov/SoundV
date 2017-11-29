@@ -16,8 +16,9 @@ namespace XFApp1
         public App()
         {
             // The root page of your application
-            Current.MainPage = new NavigationPage(new Home());
+            Current.MainPage = new NavigationPage(new ClockTimePage());
         }
+
 
         protected override void OnStart()
         {

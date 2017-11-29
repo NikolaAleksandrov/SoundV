@@ -1,4 +1,5 @@
-﻿using Plugin.TextToSpeech;
+﻿using Plugin.Settings;
+using Plugin.TextToSpeech;
 using SoundV.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -81,9 +82,16 @@ namespace XFApp1.Views.Settings
 
         private void GetHomeData()
         {
-            Application.Current.Properties["HomePlace"] = HomePlaceLabel.Text;
-            Application.Current.Properties["SavedPlace1"] = SavedPlace1Label.Text;
-            Application.Current.Properties["SavedPlace2"] = SavedPlace2Label.Text;
+            //Application.Current.Properties["HomePlace"] = HomePlaceLabel.Text;
+            //Application.Current.Properties["SavedPlace1"] = SavedPlace1Label.Text;
+            //Application.Current.Properties["SavedPlace2"] = SavedPlace2Label.Text;
+
+            ////add some data to the local storage i guess
+            CrossSettings.Current.AddOrUpdateValue("HomePlace", HomePlaceLabel.Text);
+            CrossSettings.Current.AddOrUpdateValue("SavedPlace1", SavedPlace1Label.Text);
+            CrossSettings.Current.AddOrUpdateValue("SavedPlace2", SavedPlace2Label.Text);
+
+
         }
 
         private void SaveData(object sender, EventArgs e)
