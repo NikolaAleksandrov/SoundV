@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XFApp1.Views.ClockTimePage"
+             x:Class="XFApp1.Views.DateTimePage"
              xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
-
         <StackLayout>
             <Grid RowSpacing="10">
                 <Grid.RowDefinitions>
@@ -20,18 +19,16 @@
                                        Source=""
                                        HeightRequest="120"
                                        WidthRequest="120"
-                                       SwipedRight="CautionMessage"
-                                       SwipedDown="CautionMessage"
-                                       SwipedUp="CautionMessage"
-                                       SwipedLeft="GoToDate">
+                                       SwipedRight="PreviousPage"
+                                       SwipedLeft="GoToHome">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="TellTheTimeLabel" Text="" FontSize="48" XAlign="Center">
+                    <Label  Grid.Row="1" x:Name="TellTheDateLabel" Text="" FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TellTheTime"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TellTheDate"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
@@ -39,11 +36,12 @@
                 <StackLayout Grid.Row="2" VerticalOptions="Center">
                     <custom:SwipeableImage Grid.Row="2"
                                        x:Name="WalkerPicture"
-                                       Source="__clock_pink.png"
+                                       Source="__calendar_purple.png"
                                        HeightRequest="200"
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
-                                       SwipedLeft="GoToDate">
+                                       SwipedRight="PreviousPage"
+                                       SwipedLeft="GoToHome">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

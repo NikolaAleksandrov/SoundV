@@ -1,5 +1,4 @@
 ﻿using Plugin.TextToSpeech;
-using SoundV.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,30 +12,30 @@ using Xamarin.Forms.Xaml;
 namespace XFApp1.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ClockTimePage : ContentPage
+    public partial class DateTimePage : ContentPage
     {
-        string currentTime = string.Empty;
+        string currentDate = string.Empty;
+        string requestedTime = string.Empty;
 
         bool flag;
         CancellationTokenSource cancelSrc;
-        public ClockTimePage()
+        public DateTimePage()
         {
             InitializeComponent();
             flag = true;
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
-            currentTime = DateTime.Now.ToString("HH:mm");
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to Sound Vision App. You can swipe right or left for navigating" +
-                "to different pages. Your are currently at the Clock Time Page. Double tap to check the time", null, null, 1.5f, null, cancelSrc.Token));
+            currentDate = DateTime.Now.Date.ToString();
         }
+        
 
         protected override void OnAppearing()
         {
-            currentTime = DateTime.Now.ToString("HH:mm");
-            TellTheTimeLabel.Text = currentTime;
+            currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
+            TellTheDateLabel.Text = currentDate + ", " + DateTime.Today.DayOfWeek.ToString();
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Check the time", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Check the date", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
@@ -48,7 +47,7 @@ namespace XFApp1.Views
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Double tap to check the time", null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Double tap to check the date", null, null, 1.5f, null, cancelSrc.Token);
         }
 
         async void CautionMessage(object sender, EventArgs e)
@@ -56,31 +55,38 @@ namespace XFApp1.Views
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe right");
+                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe left or right");
                 flag = true;
             }
         }
 
-        private void TellTheTime(object sender, EventArgs e)
+        private void TellTheDate(object sender, EventArgs e)
         {
-            var currentTime = DateTime.Now.ToString("HH:mm");
+            var currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
 
-            TellTheTimeLabel.Text = currentTime;
+            TellTheDateLabel.Text = currentDate;
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("The time is" + currentTime, null, null, 1.0f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("The date is" + currentDate + "." + DateTime.Today.DayOfWeek.ToString(), null, null, 1.0f, null, cancelSrc.Token);
+        }
+        private async void PreviousPage(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                await Navigation.PopAsync();
+            }
         }
 
-        private async void GoToDate(object sender, EventArgs e)
+        private async void GoToHome(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                await Navigation.PushAsync(new DateTimePage());
+                await Navigation.PushAsync(new Home.Home());
             }
         }
     }
 }
-

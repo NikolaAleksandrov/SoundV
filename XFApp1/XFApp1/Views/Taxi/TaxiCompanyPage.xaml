@@ -43,7 +43,7 @@
                                            WidthRequest="200"
                                            Margin="5,20,5,20"
                                            SwipedRight="CautionMessage"
-                                           SwipedLeft="CautionMessage"
+                                           SwipedLeft="GoToTaxiCompany2"
                                            SwipedDown="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>
