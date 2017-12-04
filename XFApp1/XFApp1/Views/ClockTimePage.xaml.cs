@@ -1,9 +1,6 @@
 ﻿using Plugin.TextToSpeech;
-using SoundV.ViewModels;
+using Plugin.Vibrate;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,6 +20,9 @@ namespace XFApp1.Views
         {
             InitializeComponent();
             flag = true;
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            
+            WalkerPicture.GestureRecognizers.Add(tapGestureRecognizer);
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
             currentTime = DateTime.Now.ToString("HH:mm");
@@ -30,14 +30,31 @@ namespace XFApp1.Views
                 "to different pages. Your are currently at the Clock Time Page. Double tap to check the time", null, null, 1.5f, null, cancelSrc.Token));
         }
 
+        private void TappedEv(object sender, EventArgs e)
+        {
+            
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to S", null, null, 1.5f, null, cancelSrc.Token));
+            
+        }
+
         protected override void OnAppearing()
         {
             currentTime = DateTime.Now.ToString("HH:mm");
             TellTheTimeLabel.Text = currentTime;
             base.OnAppearing();
+
+            CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(50));
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Check the time", null, null, 1.5f, null, cancelSrc.Token));
+            
+
+            Task.Run(async () => {
+                if (!cancelSrc.Token.IsCancellationRequested)
+                {
+                    await CrossTextToSpeech.Current.Speak("Check the time", null, null, 1.5f, null, cancelSrc.Token);
+                }
+            });
             flag = true;
+            
         }
 
         protected override void OnDisappearing()
@@ -47,6 +64,7 @@ namespace XFApp1.Views
 
         private void ReadPageText(object sender, EventArgs e)
         {
+            CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(50));
             cancelSrc = new CancellationTokenSource();
             CrossTextToSpeech.Current.Speak("Double tap to check the time", null, null, 1.5f, null, cancelSrc.Token);
         }
@@ -65,7 +83,14 @@ namespace XFApp1.Views
         private void TellTheTime(object sender, EventArgs e)
         {
             var currentTime = DateTime.Now.ToString("HH:mm");
-
+            cancelSrc.Cancel();
+            var time = TimeSpan.FromMilliseconds(50);
+            Task.Run(async () =>
+            {
+                CrossVibrate.Current.Vibration(time);
+                await Task.Delay(TimeSpan.FromMilliseconds(250));
+                CrossVibrate.Current.Vibration(time);
+            });
             TellTheTimeLabel.Text = currentTime;
             cancelSrc = new CancellationTokenSource();
             CrossTextToSpeech.Current.Speak("The time is" + currentTime, null, null, 1.0f, null, cancelSrc.Token);

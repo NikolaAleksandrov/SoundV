@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using Xamarin.Forms.Platform.Android;
 using XFApp1.CustomRenderer;
 using Xamarin.Forms;
@@ -23,9 +14,9 @@ namespace XFApp1.Droid.CustomRenderer
         public float X2 { get; set; }
         public float Y1 { get; set; }
         public float Y2 { get; set; }
-
+        private  FancyGestureListener _listener;
+        private  GestureDetector _detector;
         public SwipeableImage SwipeableImage { get; set; }
-
         public override bool OnTouchEvent(MotionEvent e)
         {
 
@@ -45,6 +36,7 @@ namespace XFApp1.Droid.CustomRenderer
 
             var xChangeSize = Math.Abs(xChange);
             var yChangeSize = Math.Abs(yChange);
+           
             if (xChangeSize > 30 || yChangeSize > 30)
             {
                 if (xChangeSize > yChangeSize)
@@ -77,14 +69,38 @@ namespace XFApp1.Droid.CustomRenderer
                 }
             }
 
+
             return base.OnTouchEvent(e);
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Image> ev)
         {
             base.OnElementChanged(ev);
-
+           
             SwipeableImage = (SwipeableImage)ev.NewElement;
+            _listener = new FancyGestureListener(SwipeableImage);
+            _detector = new GestureDetector(_listener);
+            if (ev.NewElement == null)
+            {
+                this.GenericMotion -= HandleGenericMotion;
+                this.Touch -= HandleTouch;
+            }
+
+            if (ev.OldElement == null)
+            {
+                this.GenericMotion += HandleGenericMotion;
+                this.Touch += HandleTouch;
+            }
+
+        }
+        void HandleTouch(object sender, TouchEventArgs e)
+        {
+            _detector.OnTouchEvent(e.Event);
+        }
+
+        void HandleGenericMotion(object sender, GenericMotionEventArgs e)
+        {
+            _detector.OnTouchEvent(e.Event);
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="XFApp1.Droid.XFApp1.Droid" android:installLocation="auto" android:versionCode="1" android:versionName="1.0.0.0">
-	<uses-sdk android:minSdkVersion="23" android:targetSdkVersion="23" />
+	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="22" />
 	<uses-permission android:name="android.permission.CALL_PHONE" />
 	<uses-permission android:name="android.permission.CALL_PRIVILEGED" />
 	<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
@@ -11,5 +11,6 @@
 	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
+	<uses-permission android:name="android.permission.VIBRATE" />
 	<application android:label="SoundVision" android:icon="@drawable/__iconapp"></application>
 </manifest>

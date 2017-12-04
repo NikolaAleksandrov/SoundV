@@ -1,10 +1,6 @@
-﻿using Android.Content;
-using Plugin.Settings;
+﻿using Plugin.Settings;
 using Plugin.TextToSpeech;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

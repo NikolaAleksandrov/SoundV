@@ -43,7 +43,8 @@
                                        HeightRequest="200"
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
-                                       SwipedLeft="GoToDate">
+                                       SwipedLeft="GoToDate"
+                                           Tapped="TappedEv">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

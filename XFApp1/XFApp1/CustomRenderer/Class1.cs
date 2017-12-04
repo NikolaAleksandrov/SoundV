@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace XFApp1.CustomRenderer
@@ -13,6 +9,7 @@ namespace XFApp1.CustomRenderer
         public event EventHandler SwipedDown;
         public event EventHandler SwipedLeft;
         public event EventHandler SwipedRight;
+        public event EventHandler Tapped;
 
         public void RaiseSwipedUp()
         {
@@ -37,6 +34,16 @@ namespace XFApp1.CustomRenderer
             if (SwipedRight != null)
                 SwipedRight(this, new EventArgs());
         }
+
+        public void RaiseTapped()
+        {
+            if (Tapped != null)
+            {
+                Tapped(this, new EventArgs());
+            }
+        }
+
+
 
     }
 }

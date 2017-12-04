@@ -126,7 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v7.1\Mono.Android.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v7.1\Mono.Android.dll</HintPath>
     </Reference>
     <Reference Include="Plugin.Battery, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Battery.3.0.1\lib\netstandard1.0\Plugin.Battery.dll</HintPath>
@@ -152,6 +152,14 @@
     </Reference>
     <Reference Include="Plugin.TextToSpeech.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugins.TextToSpeech.3.0.1\lib\netstandard1.0\Plugin.TextToSpeech.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Vibrate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Vibrate.3.0.1\lib\netstandard\Plugin.Vibrate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Vibrate.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Vibrate.3.0.1\lib\netstandard\Plugin.Vibrate.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
