@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using XFApp1.CustomRenderer;
+using Plugin.Vibrate;
+using System.Threading.Tasks;
 
 namespace XFApp1.Droid.CustomRenderer
 {
@@ -28,7 +30,15 @@ namespace XFApp1.Droid.CustomRenderer
 
         public override bool OnDoubleTap(MotionEvent e)
         {
+           
             _swipeableImage.RaiseTapped();
+
+            Task.Run(async () =>
+            {
+                CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(15));
+                await Task.Delay(200);
+                CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(15));
+            });
             return base.OnDoubleTap(e);
         }
 
@@ -58,18 +68,34 @@ namespace XFApp1.Droid.CustomRenderer
 
         public override bool OnScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY)
         {
-            Console.WriteLine("OnScroll");
+            if (Math.Abs(distanceX) > 30 || Math.Abs(distanceY) > 30)
+            {
+                if(Math.Abs(distanceX) > Math.Abs(distanceY))
+                {
+                    if (distanceX > 0) { _swipeableImage.RaiseSwipedLeft(); Console.WriteLine("L"); }
+                    else { _swipeableImage.RaiseSwipedRight(); Console.WriteLine("R"); }
+                }
+                else
+                {
+                    if (distanceY > 0) { _swipeableImage.RaiseSwipedUp(); }
+                    else { _swipeableImage.RaiseSwipedDown(); }
+                }
+
+            }
+                Console.WriteLine("OnScroll: x: "+distanceX.ToString()+"y: "+distanceY.ToString());
             return base.OnScroll(e1, e2, distanceX, distanceY);
         }
 
         public override void OnShowPress(MotionEvent e)
         {
+           
             Console.WriteLine("OnShowPress");
             base.OnShowPress(e);
         }
 
         public override bool OnSingleTapConfirmed(MotionEvent e)
         {
+            CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(15));
             Console.WriteLine("OnSingleTapConfirmed");
             return base.OnSingleTapConfirmed(e);
         }

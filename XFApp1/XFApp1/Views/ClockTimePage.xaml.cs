@@ -21,7 +21,7 @@ namespace XFApp1.Views
             InitializeComponent();
             flag = true;
             var tapGestureRecognizer = new TapGestureRecognizer();
-            
+
             WalkerPicture.GestureRecognizers.Add(tapGestureRecognizer);
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
@@ -32,9 +32,9 @@ namespace XFApp1.Views
 
         private void TappedEv(object sender, EventArgs e)
         {
-            
+
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to S", null, null, 1.5f, null, cancelSrc.Token));
-            
+
         }
 
         protected override void OnAppearing()
@@ -42,19 +42,10 @@ namespace XFApp1.Views
             currentTime = DateTime.Now.ToString("HH:mm");
             TellTheTimeLabel.Text = currentTime;
             base.OnAppearing();
-
-            CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(50));
             cancelSrc = new CancellationTokenSource();
-            
-
-            Task.Run(async () => {
-                if (!cancelSrc.Token.IsCancellationRequested)
-                {
-                    await CrossTextToSpeech.Current.Speak("Check the time", null, null, 1.5f, null, cancelSrc.Token);
-                }
-            });
+            Task.Run(async () => {  await CrossTextToSpeech.Current.Speak("Check the time", null, null, 1.5f, null, cancelSrc.Token); });
             flag = true;
-            
+
         }
 
         protected override void OnDisappearing()
@@ -64,7 +55,6 @@ namespace XFApp1.Views
 
         private void ReadPageText(object sender, EventArgs e)
         {
-            CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(50));
             cancelSrc = new CancellationTokenSource();
             CrossTextToSpeech.Current.Speak("Double tap to check the time", null, null, 1.5f, null, cancelSrc.Token);
         }
