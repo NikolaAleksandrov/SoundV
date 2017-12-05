@@ -30,9 +30,7 @@ namespace XFApp1.Droid.CustomRenderer
 
         public override bool OnDoubleTap(MotionEvent e)
         {
-           
-            _swipeableImage.RaiseTapped();
-
+            _swipeableImage.RaiseOnDoubleTap();
             Task.Run(async () =>
             {
                 CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(15));
@@ -95,6 +93,7 @@ namespace XFApp1.Droid.CustomRenderer
 
         public override bool OnSingleTapConfirmed(MotionEvent e)
         {
+            _swipeableImage.RaiseTapped();
             CrossVibrate.Current.Vibration(TimeSpan.FromMilliseconds(15));
             Console.WriteLine("OnSingleTapConfirmed");
             return base.OnSingleTapConfirmed(e);
