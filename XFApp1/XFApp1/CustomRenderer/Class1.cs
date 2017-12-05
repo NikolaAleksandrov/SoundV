@@ -10,6 +10,7 @@ namespace XFApp1.CustomRenderer
         public event EventHandler SwipedLeft;
         public event EventHandler SwipedRight;
         public event EventHandler Tapped;
+        public event EventHandler DoubleTap;
 
         public void RaiseSwipedUp()
         {
@@ -43,7 +44,12 @@ namespace XFApp1.CustomRenderer
             }
         }
 
-
-
+        public void RaiseOnDoubleTap()
+        {
+            if(DoubleTap!=null)
+            {
+                DoubleTap(this, new EventArgs());
+            }
+        }
     }
 }
