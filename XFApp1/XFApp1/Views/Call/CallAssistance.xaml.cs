@@ -30,7 +30,7 @@ namespace XFApp1.Views.Call
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call Assistance", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обадете се на поддръжка", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         private void ReadPageText(object sender, EventArgs e)

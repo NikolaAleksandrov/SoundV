@@ -14,10 +14,11 @@ namespace XFApp1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DateTimePage : ContentPage
     {
-        string currentDate = string.Empty;
-        string requestedTime = string.Empty;
+        private string currentDate = string.Empty;
+        private string requestedTime = string.Empty;
+        private string currentDayOfWeek = string.Empty;
+        private bool flag;
 
-        bool flag;
         CancellationTokenSource cancelSrc;
         public DateTimePage()
         {
@@ -25,30 +26,52 @@ namespace XFApp1.Views
             flag = true;
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
+
             currentDate = DateTime.Now.Date.ToString();
+            currentDayOfWeek = DateTime.Now.Date.DayOfWeek.ToString();
         }
         
 
         protected override void OnAppearing()
         {
-            currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
-            TellTheDateLabel.Text = currentDate + ", " + DateTime.Today.DayOfWeek.ToString();
             base.OnAppearing();
+
+            currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
+            currentDayOfWeek = DateTime.Now.Date.DayOfWeek.ToString(); 
+            switch (currentDayOfWeek)
+            {
+                case "Monday":
+                    currentDayOfWeek = "Понеделник";
+                    break;
+                case "Tuesday":
+                    currentDayOfWeek = "Вторник";
+                    break;
+                case "Wednesday":
+                    currentDayOfWeek = "Сряда";
+                    break;
+                case "Thursday":
+                    currentDayOfWeek = "Четвъртък";
+                    break;
+                case "Friday":
+                    currentDayOfWeek = "Петък";
+                    break;
+                case "Saturday":
+                    currentDayOfWeek = "Събота";
+                    break;
+                case "Sunday":
+                    currentDayOfWeek = "Неделя";
+                    break;
+                default: currentDayOfWeek = "";
+                    break;
+            }
+
+            TellTheDateLabel.Text = currentDate + ",  " + currentDayOfWeek;
+
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Check the date", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Провери датата", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
-
-        private void ReadPageText(object sender, EventArgs e)
-        {
-            cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Double tap to check the date", null, null, 1.5f, null, cancelSrc.Token);
-        }
 
         async void CautionMessage(object sender, EventArgs e)
         {
@@ -57,7 +80,7 @@ namespace XFApp1.Views
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe left or right");
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.");
                 flag = true;
             }
         }
@@ -66,9 +89,9 @@ namespace XFApp1.Views
         {
             var currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
 
-            TellTheDateLabel.Text = currentDate;
+            TellTheDateLabel.Text = currentDate + ",  " + currentDayOfWeek;
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("The date is" + currentDate + "." + DateTime.Today.DayOfWeek.ToString(), null, null, 1.0f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Датата е" + currentDate + ". " + currentDayOfWeek, null, null, 1.0f, null, cancelSrc.Token);
         }
         private async void PreviousPage(object sender, EventArgs e)
         {

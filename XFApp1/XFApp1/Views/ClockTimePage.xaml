@@ -30,8 +30,7 @@
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
                     <Label  Grid.Row="1" x:Name="TellTheTimeLabel" Text="" FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TellTheTime"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheTime"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
@@ -44,7 +43,7 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedLeft="GoToDate"
-                                           Tapped="TappedEv">
+                                       Tapped="TellTheTime">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

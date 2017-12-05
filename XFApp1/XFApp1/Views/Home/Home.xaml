@@ -24,10 +24,9 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                <Label  Grid.Row="1" x:Name="AddressLabel" Text="GET LOCATION" FontSize="36" XAlign="Center">
+                <Label  Grid.Row="1" x:Name="AddressLabel" Text="Местоположение" FontSize="36" XAlign="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="GetLocation"/>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GetLocation"/>
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
@@ -40,7 +39,8 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedLeft="GoToCallPage"
-                                       SwipedRight="PreviousPage">
+                                       SwipedRight="PreviousPage"
+                                       Tapped="GetLocation">
                 </custom:SwipeableImage>
             </StackLayout>
         </Grid>

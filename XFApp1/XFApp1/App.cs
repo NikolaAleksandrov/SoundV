@@ -36,6 +36,8 @@ namespace XFApp1
             Application.Current.Properties["Company1PhoneNumer"] = "";
             Application.Current.Properties["Company2Name"] = "";
             Application.Current.Properties["Company2PhoneNumer"] = "";
+
+
             
         }
 

@@ -26,11 +26,13 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="CALL" FontSize="48" XAlign="Center"/>
+                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="Обади се на" FontSize="32" XAlign="Center"/>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>
+                        </Label.GestureRecognizers>
                     <Label  Grid.Row="1" x:Name="TrustedPersonLabel" Text="No name..." FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Call"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
@@ -44,7 +46,8 @@
                                            Margin="5,20,5,20"
                                            SwipedLeft="VideoCall"
                                            SwipedDown="ClearNavigationStack"
-                                           SwipedRight="CautionMessage">
+                                           SwipedRight="CautionMessage"
+                                           Tapped="Call">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

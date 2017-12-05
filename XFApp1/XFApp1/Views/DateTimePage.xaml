@@ -20,15 +20,15 @@
                                        HeightRequest="120"
                                        WidthRequest="120"
                                        SwipedRight="PreviousPage"
-                                       SwipedLeft="GoToHome">
+                                       SwipedLeft="GoToHome"
+                                       Tapped="TellTheDate">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
                     <Label  Grid.Row="1" x:Name="TellTheDateLabel" Text="" FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TellTheDate"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheDate"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
@@ -41,7 +41,8 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedRight="PreviousPage"
-                                       SwipedLeft="GoToHome">
+                                       SwipedLeft="GoToHome"
+                                       Tapped="TellTheDate">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

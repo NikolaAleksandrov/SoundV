@@ -32,8 +32,7 @@ namespace XFApp1.Views.Home
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            //TO DO: add current location from Services and then read it with the address (concatenation)
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Double tap to get location", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разберете своето местоположение", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -45,19 +44,23 @@ namespace XFApp1.Views.Home
         {
             if (flag)
             {
+                flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
 
-            async void ReadPageText(object sender, EventArgs e)
-        {
-            await CrossTextToSpeech.Current.Speak("Double tap to get location", null, null, 1.5f, null, cancelSrc.Token);
-        }
+        //async void ReadPageText(object sender, EventArgs e)
+        //{
+        //    await CrossTextToSpeech.Current.Speak("Double tap to get location", null, null, 1.5f, null, cancelSrc.Token);
+        //}
 
         async void GetLocation(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            await Task.Run(async () => await CrossTextToSpeech.Current.Speak("Getting location.Please wait", null, null, 1.5f, null, cancelSrc.Token));
+            await Task.Run(async () => await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, 1.5f, null, cancelSrc.Token));
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 30;
             var position = await locator.GetPositionAsync();

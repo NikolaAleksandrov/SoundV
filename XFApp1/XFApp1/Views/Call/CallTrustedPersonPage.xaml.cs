@@ -28,11 +28,11 @@ namespace XFApp1.Views.Call
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            //trustedPersonName = Application.Current.Properties["TrustedPersonName"].ToString();
+
             trustedPersonName = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");
 
             TrustedPersonLabel.Text = trustedPersonName;
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -82,7 +82,7 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call menu"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Плъзнете надолу, за да отидете на меню за обаждане"
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }
