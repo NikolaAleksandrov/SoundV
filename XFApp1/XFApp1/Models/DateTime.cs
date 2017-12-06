@@ -6,6 +6,5 @@ namespace SoundV.Models
 {
     class DateTime
     {
-        DateTime now;
     }
 }

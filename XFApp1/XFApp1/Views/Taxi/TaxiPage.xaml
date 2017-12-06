@@ -7,6 +7,9 @@
         <StackLayout Orientation="Horizontal">
             <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
                    AutomationProperties.HelpText="Предишна страница - Меню за спешна помощ">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
+                </Frame.GestureRecognizers>
             </Frame>
             <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
@@ -25,7 +28,7 @@
                                        SwipedUp="GoToSubLevel"
                                        SwipedRight="PreviousPage"
                                        AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Поле за навигация. Влезте в подменю."
+                                       AutomationProperties.HelpText="Поле за навигация. Влезте в под мениу."
                                        Tapped="GoToSubLevel">
                     </custom:SwipeableImage>
                 </StackLayout>

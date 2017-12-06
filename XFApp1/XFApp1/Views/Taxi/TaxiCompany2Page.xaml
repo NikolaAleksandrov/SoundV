@@ -3,12 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFApp1.Views.Taxi.TaxiCompany2Page" xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid RowSpacing="10">
+        <StackLayout Orientation="Horizontal">
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
+               AutomationProperties.HelpText="Предишна страница - Такси компания 1">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" >
@@ -20,21 +25,22 @@
                                            WidthRequest="120"
                                            SwipedRight="PreviousPage"
                                            SwipedLeft="CautionMessage"
-                                           SwipedDown="ClearNavigationStack">
+                                           SwipedDown="ClearNavigationStack"
+                                           AutomationProperties.IsInAccessibleTree="True"
+                                           AutomationProperties.HelpText="Поле за навигация. Плъзнете нагоре към Повикване на такси меню">
                     </custom:SwipeableImage>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="Обади се на" FontSize="48" XAlign="Center"/>
-                    <Label  Grid.Row="1" x:Name="TaxiCompanyLabel" Text="No taxi company name..." FontSize="48" XAlign="Center">
+                <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
+                    <Label  Grid.Row="1" x:Name="CommandLabel" WidthRequest="350" TextColor="Gray" Text="Обади се на" FontSize="48" XAlign="Center"/>
+                    <Label  Grid.Row="1" x:Name="TaxiCompanyLabel" WidthRequest="350" Text="No taxi company name..." FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>
                         </Label.GestureRecognizers>
                     </Label>
-                </StackLayout>
 
-                <StackLayout Grid.Row="2" VerticalOptions="Center">
-                    <custom:SwipeableImage Grid.Row="2"
+                    <StackLayout Grid.Row="1" VerticalOptions="Center">
+                        <custom:SwipeableImage Grid.Row="1"
                                            x:Name="WalkerPicture"
                                            Source="__taxy_yellow.png"
                                            HeightRequest="200"
@@ -44,9 +50,16 @@
                                            SwipedLeft="CautionMessage"
                                            SwipedDown="ClearNavigationStack"
                                            Tapped="Call">
-                    </custom:SwipeableImage>
+                        </custom:SwipeableImage>
+                    </StackLayout>
                 </StackLayout>
             </Grid>
+            <Frame WidthRequest="0.25"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+                   AutomationProperties.HelpText="Няма страници в тази посока." >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CautionMessage"/>
+                </Frame.GestureRecognizers>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

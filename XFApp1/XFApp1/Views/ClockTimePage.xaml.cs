@@ -51,7 +51,7 @@ namespace XFApp1.Views
             {
                 flag = false;
                 cancelSrc.Dispose();
-                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Изпълнете слайп надясно");
+                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Проверете часа", null, null, 1.5f, null, cancelSrc.Token); });
                 flag = true;
             }
         }

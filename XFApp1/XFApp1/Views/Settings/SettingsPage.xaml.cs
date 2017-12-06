@@ -39,6 +39,17 @@ namespace XFApp1.Views.Settings
             CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, 1.5f, null, cancelSrc.Token);
         }
 
+        private void CautionMessage(object sender, EventArgs e)
+        {
+            if (flag)
+            {
+                flag = false;
+                cancelSrc = new CancellationTokenSource();
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, 1.5f, null, cancelSrc.Token));
+                flag = true;
+            }
+        }
+
         private async void PreviousPage(object sender, EventArgs e)
         {
             if (flag)

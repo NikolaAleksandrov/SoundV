@@ -26,7 +26,7 @@
                                        SwipedUp="CautionMessage"
                                        SwipedLeft="GoToDate"
                                        AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Поле за навигация">
+                                       AutomationProperties.HelpText="Поле за навигация. Няма под меню">
                     </custom:SwipeableImage>
                 </StackLayout>
 

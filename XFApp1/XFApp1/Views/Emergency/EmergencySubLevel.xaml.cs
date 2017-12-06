@@ -53,14 +53,13 @@ namespace XFApp1.Views.Emergency
                 await Navigation.PopAsync();
             }
         }
-        async void CautionMessage(object sender, EventArgs e)
+        private void CautionMessage(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу");
+                cancelSrc = new CancellationTokenSource();
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, 1.5f, null, cancelSrc.Token));
                 flag = true;
             }
         }

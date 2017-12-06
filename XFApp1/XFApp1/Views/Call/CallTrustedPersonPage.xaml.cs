@@ -35,11 +35,6 @@ namespace XFApp1.Views.Call
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
-
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
@@ -82,7 +77,7 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Плъзнете надолу, за да отидете на меню за обаждане"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Плъзнете надолу, за да отидете към меню за разговори"
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }

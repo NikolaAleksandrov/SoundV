@@ -4,12 +4,17 @@
              x:Class="XFApp1.Views.Call.VideoCallPage"
               xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid RowSpacing="10">
+        <StackLayout Orientation="Horizontal">
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
+               AutomationProperties.HelpText="Предишна страница - разговор с любим човек ">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" >
@@ -21,7 +26,9 @@
                                            WidthRequest="120"
                                            SwipedLeft="CallAssistance"
                                            SwipedDown="ClearNavigationStack"
-                                           SwipedRight="PreviousPage">
+                                           SwipedRight="PreviousPage"
+                                           AutomationProperties.IsInAccessibleTree="True"
+                                           AutomationProperties.HelpText="Поле за навигация. Плъзнете нагоре към Меню за разговори">
                     </custom:SwipeableImage>
                 </StackLayout>
 
@@ -43,6 +50,12 @@
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>
+            <Frame WidthRequest="0.25"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+                   AutomationProperties.HelpText="Следваща страница - Разговор с поддръжка" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CallAssistance"/>
+                </Frame.GestureRecognizers>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

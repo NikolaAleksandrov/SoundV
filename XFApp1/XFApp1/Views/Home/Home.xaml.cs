@@ -47,7 +47,6 @@ namespace XFApp1.Views.Home
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PopAsync();
             }
         }
@@ -59,18 +58,26 @@ namespace XFApp1.Views.Home
 
         async void GetLocation(object sender, EventArgs e)
         {
+            TimeSpan timeout = new TimeSpan(0, 0, 8);
             cancelSrc = new CancellationTokenSource();
-            await Task.Run(async () => await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, 1.5f, null, cancelSrc.Token));
+            await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, 1.0f, null, cancelSrc.Token);
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 30;
-            var position = await locator.GetPositionAsync();
+            var position = await locator.GetPositionAsync(timeout);
             var address = await locator.GetAddressesForPositionAsync(position);
 
             AddressLabel.Text = address.FirstOrDefault().FeatureName + ", " +
                 address.FirstOrDefault().Thoroughfare + ", " +
                 address.FirstOrDefault().AdminArea + ", " +
                 address.FirstOrDefault().CountryName;
-            await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            if (position == null)
+            {
+                await CrossTextToSpeech.Current.Speak("Неуспешно взимание на местоположение.", null, null, 1.5f, null, cancelSrc.Token);
+            }
+            else
+            {
+                await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            }
         }
 
         async void GoToCallPage(object sender, EventArgs e)
