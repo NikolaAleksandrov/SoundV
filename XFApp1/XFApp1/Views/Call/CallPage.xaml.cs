@@ -45,6 +45,7 @@ namespace XFApp1.Views.Call
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
                 cancelSrc.Dispose();
                 await Navigation.PushAsync(new CallTrustedPersonPage());
                 flag = true;

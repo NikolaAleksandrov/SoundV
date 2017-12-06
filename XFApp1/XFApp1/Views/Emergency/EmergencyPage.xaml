@@ -4,12 +4,14 @@
              x:Class="XFApp1.Views.Emergency.EmergencyPage"
              xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid RowSpacing="10">
+        <StackLayout Orientation="Horizontal">
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
+                   AutomationProperties.HelpText="Предишна страница - Местоположение">
+            </Frame>
+            <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" >
@@ -21,18 +23,22 @@
                                            WidthRequest="120"
                                            SwipedUp="GoToSubLevel"
                                            SwipedRight="PreviousPage"
-                                           SwipedLeft="GoToTaxiPage">
+                                           SwipedLeft="GoToTaxiPage"
+                                           AutomationProperties.IsInAccessibleTree="True"
+                                           AutomationProperties.HelpText="Поле за навигация. Влезте в подменю."
+                                           Tapped="GoToSubLevel">
                     </custom:SwipeableImage>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
+                <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
+                    <Label Grid.Row="1" x:Name="CallLabel" WidthRequest="350" Text="Спешна помощ" FontSize="36" XAlign="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToSubLevel"/>
+                        </Label.GestureRecognizers>
+                    </Label>
 
-                    <Label Grid.Row="1" x:Name="CallLabel" Text="Спешна помощ" FontSize="48" XAlign="Center"></Label>
-                            
-                </StackLayout>
-
-                <StackLayout Grid.Row="2" VerticalOptions="Center">
-                    <custom:SwipeableImage Grid.Row="2"
+                    <StackLayout Grid.Row="1" VerticalOptions="Center">
+                        <custom:SwipeableImage Grid.Row="2"
                                            x:Name="WalkerPicture"
                                            Source="__cross_red.png"
                                            HeightRequest="200"
@@ -40,10 +46,18 @@
                                            Margin="5,20,5,20"
                                            SwipedUp="GoToSubLevel"
                                            SwipedRight="PreviousPage"
-                                           SwipedLeft="GoToTaxiPage">
-                    </custom:SwipeableImage>
+                                           SwipedLeft="GoToTaxiPage"
+                                           Tapped="GoToSubLevel">
+                        </custom:SwipeableImage>
+                    </StackLayout>
                 </StackLayout>
             </Grid>
+            <Frame WidthRequest="0.25" AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+                   AutomationProperties.HelpText="Следваща страница - Такси меню" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToTaxiPage"/>
+                </Frame.GestureRecognizers>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

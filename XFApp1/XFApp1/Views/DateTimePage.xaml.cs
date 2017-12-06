@@ -68,7 +68,7 @@ namespace XFApp1.Views
             TellTheDateLabel.Text = currentDate + ",  " + currentDayOfWeek;
 
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Провери датата", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Провери датата", null, null, null, null, cancelSrc.Token));
             flag = true;
         }
 

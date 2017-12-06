@@ -29,13 +29,6 @@ namespace XFApp1.Views
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добре дошли в Sound Vision", null, null, 1.5f, null, cancelSrc.Token));
         }
 
-        private void TappedEv(object sender, EventArgs e)
-        {
-
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Welcome to S", null, null, 1.5f, null, cancelSrc.Token));
-
-        }
-
         protected override void OnAppearing()
         {
             currentTime = DateTime.Now.ToString("HH:mm");

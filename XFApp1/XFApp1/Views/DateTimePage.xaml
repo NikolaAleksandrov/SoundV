@@ -7,50 +7,51 @@
     <ContentPage.Content>
 
         <StackLayout Orientation="Horizontal">
-            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start" AutomationProperties.HelpText="Следваща страница часовник">
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
+                   AutomationProperties.HelpText="Предишна страница - Часовник">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
                 </Frame.GestureRecognizers>
             </Frame>
 
-            <Grid RowSpacing="10">
+            <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <custom:SwipeableImage Grid.Row="0"
                                        x:Name="SwipeableImage"
                                        Margin="5,20,5,0"
                                        Source=""
-                                       HeightRequest="120"
-                                       WidthRequest="120"
+                                       HeightRequest="150"
+                                       WidthRequest="150"
                                        SwipedRight="PreviousPage"
                                        SwipedLeft="GoToHome"
                                        Tapped="TellTheDate"
                                        AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Поле за навигация">
+                                       AutomationProperties.HelpText="Поле за навигация. Няма подменю">
                 </custom:SwipeableImage>
 
-                <Label  Grid.Row="1" x:Name="TellTheDateLabel" Text="" FontSize="48" XAlign="Center"  AutomationProperties.IsInAccessibleTree="True">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheDate"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <StackLayout Grid.Row="2" VerticalOptions="Center">
-                    <custom:SwipeableImage Grid.Row="2"
+
+                <StackLayout Grid.Row="1" Margin="5,5,5,0" VerticalOptions="Center"  AutomationProperties.IsInAccessibleTree="True">
+                    <Label  Grid.Row="1" x:Name="TellTheDateLabel" WidthRequest="350"  Text="" FontSize="48" XAlign="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheDate"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <StackLayout Grid.Row="1" VerticalOptions="Center">
+                        <custom:SwipeableImage Grid.Row="2"
                                        x:Name="WalkerPicture"
                                        Source="__calendar_purple.png"
-                                       HeightRequest="200"
-                                       WidthRequest="200"
+                                       HeightRequest="250"
+                                       WidthRequest="250"
                                        Margin="5,20,5,20"
                                        SwipedRight="PreviousPage"
                                        SwipedLeft="GoToHome"
-                                       Tapped="TellTheDate"
-                                       AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Поле за навигация">
-                    </custom:SwipeableImage>
+                                       Tapped="TellTheDate">
+                        </custom:SwipeableImage>
+                    </StackLayout>
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="0.25"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
