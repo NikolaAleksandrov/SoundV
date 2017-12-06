@@ -2,9 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XFApp1.Views.DateTimePage"
-             xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
+             xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1"
+             >
     <ContentPage.Content>
-        <StackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start" AutomationProperties.HelpText="Следваща страница часовник">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
             <Grid RowSpacing="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -12,8 +20,7 @@
                     <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" >
-                    <custom:SwipeableImage Grid.Row="0"
+                <custom:SwipeableImage Grid.Row="0"
                                        x:Name="SwipeableImage"
                                        Margin="5,20,5,0"
                                        Source=""
@@ -21,18 +28,16 @@
                                        WidthRequest="120"
                                        SwipedRight="PreviousPage"
                                        SwipedLeft="GoToHome"
-                                       Tapped="TellTheDate">
-                    </custom:SwipeableImage>
-                </StackLayout>
+                                       Tapped="TellTheDate"
+                                       AutomationProperties.IsInAccessibleTree="True"
+                                       AutomationProperties.HelpText="Поле за навигация">
+                </custom:SwipeableImage>
 
-                <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="TellTheDateLabel" Text="" FontSize="48" XAlign="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheDate"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-
+                <Label  Grid.Row="1" x:Name="TellTheDateLabel" Text="" FontSize="48" XAlign="Center"  AutomationProperties.IsInAccessibleTree="True">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheDate"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <StackLayout Grid.Row="2" VerticalOptions="Center">
                     <custom:SwipeableImage Grid.Row="2"
                                        x:Name="WalkerPicture"
@@ -42,10 +47,18 @@
                                        Margin="5,20,5,20"
                                        SwipedRight="PreviousPage"
                                        SwipedLeft="GoToHome"
-                                       Tapped="TellTheDate">
+                                       Tapped="TellTheDate"
+                                       AutomationProperties.IsInAccessibleTree="True"
+                                       AutomationProperties.HelpText="Поле за навигация">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>
+            <Frame WidthRequest="0.25"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+                   AutomationProperties.HelpText="Следваща страница Местоположение" >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToHome"/>
+                </Frame.GestureRecognizers>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

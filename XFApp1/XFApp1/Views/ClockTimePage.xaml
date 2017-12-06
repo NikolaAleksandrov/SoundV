@@ -4,8 +4,9 @@
              x:Class="XFApp1.Views.ClockTimePage"
              xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
-
-        <StackLayout>
+        <StackLayout Orientation="Horizontal" WidthRequest="500">
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red" AutomationProperties.HelpText="Няма следващи страници в тази посока ХУЙ ХУЙ">
+            </Frame>
             <Grid RowSpacing="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -23,12 +24,15 @@
                                        SwipedRight="CautionMessage"
                                        SwipedDown="CautionMessage"
                                        SwipedUp="CautionMessage"
-                                       SwipedLeft="GoToDate">
+                                       SwipedLeft="GoToDate"
+                                       AutomationProperties.IsInAccessibleTree="True"
+                                       AutomationProperties.HelpText="Поле за навигация">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="TellTheTimeLabel" Text="" FontSize="48" XAlign="Center">
+                    <Label  Grid.Row="1" x:Name="TellTheTimeLabel" Text="" FontSize="48" XAlign="Center"
+                             AutomationProperties.IsInAccessibleTree="True">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheTime"/>
                         </Label.GestureRecognizers>
@@ -43,10 +47,17 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedLeft="GoToDate"
-                                       Tapped="TellTheTime">
+                                       Tapped="TellTheTime"
+                                       AutomationProperties.IsInAccessibleTree="True"
+                                       AutomationProperties.HelpText="Поле за навигация">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>
+            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="End" OutlineColor="Green" AutomationProperties.HelpText="Следваща страница Календар">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToDate"/>
+                </Frame.GestureRecognizers>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
