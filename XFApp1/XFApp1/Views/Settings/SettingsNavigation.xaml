@@ -27,21 +27,20 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="1">
-                        <Label  Grid.Row="1" Text="Navigation" TextColor="White" FontSize="48" XAlign="Center"></Label>
-                        <Label Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Label  Grid.Row="1" Text="Навигация" TextColor="White" FontSize="48" XAlign="Center"></Label>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" VerticalOptions="Center">
-                        <Label Grid.Row="1" Text="Home" TextColor="White" FontSize="30" XAlign="Center"></Label>
-                        <Entry Grid.Row="2" x:Name="HomePlaceLabel" Placeholder="Enter Str, City" Margin="5"/>
+                        <Label Grid.Row="2" Text="Вкъщи" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Entry Grid.Row="2" x:Name="HomePlaceLabel" Placeholder="Град, улица, номер" Margin="5"/>
                         
-                        <Label Grid.Row="1" Text="Favourite places" TextColor="White" FontSize="30" XAlign="Center"></Label>
-                        <Entry Grid.Row="2" x:Name="SavedPlace1Label" Placeholder="Enter Str, City" Margin="5"/>
-                        <Entry Grid.Row="2" x:Name="SavedPlace2Label" Placeholder="Str, City" Margin="5"/>
+                        <Label Grid.Row="2" Text="Любими места" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Entry Grid.Row="2" x:Name="SavedPlace1Label" Placeholder="Град, улица..." Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="SavedPlace2Label" Placeholder="Град, улица..." Margin="5"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="3">
-                        <Button Grid.Row="3" Clicked="SaveData" Text="Save"/>
+                        <Button Grid.Row="3" Clicked="SaveData" Text="Запомни"/>
                         <Label Grid.Row="3" Text="Coming soon..." XAlign="Center"></Label>
 
                     </StackLayout>

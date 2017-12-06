@@ -27,18 +27,17 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="1">
-                        <Label  Grid.Row="1" Text="Trusted Person" TextColor="White" FontSize="48" XAlign="Center"></Label>
-                        <Label  Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Label  Grid.Row="1" Text="Любим човек" TextColor="White" FontSize="48" XAlign="Center"></Label>
 
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" VerticalOptions="Center">
-                        <Entry Grid.Row="2" x:Name="TrustedPersonNameLabel" TextColor="White" Placeholder="Enter a Trusted Person name..." FontSize="Large"/>
-                        <Entry Grid.Row="2" x:Name="TrustedPersonNumberLabel" Placeholder="Enter a Trusted Person number..." Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="TrustedPersonNameLabel" TextColor="White" Placeholder="Име..." FontSize="Large"/>
+                        <Entry Grid.Row="2" x:Name="TrustedPersonNumberLabel" Placeholder="Номер..." Margin="5"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="3">
-                        <Button  Grid.Row="3" Clicked="SaveData" Text="Save"/>
+                        <Button  Grid.Row="3" Clicked="SaveData" Text="Запази"/>
                     </StackLayout>
                 </Grid>
             </ScrollView>

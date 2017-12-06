@@ -68,7 +68,7 @@ namespace XFApp1.Views
             var currentTime = DateTime.Now.ToString("HH:mm");
             TellTheTimeLabel.Text = currentTime;
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak(currentTime, null, null, 1.0f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Часът е " + currentTime, null, null, 1.0f, null, cancelSrc.Token);
         }
 
         private async void GoToDate(object sender, EventArgs e)

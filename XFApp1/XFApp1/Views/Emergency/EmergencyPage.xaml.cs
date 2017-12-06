@@ -30,14 +30,9 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f,null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за спешна помощ",
+                null, null, 1.0f,null, cancelSrc.Token));
             flag = true;
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-         
         }
 
         private async void GoToSubLevel(object sender, EventArgs e)
@@ -79,11 +74,11 @@ namespace XFApp1.Views.Emergency
             }
         }
 
-        private void ReadPageText(object sender, EventArgs e)
-        {
-            cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f, null, cancelSrc.Token);
-        }
+        //private void ReadPageText(object sender, EventArgs e)
+        //{
+        //    cancelSrc = new CancellationTokenSource();
+        //    CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f, null, cancelSrc.Token);
+        //}
 
         private void Call(object sender, EventArgs e)
         {

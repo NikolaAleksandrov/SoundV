@@ -36,7 +36,7 @@ namespace XFApp1.Views.Taxi
             taxiCompany2Name = CrossSettings.Current.GetValueOrDefault("Company2Name", "No name");
 
             TaxiCompanyLabel.Text = taxiCompany2Name;
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call: " + taxiCompany2Name, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на: " + taxiCompany2Name, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -47,7 +47,7 @@ namespace XFApp1.Views.Taxi
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Call: " + TaxiCompanyLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Обади се на: " + TaxiCompanyLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace XFApp1.Views.Taxi
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Call menu"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока"
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }

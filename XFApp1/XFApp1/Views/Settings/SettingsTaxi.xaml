@@ -27,22 +27,21 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="1">
-                        <Label  Grid.Row="1" Text="Taxi Companies" TextColor="White" FontSize="48" XAlign="Center"></Label>
-                        <Label Grid.Row="1" Text="Settings" TextColor="White" FontSize="30" XAlign="Center"></Label>
+                        <Label  Grid.Row="1" Text="Такси компании" TextColor="White" FontSize="48" XAlign="Center"></Label>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" VerticalOptions="Center">
-                        <Entry Grid.Row="2" x:Name="TaxiCompany1NameLabel" Placeholder="Enter taxi company 1 name..." Margin="5"/>
-                        <Entry Grid.Row="2" x:Name="TaxiCompany1NumberLabel" Placeholder="Enter taxi company 1 number..." Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="TaxiCompany1NameLabel" Placeholder="Име на компания 1..." Margin="5"/>
+                        <Entry Grid.Row="2" x:Name="TaxiCompany1NumberLabel" Placeholder="Номер на компания 1..." Margin="5"/>
                     </StackLayout>
                     <StackLayout Grid.Row="3" Margin="0,20,0,0">
-                        <Entry Grid.Row="3" x:Name="TaxiCompany2NameLabel" Placeholder="Enter taxi company 2 name..." Margin="5"/>
-                        <Entry Grid.Row="3" x:Name="TaxiCompany2NumberLabel" Placeholder="Enter taxi company 2 number..." Margin="5"/>
+                        <Entry Grid.Row="3" x:Name="TaxiCompany2NameLabel" Placeholder="Име на компания 2..." Margin="5"/>
+                        <Entry Grid.Row="3" x:Name="TaxiCompany2NumberLabel" Placeholder="Номер на компания 2..." Margin="5"/>
                     </StackLayout>
 
 
                     <StackLayout Grid.Row="4">
-                        <Button Grid.Row="4" Clicked="SaveData" Text="Save"/>
+                        <Button Grid.Row="4" Clicked="SaveData" Text="Запомни"/>
                     </StackLayout>
                 </Grid>
             </ScrollView>

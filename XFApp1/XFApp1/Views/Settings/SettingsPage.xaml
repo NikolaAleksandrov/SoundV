@@ -26,7 +26,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="BatteryLabel" Text="Settings" FontSize="36" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="BatteryLabel" Text="Настройки" FontSize="36" XAlign="Center"></Label>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" VerticalOptions="Center">

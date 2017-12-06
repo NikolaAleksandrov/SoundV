@@ -27,7 +27,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label x:Name="GoToLabel" Text="Go to" TextColor="Gray" Font="48" XAlign="Center"></Label>
+                    <Label x:Name="GoToLabel" Text="Отиди до" TextColor="Gray" Font="32" XAlign="Center"></Label>
                     <Label x:Name="Info" Text="No favourite place..." FontSize="48" XAlign="Center"></Label>
                 </StackLayout>
 

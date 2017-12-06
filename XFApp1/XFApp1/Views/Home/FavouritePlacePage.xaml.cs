@@ -21,7 +21,7 @@ namespace XFApp1.Views.Home
             InitializeComponent();
             cancelSrc = new CancellationTokenSource();
             //TO DO: read it with the favourite place from viewModel
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to: ", null, null, 1.5f,null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Отиди до: ", null, null, 1.5f,null, cancelSrc.Token));
             NavigationPage.SetHasNavigationBar(this, false);
 
 
@@ -66,7 +66,7 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока."
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }

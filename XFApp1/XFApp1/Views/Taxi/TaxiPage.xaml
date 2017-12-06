@@ -26,10 +26,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="TaxiLabel" Text="TAXI" FontSize="48" XAlign="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                        </Label.GestureRecognizers>
+                    <Label  Grid.Row="1" x:Name="TaxiLabel" Text="Такси" FontSize="48" XAlign="Center">
                     </Label>
                 </StackLayout>
 

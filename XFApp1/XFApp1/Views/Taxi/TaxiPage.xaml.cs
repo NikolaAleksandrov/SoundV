@@ -33,7 +33,7 @@ namespace XFApp1.Views.Taxi
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Call a Taxi Menu", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Повикайте такси меню", null, null, 1.5f, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -44,7 +44,7 @@ namespace XFApp1.Views.Taxi
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Call a Taxi Menu", null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Повикайте такси меню", null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private async void GoToSubLevel(object sender, EventArgs e)

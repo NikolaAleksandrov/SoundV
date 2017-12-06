@@ -33,7 +33,7 @@ namespace XFApp1.Views.Settings
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Change your settings", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Промяна на настройки", null, null, 1.5f, null, cancelSrc.Token));
 
             if (Application.Current.Properties != null)
             {
@@ -53,7 +53,7 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Settings menu"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока."
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }

@@ -31,7 +31,7 @@ namespace XFApp1.Views.Settings
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Add Taxi Companies Data", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добави такси компании", null, null, 1.5f, null, cancelSrc.Token));
 
             TaxiCompany1NameLabel.Text = CrossSettings.Current.GetValueOrDefault("Company1Name", "No name");
             TaxiCompany1NumberLabel.Text = CrossSettings.Current.GetValueOrDefault("Company1PhoneNumer", "0000");
@@ -76,7 +76,7 @@ namespace XFApp1.Views.Settings
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Settings menu"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока."
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }
@@ -94,7 +94,7 @@ namespace XFApp1.Views.Settings
             CrossSettings.Current.AddOrUpdateValue("Company1PhoneNumer", TaxiCompany1NumberLabel.Text);
             CrossSettings.Current.AddOrUpdateValue("Company2Name", TaxiCompany2NameLabel.Text);
             CrossSettings.Current.AddOrUpdateValue("Company2PhoneNumer", TaxiCompany2NumberLabel.Text);
-            CrossTextToSpeech.Current.Speak("Saved");
+            CrossTextToSpeech.Current.Speak("Запазено");
         }
 
         private void SaveData(object sender, EventArgs e)

@@ -29,18 +29,14 @@ namespace XFApp1.Views.Settings
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Settings menu. Add or edit with assistance", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, 1.5f, null, cancelSrc.Token));
             flag = true;
         }
 
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Settings menu. Add or edit with assistance", null, null, 1.5f, null, cancelSrc.Token);
-        }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
+            CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, 1.5f, null, cancelSrc.Token);
         }
 
         private async void PreviousPage(object sender, EventArgs e)

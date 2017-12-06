@@ -30,17 +30,12 @@ namespace XFApp1.Views.Settings
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Add Trusted Person Data", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добави любим човек.", null, null, 1.5f, null, cancelSrc.Token));
 
 
             TrustedPersonNameLabel.Text = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");
             TrustedPersonNumberLabel.Text = CrossSettings.Current.GetValueOrDefault("TrustedPersonPhoneNumber", "0000");
 
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
         }
 
         async void ClearNavigationStack(object sender, EventArgs e)
@@ -77,7 +72,7 @@ namespace XFApp1.Views.Settings
             //add some data to the local storage i guess
             CrossSettings.Current.AddOrUpdateValue("TrustedPersonName", TrustedPersonNameLabel.Text);
             CrossSettings.Current.AddOrUpdateValue("TrustedPersonPhoneNumber", TrustedPersonNumberLabel.Text);
-            CrossTextToSpeech.Current.Speak("Saved");
+            CrossTextToSpeech.Current.Speak("Запaзено.");
 
 
         }

@@ -24,11 +24,10 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="BatteryLabel" Text="Battery level" TextColor="Gray" FontSize="48" XAlign="Center"></Label>
+                    <Label  Grid.Row="1" x:Name="BatteryLabel" Text="Батерия" TextColor="Gray" FontSize="48" XAlign="Center"></Label>
                     <Label  Grid.Row="1" x:Name="BatteryLevelLabel"  FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="GetBatteryLevel"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GetBatteryLevel"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
@@ -41,7 +40,8 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedLeft="GoToSettings"
-                                       SwipedRight="PreviousPage">
+                                       SwipedRight="PreviousPage"
+                                       Tapped="GetBatteryLevel">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>

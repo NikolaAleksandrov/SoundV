@@ -35,7 +35,7 @@ namespace XFApp1.Views.Home
             cancelSrc = new CancellationTokenSource();
             //TO DO: add home address and read it (concatenation)
             homePlaceAddress = Application.Current.Properties["HomePlace"].ToString();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Go to" + homePlaceAddress, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Отиди до" + homePlaceAddress, null, null, 1.5f, null, cancelSrc.Token));
 
             GoHomeLabel.Text = Application.Current.Properties["HomePlace"].ToString(); 
         }
@@ -73,7 +73,7 @@ namespace XFApp1.Views.Home
             if (flag)
             {
                 flag = false;
-                await CrossTextToSpeech.Current.Speak("There are no pages in that direction. Please swipe down to Home page"
+                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока."
                     , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }

@@ -25,11 +25,10 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center">
-                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="CALL" FontSize="48" XAlign="Center"/>
+                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="Обади се на" FontSize="48" XAlign="Center"/>
                     <Label  Grid.Row="1" x:Name="TaxiCompanyLabel" Text="No taxi company name..." FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ReadPageText"/>
-                            <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Call"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
@@ -41,9 +40,10 @@
                                            HeightRequest="200"
                                            WidthRequest="200"
                                            Margin="5,20,5,20"
-                                           SwipedRight="CautionMessage"
+                                           SwipedRight="PreviousPage"
                                            SwipedLeft="CautionMessage"
-                                           SwipedDown="ClearNavigationStack">
+                                           SwipedDown="ClearNavigationStack"
+                                           Tapped="Call">
                     </custom:SwipeableImage>
                 </StackLayout>
             </Grid>
