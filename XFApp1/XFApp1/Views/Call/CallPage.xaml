@@ -7,6 +7,9 @@
         <StackLayout Orientation="Horizontal">
             <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
                    AutomationProperties.HelpText="Предишна страница - Местоположение">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
+                </Frame.GestureRecognizers>
             </Frame>
             <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
