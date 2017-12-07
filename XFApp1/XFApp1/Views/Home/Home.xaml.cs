@@ -92,14 +92,14 @@ namespace XFApp1.Views.Home
             }
         }
 
-        async void GoToSubLevel(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                cancelSrc.Dispose();
-                await Navigation.PushAsync(new NavigateToHomePage());
-            }
-        }
+        //async void GoToSubLevel(object sender, EventArgs e)
+        //{
+        //    if (flag)
+        //    {
+        //        flag = false;
+        //        cancelSrc.Dispose();
+        //        await Navigation.PushAsync(new NavigateToHomePage());
+        //    }
+        //}
     }
 }

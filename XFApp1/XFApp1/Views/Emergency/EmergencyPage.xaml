@@ -28,7 +28,7 @@
                                            SwipedRight="PreviousPage"
                                            SwipedLeft="GoToTaxiPage"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Поле за навигация. Влезте в подменю."
+                                           AutomationProperties.HelpText="Влезте в подменю."
                                            Tapped="GoToSubLevel">
                     </custom:SwipeableImage>
                 </StackLayout>

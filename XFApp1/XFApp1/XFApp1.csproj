@@ -99,9 +99,6 @@
     <Compile Include="Views\Home\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Home\NavigateToHomePage.xaml.cs">
-      <DependentUpon>NavigateToHomePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Settings\SettingsCustomize.xaml.cs">
       <DependentUpon>SettingsCustomize.xaml</DependentUpon>
     </Compile>
@@ -194,12 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Call\CallPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\Home\NavigateToHomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
