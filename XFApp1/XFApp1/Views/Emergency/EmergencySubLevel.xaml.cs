@@ -59,8 +59,12 @@ namespace XFApp1.Views.Emergency
             {
                 flag = false;
                 cancelSrc = new CancellationTokenSource();
-                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token));
-                flag = true;
+                Task.Run(async () =>
+                {
+                    await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token);
+                    flag = true;
+                });
+                
             }
         }
     }

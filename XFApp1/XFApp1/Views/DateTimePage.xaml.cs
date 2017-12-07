@@ -97,18 +97,21 @@ namespace XFApp1.Views
         {
             if (flag)
             {
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                flag = false;
                 await Navigation.PopAsync();
             }
         }
 
-        private async void GoToHome(object sender, EventArgs e)
+        private async void GoToBatterLevelPage(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                await Navigation.PushAsync(new Home.Home());
+                await Navigation.PushAsync(new Battery.BatteryLevelPage());
             }
         }
     }

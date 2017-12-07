@@ -6,7 +6,10 @@
     <ContentPage.Content>
         <StackLayout Orientation="Horizontal" WidthRequest="500">
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
-                   AutomationProperties.HelpText="Няма страници в тази посока">
+                   AutomationProperties.HelpText="Предишна страница - Меню за повикване на такси.">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
+                </Frame.GestureRecognizers>
             </Frame>
             <Grid RowSpacing="5">
                 <Grid.RowDefinitions>
@@ -21,7 +24,7 @@
                                        Source=""
                                        HeightRequest="150"
                                        WidthRequest="150"
-                                       SwipedRight="CautionMessage"
+                                       SwipedRight="PreviousPage"
                                        SwipedDown="CautionMessage"
                                        SwipedUp="CautionMessage"
                                        SwipedLeft="GoToDate"
@@ -45,6 +48,7 @@
                                        WidthRequest="250"
                                        Margin="5,20,5,5"
                                        SwipedLeft="GoToDate"
+                                       SwipedRight="PreviousPage"
                                        Tapped="TellTheTime">
                         </custom:SwipeableImage>
                     </StackLayout>

@@ -69,14 +69,14 @@ namespace XFApp1.Views.Taxi
             }
         }
 
-        private async void GoToBatteryLevelPage(object sender, EventArgs e)
+        private async void GoToClockPage(object sender, EventArgs e)
         {
             if (flag)
             {
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                await Navigation.PushAsync(new BatteryLevelPage());
+                await Navigation.PushAsync(new ClockTimePage());
             }
         }
     }

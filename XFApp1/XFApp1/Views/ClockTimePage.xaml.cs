@@ -26,7 +26,6 @@ namespace XFApp1.Views
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
             currentTime = DateTime.Now.ToString("HH:mm");
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добре дошли в Sound Vision", null, null, null, null, cancelSrc.Token));
         }
 
         protected override void OnAppearing()
@@ -40,9 +39,15 @@ namespace XFApp1.Views
 
         }
 
-        protected override void OnDisappearing()
+        private async void PreviousPage(object sender, EventArgs e)
         {
-            base.OnDisappearing();
+            if (flag)
+            {
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                flag = false;
+                await Navigation.PopAsync();
+            }
         }
 
         async void CautionMessage(object sender, EventArgs e)

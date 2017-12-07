@@ -7,9 +7,6 @@
         <StackLayout Orientation="Horizontal">
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
                AutomationProperties.HelpText="Няма страници в тази посока">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CautionMessage"/>
-                </Frame.GestureRecognizers>
             </Frame>
             <Grid RowSpacing="5">
                 <Grid.RowDefinitions>

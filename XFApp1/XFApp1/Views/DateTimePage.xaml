@@ -27,7 +27,7 @@
                                        HeightRequest="150"
                                        WidthRequest="150"
                                        SwipedRight="PreviousPage"
-                                       SwipedLeft="GoToHome"
+                                       SwipedLeft="GoToBatterLevelPage"
                                        Tapped="TellTheDate"
                                        AutomationProperties.IsInAccessibleTree="True"
                                        AutomationProperties.HelpText="Няма под мениу">
@@ -48,16 +48,16 @@
                                        WidthRequest="250"
                                        Margin="5,20,5,20"
                                        SwipedRight="PreviousPage"
-                                       SwipedLeft="GoToHome"
+                                       SwipedLeft="GoToBatterLevelPage"
                                        Tapped="TellTheDate">
                         </custom:SwipeableImage>
                     </StackLayout>
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
-                   AutomationProperties.HelpText="Следваща страница - Местоположение" >
+                   AutomationProperties.HelpText="Следваща страница - Батерия" >
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToHome"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToBatterLevelPage"/>
                 </Frame.GestureRecognizers>
             </Frame>
         </StackLayout>

@@ -26,6 +26,7 @@ namespace XFApp1.Views.Home
             flag = true;
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добре дошли в Sound Vision", null, null, null, null, cancelSrc.Token));
         }
         protected override void OnAppearing()
         {

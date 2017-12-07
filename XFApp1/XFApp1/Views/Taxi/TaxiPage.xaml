@@ -24,7 +24,7 @@
                                        Source="__arrow_up_yellow.png"
                                        HeightRequest="150"
                                        WidthRequest="150"
-                                       SwipedLeft="GoToBatteryLevelPage"
+                                       SwipedLeft="GoToClockPage"
                                        SwipedUp="GoToSubLevel"
                                        SwipedRight="PreviousPage"
                                        AutomationProperties.IsInAccessibleTree="True"
@@ -47,7 +47,7 @@
                                        HeightRequest="250"
                                        WidthRequest="250"
                                        Margin="5,20,5,20"
-                                       SwipedLeft="GoToBatteryLevelPage"
+                                       SwipedLeft="GoToClockPage"
                                        SwipedUp="GoToSubLevel"
                                        SwipedRight="PreviousPage"
                                        Tapped="GoToSubLevel">
@@ -56,9 +56,9 @@
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
-                   AutomationProperties.HelpText="Следваща страница - Батерия" >
+                   AutomationProperties.HelpText="Следваща страница - Часовник" >
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToBatteryLevelPage"/>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToClockPage"/>
                 </Frame.GestureRecognizers>
             </Frame>
         </StackLayout>

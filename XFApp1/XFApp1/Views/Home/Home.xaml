@@ -6,10 +6,7 @@
 
     <StackLayout Orientation="Horizontal">
         <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
-               AutomationProperties.HelpText="Предишна страница - Календар">
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
-            </Frame.GestureRecognizers>
+               AutomationProperties.HelpText="Няма страници в тази посока.">
         </Frame>
         <Grid RowSpacing="5">
             <Grid.RowDefinitions>
@@ -24,7 +21,6 @@
                                        Source=""
                                        HeightRequest="150"
                                        WidthRequest="150"
-                                       SwipedRight="PreviousPage"
                                        SwipedLeft="GoToCallPage"
                                        AutomationProperties.IsInAccessibleTree="True"
                                        AutomationProperties.HelpText="Няма под меню">
@@ -46,7 +42,6 @@
                                        WidthRequest="200"
                                        Margin="5,20,5,20"
                                        SwipedLeft="GoToCallPage"
-                                       SwipedRight="PreviousPage"
                                        Tapped="GetLocation">
                     </custom:SwipeableImage>
                 </StackLayout>
