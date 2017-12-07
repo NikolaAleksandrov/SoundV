@@ -24,7 +24,6 @@
                                            Source="__arrow_down_green.png"
                                            HeightRequest="120"
                                            WidthRequest="120"
-                                           SwipedLeft="GoToEmergencyCall"
                                            SwipedDown="ClearNavigationStack"
                                            SwipedRight="PreviousPage"
                                            AutomationProperties.IsInAccessibleTree="True"
@@ -48,7 +47,6 @@
                                            HeightRequest="200"
                                            WidthRequest="200"
                                            Margin="5,20,5,20"
-                                           SwipedLeft="GoToEmergencyCall"
                                            SwipedDown="ClearNavigationStack"
                                            SwipedRight="PreviousPage"
                                            Tapped="Call">
@@ -57,10 +55,7 @@
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
-                   AutomationProperties.HelpText="Следваща страница - Видео разговор" >
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToEmergencyCall"/>
-                </Frame.GestureRecognizers>
+                   AutomationProperties.HelpText="Няма страници в тази посока" >
             </Frame>
         </StackLayout>
     </ContentPage.Content>
