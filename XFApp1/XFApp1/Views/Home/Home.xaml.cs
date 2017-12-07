@@ -32,7 +32,7 @@ namespace XFApp1.Views.Home
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разберете своето местоположение", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разберете своето местоположение", null, null, null, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -60,7 +60,7 @@ namespace XFApp1.Views.Home
         {
             TimeSpan timeout = new TimeSpan(0, 0, 8);
             cancelSrc = new CancellationTokenSource();
-            await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, 1.0f, null, cancelSrc.Token);
+            await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, null, null, cancelSrc.Token);
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 30;
             var position = await locator.GetPositionAsync(timeout);
@@ -76,7 +76,7 @@ namespace XFApp1.Views.Home
             }
             else
             {
-                await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+                await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, null, null, cancelSrc.Token);
             }
         }
 

@@ -30,7 +30,7 @@ namespace XFApp1.Views.Settings
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добави любим човек.", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добави любим човек.", null, null, null, null, cancelSrc.Token));
 
 
             TrustedPersonNameLabel.Text = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");

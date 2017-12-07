@@ -32,13 +32,13 @@ namespace XFApp1.Views.Call
             trustedPersonName = CrossSettings.Current.GetValueOrDefault("TrustedPersonName", "No name");
 
             TrustedPersonLabel.Text = trustedPersonName;
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на: " + trustedPersonName, null, null, null, null, cancelSrc.Token));
         }
 
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak(TrustedPersonLabel.Text, null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak(TrustedPersonLabel.Text, null, null, null, null, cancelSrc.Token);
         }
 
         private void Call(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace XFApp1.Views.Call
             {
                 flag = false;
                 await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Плъзнете надолу, за да отидете към меню за разговори"
-                    , null, null, 1.5f, null, cancelSrc.Token);
+                    , null, null, null, null, cancelSrc.Token);
                 flag = true;
             }
         }

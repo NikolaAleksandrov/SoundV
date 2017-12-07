@@ -26,7 +26,7 @@ namespace XFApp1.Views
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
             currentTime = DateTime.Now.ToString("HH:mm");
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добре дошли в Sound Vision", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добре дошли в Sound Vision", null, null, null, null, cancelSrc.Token));
         }
 
         protected override void OnAppearing()
@@ -35,7 +35,7 @@ namespace XFApp1.Views
             TellTheTimeLabel.Text = currentTime;
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => {  await CrossTextToSpeech.Current.Speak("Проверете часа", null, null, 1.5f, null, cancelSrc.Token); });
+            Task.Run(async () => {  await CrossTextToSpeech.Current.Speak("Проверете часа", null, null,null, null, cancelSrc.Token); });
             flag = true;
 
         }
@@ -51,7 +51,10 @@ namespace XFApp1.Views
             {
                 flag = false;
                 cancelSrc.Dispose();
-                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Проверете часа", null, null, 1.5f, null, cancelSrc.Token); });
+                Task.Run(async () =>
+                {
+                    await CrossTextToSpeech.Current.Speak("Проверете часа", null, null, null, null, cancelSrc.Token);
+                });
                 flag = true;
             }
         }
@@ -61,7 +64,7 @@ namespace XFApp1.Views
             var currentTime = DateTime.Now.ToString("HH:mm");
             TellTheTimeLabel.Text = currentTime;
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Часът е " + currentTime, null, null, 1.0f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak(currentTime, null, null, null, null, cancelSrc.Token);
         }
 
         private async void GoToDate(object sender, EventArgs e)

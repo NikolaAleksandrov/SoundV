@@ -29,14 +29,14 @@ namespace XFApp1.Views.Settings
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, null, null, cancelSrc.Token));
             flag = true;
         }
 
         private void ReadPageText(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, 1.5f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, null, null, cancelSrc.Token);
         }
 
         private void CautionMessage(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace XFApp1.Views.Settings
             {
                 flag = false;
                 cancelSrc = new CancellationTokenSource();
-                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, 1.5f, null, cancelSrc.Token));
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, null, null, cancelSrc.Token));
                 flag = true;
             }
         }
@@ -78,7 +78,6 @@ namespace XFApp1.Views.Settings
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PushAsync(new SettingsNavigation());
             }
         }

@@ -35,10 +35,10 @@ namespace XFApp1.Views.Battery
             cancelSrc = new CancellationTokenSource();
             //TODO: get battery level from viewmodel
 
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Батерия: ", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Батерия: ", null, null, null, null, cancelSrc.Token));
 
             batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
-            BatteryLevelLabel.Text = batteryLevel + "%";
+            BatteryLevelLabel.Text = batteryLevel + "процента";
         }
 
         //private void ReadPageText(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace XFApp1.Views.Battery
         //    cancelSrc = new CancellationTokenSource();
         //    //TODO:Battery level
         //    batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
-        //    CrossTextToSpeech.Current.Speak("Get battery level", null, null, 1.5f, null, cancelSrc.Token);
+        //    CrossTextToSpeech.Current.Speak("Get battery level", null, null, null, null, cancelSrc.Token);
         //}
 
         private async void PreviousPage(object sender, EventArgs e)
@@ -79,11 +79,11 @@ namespace XFApp1.Views.Battery
             batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
             if (int.Parse(batteryLevel) < 15)
             {
-                CrossTextToSpeech.Current.Speak("Внимание, батерията ви е под 15 процента", null, null, 1.5f, null, cancelSrc.Token);
+                CrossTextToSpeech.Current.Speak("Внимание, батерията ви е под 15 процента", null, null, null, null, cancelSrc.Token);
             }
             else
             {
-                CrossTextToSpeech.Current.Speak("Батерия: " + batteryLevel + "процента", null, null, 1.5f, null, cancelSrc.Token);
+                CrossTextToSpeech.Current.Speak("Батерия: " + batteryLevel + "процента", null, null, null, null, cancelSrc.Token);
             }
         }
     }

@@ -91,7 +91,7 @@ namespace XFApp1.Views
 
             TellTheDateLabel.Text = currentDate + ",  " + currentDayOfWeek;
             cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Датата е" + currentDate + ". " + currentDayOfWeek, null, null, 1.0f, null, cancelSrc.Token);
+            CrossTextToSpeech.Current.Speak(currentDate + ". " + currentDayOfWeek, null, null, null, null, cancelSrc.Token);
         }
         private async void PreviousPage(object sender, EventArgs e)
         {

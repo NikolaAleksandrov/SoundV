@@ -33,7 +33,7 @@ namespace XFApp1.Views.Settings
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Промяна на настройки", null, null, 1.5f, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Промяна на настройки", null, null, null, null, cancelSrc.Token));
 
             if (Application.Current.Properties != null)
             {

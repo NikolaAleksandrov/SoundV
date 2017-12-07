@@ -30,7 +30,7 @@
                                        SwipedLeft="GoToHome"
                                        Tapped="TellTheDate"
                                        AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Поле за навигация. Няма под меню">
+                                       AutomationProperties.HelpText="Няма под меню">
                 </custom:SwipeableImage>
 
 

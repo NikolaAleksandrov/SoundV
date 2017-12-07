@@ -28,7 +28,8 @@
                                            SwipedDown="ClearNavigationStack"
                                            SwipedRight="CautionMessage"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Поле за навигация. Плъзнете нагоре към Меню за разговори">
+                                           AutomationProperties.HelpText="Поле за навигация. Плъзнете нагоре към Меню за разговори"
+                                           Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>
 
