@@ -17,11 +17,13 @@ namespace XFApp1.Views.Emergency
     public partial class EmergencySubLevel : ContentPage
     {
         private bool flag;
+        private bool cautionFlag;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public EmergencySubLevel()
         {
             InitializeComponent();
             flag = true;
+            cautionFlag = true;
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
@@ -29,6 +31,7 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             flag = true;
+            cautionFlag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разговор със спешна помощ", null, null, null, null,cancelSrc.Token));
         }
@@ -41,7 +44,7 @@ namespace XFApp1.Views.Emergency
 
         private void Call(object sender, EventArgs e)
         {
-            var number = "112";
+            var number = "160";
             DependencyService.Get<IMakePhoneCall>().MakeQuickCall(number.ToString());
         }
 
@@ -55,16 +58,12 @@ namespace XFApp1.Views.Emergency
         }
         private void CautionMessage(object sender, EventArgs e)
         {
-            if (flag)
+            if (cautionFlag && flag)
             {
-                flag = false;
+                cautionFlag = false;
                 cancelSrc = new CancellationTokenSource();
-                Task.Run(async () =>
-                {
-                    await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token);
-                    flag = true;
-                });
-                
+                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token); cautionFlag = true; });
+                flag = true;
             }
         }
     }

@@ -64,7 +64,7 @@ namespace XFApp1.Views.Home
         {
             TimeSpan timeout = new TimeSpan(0, 0, 8);
             cancelSrc = new CancellationTokenSource();
-            await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, null, null, cancelSrc.Token);
+            Task.Run(async () => CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, null, null, cancelSrc.Token));
             AddressLabel.Text = "Взимане на местоположение. Моля, изчакайте.";
             var locator = CrossGeolocator.Current;
             IEnumerable<Address> address;
@@ -79,12 +79,12 @@ namespace XFApp1.Views.Home
                     address.FirstOrDefault().AdminArea + ", " +
                     address.FirstOrDefault().CountryName;
 
-                await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, null, null, cancelSrc.Token);
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, null, null, cancelSrc.Token));
             }
             catch (TaskCanceledException ex)
             {
                 AddressLabel.Text = "Неуспешно взимание на местоположение.";
-                await CrossTextToSpeech.Current.Speak("Неуспешно взимание на местоположение.", null, null, 1.5f, null, cancelSrc.Token);
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Неуспешно взимание на местоположение.", null, null, 1.5f, null, cancelSrc.Token));
             }
         }
 

@@ -17,11 +17,13 @@ namespace XFApp1.Views.Settings
     public partial class SettingsCustomize : ContentPage
     {
         private bool flag;
+        private bool cautionFlag;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public SettingsCustomize()
         {
             InitializeComponent();
             flag = true;
+            cautionFlag = true;
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
@@ -29,6 +31,7 @@ namespace XFApp1.Views.Settings
         {
             base.OnAppearing();
             flag = true;
+            cautionFlag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добави любим човек.", null, null, null, null, cancelSrc.Token));
 
@@ -45,23 +48,10 @@ namespace XFApp1.Views.Settings
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                for (var counter = 1; counter < 2; counter++)
-                {
-                    Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
-                }
                 await Navigation.PopAsync();
             }
         }
-        async void PreviousPage(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await Navigation.PopAsync();
-            }
-        }
+        
 
         private void GetTrustedPersonData()
         {
@@ -75,6 +65,17 @@ namespace XFApp1.Views.Settings
             CrossTextToSpeech.Current.Speak("Запaзено.");
 
 
+        }
+        private void CautionMessage(object sender, EventArgs e)
+        {
+            if (cautionFlag && flag)
+            {
+                cautionFlag = false;
+                flag = false;
+                cancelSrc = new CancellationTokenSource();
+                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token); cautionFlag = true; });
+                flag = true;
+            }
         }
 
         private void SaveData(object sender, EventArgs e)

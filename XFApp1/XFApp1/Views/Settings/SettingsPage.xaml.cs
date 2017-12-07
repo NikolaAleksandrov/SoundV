@@ -15,11 +15,13 @@ namespace XFApp1.Views.Settings
     public partial class SettingsPage : ContentPage
     {
         private bool flag;
+        private bool cautionFlag;
         CancellationTokenSource cancelSrc;
         public SettingsPage()
         {
             InitializeComponent();
             flag = true;
+            cautionFlag = true;
             cancelSrc = new CancellationTokenSource();
             NavigationPage.SetHasNavigationBar(this, false);
         }
@@ -31,6 +33,7 @@ namespace XFApp1.Views.Settings
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Настройки. Моля, използвайте с асистент", null, null, null, null, cancelSrc.Token));
             flag = true;
+            cautionFlag = true;
         }
 
         private void ReadPageText(object sender, EventArgs e)
@@ -41,11 +44,12 @@ namespace XFApp1.Views.Settings
 
         private void CautionMessage(object sender, EventArgs e)
         {
-            if (flag)
+            if (cautionFlag && flag)
             {
+                cautionFlag = false;
                 flag = false;
                 cancelSrc = new CancellationTokenSource();
-                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token));
+                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token); cautionFlag = true; });
                 flag = true;
             }
         }
@@ -78,7 +82,7 @@ namespace XFApp1.Views.Settings
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                await Navigation.PushAsync(new SettingsNavigation());
+                await Navigation.PushAsync(new SettingsCustomize());
             }
         }
     }

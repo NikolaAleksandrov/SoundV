@@ -16,11 +16,13 @@ namespace XFApp1.Views.Settings
     public partial class SettingsTaxi : ContentPage
     {
         private bool flag;
+        private bool cautionFlag;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
         public SettingsTaxi()
         {
             InitializeComponent();
             flag = true;
+            cautionFlag = true;
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
@@ -30,6 +32,7 @@ namespace XFApp1.Views.Settings
         {
             base.OnAppearing();
             flag = true;
+            cautionFlag = true;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Добави такси компании", null, null, 1.5f, null, cancelSrc.Token));
 
@@ -64,20 +67,20 @@ namespace XFApp1.Views.Settings
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                for (var counter = 1; counter < 3; counter++)
+                for (var counter = 1; counter < 2; counter++)
                 {
                     Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
                 }
                 await Navigation.PopAsync();
             }
         }
-        async void CautionMessage(object sender, EventArgs e)
+        private void CautionMessage(object sender, EventArgs e)
         {
-            if (flag)
+            if (cautionFlag && flag)
             {
-                flag = false;
-                await CrossTextToSpeech.Current.Speak("Няма страници в тази посока."
-                    , null, null, 1.0f, null, cancelSrc.Token);
+                cautionFlag = false;
+                cancelSrc = new CancellationTokenSource();
+                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token); cautionFlag = true; });
                 flag = true;
             }
         }
@@ -102,15 +105,5 @@ namespace XFApp1.Views.Settings
             GetTaxiData();
         }
 
-        async void GoToSettingsNavigation(object sender, EventArgs e)
-        {
-            if (flag)
-            {
-                flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await Navigation.PushAsync(new SettingsNavigation());
-            }
-        }
     }
 }

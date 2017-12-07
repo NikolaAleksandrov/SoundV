@@ -38,7 +38,7 @@ namespace XFApp1.Views.Battery
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Батерия: ", null, null, null, null, cancelSrc.Token));
 
             batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
-            BatteryLevelLabel.Text ="Батерия " + batteryLevel + " процента";
+            BatteryLevelLabel.Text = "Батерия " + batteryLevel + " процента";
         }
 
         //private void ReadPageText(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace XFApp1.Views.Battery
             }
         }
 
-        private async void GetBatteryLevel(object sender, EventArgs e)
+        private void GetBatteryLevel(object sender, EventArgs e)
         {
             cancelSrc = new CancellationTokenSource();
 
@@ -80,11 +80,11 @@ namespace XFApp1.Views.Battery
             BatteryLevelLabel.Text = "Батерия " + batteryLevel + " процента";
             if (int.Parse(batteryLevel) < 15)
             {
-                await CrossTextToSpeech.Current.Speak("Внимание, батерията ви е под петнадесет процента", null, null, null, null, cancelSrc.Token);
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Внимание, батерията ви е под петнадесет процента", null, null, null, null, cancelSrc.Token));
             }
             else
             {
-               await CrossTextToSpeech.Current.Speak("Батерия: " + batteryLevel + "процента", null, null, null, null, cancelSrc.Token);
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Батерия: " + batteryLevel + "процента", null, null, null, null, cancelSrc.Token)); ;
             }
         }
     }
