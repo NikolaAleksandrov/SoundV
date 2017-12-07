@@ -11,6 +11,9 @@ using Plugin.TextToSpeech;
 using XFApp1.Views.Call;
 using System.Threading;
 using Plugin.Geolocator;
+using System.Collections;
+using Plugin.Geolocator.Abstractions;
+using System.Collections.Generic;
 
 namespace XFApp1.Views.Home
 {
@@ -64,43 +67,46 @@ namespace XFApp1.Views.Home
             await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, null, null, cancelSrc.Token);
             AddressLabel.Text = "Взимане на местоположение. Моля, изчакайте.";
             var locator = CrossGeolocator.Current;
+            IEnumerable<Address> address;
             locator.DesiredAccuracy = 30;
-            var position = await locator.GetPositionAsync(timeout: timeout);
-            var address = await locator.GetAddressesForPositionAsync(position);
+            try
+            {
+                var position = await locator.GetPositionAsync(timeout: timeout);
+                address = await locator.GetAddressesForPositionAsync(position);
 
-            AddressLabel.Text = address.FirstOrDefault().FeatureName + ", " +
-                address.FirstOrDefault().Thoroughfare + ", " +
-                address.FirstOrDefault().AdminArea + ", " +
-                address.FirstOrDefault().CountryName;
-            if (position == null)
-            {
-                await CrossTextToSpeech.Current.Speak("Неуспешно взимание на местоположение.", null, null, 1.5f, null, cancelSrc.Token);
-            }
-            else
-            {
+                AddressLabel.Text = address.FirstOrDefault().FeatureName + ", " +
+                    address.FirstOrDefault().Thoroughfare + ", " +
+                    address.FirstOrDefault().AdminArea + ", " +
+                    address.FirstOrDefault().CountryName;
+
                 await CrossTextToSpeech.Current.Speak(AddressLabel.Text, null, null, null, null, cancelSrc.Token);
             }
-        }
-
-        async void GoToCallPage(object sender, EventArgs e)
-        {
-            if (flag)
+            catch (TaskCanceledException ex)
             {
-                flag = false;
-                cancelSrc.Cancel();
-                cancelSrc.Dispose();
-                await Navigation.PushAsync(new CallPage());
+                AddressLabel.Text = "Неуспешно взимание на местоположение.";
+                await CrossTextToSpeech.Current.Speak("Неуспешно взимание на местоположение.", null, null, 1.5f, null, cancelSrc.Token);
             }
         }
 
-        //async void GoToSubLevel(object sender, EventArgs e)
-        //{
-        //    if (flag)
-        //    {
-        //        flag = false;
-        //        cancelSrc.Dispose();
-        //        await Navigation.PushAsync(new NavigateToHomePage());
-        //    }
-        //}
+    async void GoToCallPage(object sender, EventArgs e)
+    {
+        if (flag)
+        {
+            flag = false;
+            cancelSrc.Cancel();
+            cancelSrc.Dispose();
+            await Navigation.PushAsync(new CallPage());
+        }
     }
+
+    //async void GoToSubLevel(object sender, EventArgs e)
+    //{
+    //    if (flag)
+    //    {
+    //        flag = false;
+    //        cancelSrc.Dispose();
+    //        await Navigation.PushAsync(new NavigateToHomePage());
+    //    }
+    //}
+}
 }
