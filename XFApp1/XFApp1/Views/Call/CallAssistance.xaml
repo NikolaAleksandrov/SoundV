@@ -28,7 +28,7 @@
                                            SwipedDown="ClearNavigationStack"
                                            SwipedRight="PreviousPage"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Плъзнете нагоре към Меню за разговори"
+                                           AutomationProperties.HelpText="Връщане в основно меню"
                                            Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>

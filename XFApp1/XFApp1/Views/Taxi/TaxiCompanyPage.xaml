@@ -28,7 +28,7 @@
                                            SwipedLeft="GoToTaxiCompany2"
                                            SwipedDown="ClearNavigationStack"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Плъзнете нагоре към Повикване на такси меню"
+                                           AutomationProperties.HelpText="Връщане в основно меню"
                                            Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>

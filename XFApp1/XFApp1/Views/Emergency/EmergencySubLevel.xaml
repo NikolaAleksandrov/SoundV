@@ -28,7 +28,7 @@
                                            SwipedLeft="CautionMessage"
                                            SwipedDown="ClearNavigationStack"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Върнете се в главно мениу"
+                                           AutomationProperties.HelpText="Връщане в основно меню"
                                            Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>

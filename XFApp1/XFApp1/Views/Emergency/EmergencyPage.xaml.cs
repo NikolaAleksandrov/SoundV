@@ -30,8 +30,7 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за спешна помощ",
-                null, null, 1.0f,null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за спешна помощ",null, null, null,null, cancelSrc.Token));
             flag = true;
         }
 
@@ -42,7 +41,6 @@ namespace XFApp1.Views.Emergency
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PushAsync(new EmergencySubLevel());
             }
         }
