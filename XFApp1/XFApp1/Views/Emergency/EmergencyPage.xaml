@@ -5,7 +5,7 @@
              xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
         <StackLayout Orientation="Horizontal">
-            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
+            <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
                    AutomationProperties.HelpText="Предишна страница - Меню за обаждане">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
@@ -55,7 +55,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <Frame WidthRequest="0.25" AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+            <Frame WidthRequest="20" AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
                    AutomationProperties.HelpText="Следваща страница - Такси меню" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToTaxiPage"/>

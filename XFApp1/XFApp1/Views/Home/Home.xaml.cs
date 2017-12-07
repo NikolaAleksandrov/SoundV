@@ -61,9 +61,10 @@ namespace XFApp1.Views.Home
             TimeSpan timeout = new TimeSpan(0, 0, 8);
             cancelSrc = new CancellationTokenSource();
             await CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, null, null, cancelSrc.Token);
+            AddressLabel.Text = "Взимане на местоположение. Моля, изчакайте.";
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 30;
-            var position = await locator.GetPositionAsync(timeout);
+            var position = await locator.GetPositionAsync(timeout: timeout);
             var address = await locator.GetAddressesForPositionAsync(position);
 
             AddressLabel.Text = address.FirstOrDefault().FeatureName + ", " +

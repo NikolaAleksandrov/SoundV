@@ -7,7 +7,7 @@
     <ContentPage.Content>
 
         <StackLayout Orientation="Horizontal">
-            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
+            <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
                    AutomationProperties.HelpText="Предишна страница - Часовник">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
@@ -54,7 +54,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <Frame WidthRequest="0.25"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+            <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
                    AutomationProperties.HelpText="Следваща страница Местоположение" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToHome"/>

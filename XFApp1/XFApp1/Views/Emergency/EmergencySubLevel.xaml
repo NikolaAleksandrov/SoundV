@@ -5,7 +5,7 @@
               xmlns:custom="clr-namespace:XFApp1.CustomRenderer;assembly=XFApp1">
     <ContentPage.Content>
         <StackLayout Orientation="Horizontal">
-            <Frame WidthRequest="0.1"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
+            <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
                AutomationProperties.HelpText="Няма страници в тази посока">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CautionMessage"/>
@@ -28,7 +28,8 @@
                                            SwipedLeft="CautionMessage"
                                            SwipedDown="ClearNavigationStack"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Поле за навигация. Плъзнете нагоре към Меню за спешна помощ">
+                                           AutomationProperties.HelpText="Върнете се в главно мениу"
+                                           Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>
 
@@ -55,7 +56,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <Frame WidthRequest="0.25"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
+            <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
                    AutomationProperties.HelpText="Няма страници в тази посока." >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CautionMessage"/>
