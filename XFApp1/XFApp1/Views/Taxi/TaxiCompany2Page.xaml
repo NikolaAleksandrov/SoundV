@@ -27,13 +27,13 @@
                                            SwipedLeft="CautionMessage"
                                            SwipedDown="ClearNavigationStack"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Връщане в основно меню"
+                                           AutomationProperties.HelpText="Връщане в основно мениу."
                                            Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label  Grid.Row="1" x:Name="CommandLabel" WidthRequest="350" TextColor="Gray" Text="Обади се на" FontSize="32" XAlign="Center"/>
+                    <Label  Grid.Row="1" x:Name="CommandLabel" WidthRequest="350" TextColor="Gray" Text="Разговор с" FontSize="32" XAlign="Center"/>
                     <Label  Grid.Row="1" x:Name="TaxiCompanyLabel" WidthRequest="350" Text="No taxi company name..." FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>

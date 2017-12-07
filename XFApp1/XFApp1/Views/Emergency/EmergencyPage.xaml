@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout Orientation="Horizontal">
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" HorizontalOptions="Start" OutlineColor="Red"
-                   AutomationProperties.HelpText="Предишна страница - Меню за обаждане">
+                   AutomationProperties.HelpText="Предишна страница - Меню за разговори">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
                 </Frame.GestureRecognizers>
@@ -28,13 +28,13 @@
                                            SwipedRight="PreviousPage"
                                            SwipedLeft="GoToTaxiPage"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Влезте в под меню."
+                                           AutomationProperties.HelpText="Влезте в подмениу"
                                            Tapped="GoToSubLevel">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label Grid.Row="1" x:Name="CallLabel" WidthRequest="350" Text="Спешна помощ" FontSize="36" XAlign="Center">
+                    <Label Grid.Row="1" x:Name="CallLabel" WidthRequest="350" Text="Меню за спешна помощ" FontSize="36" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToSubLevel"/>
                         </Label.GestureRecognizers>
@@ -56,7 +56,7 @@
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="20" AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
-                   AutomationProperties.HelpText="Следваща страница - Такси меню" >
+                   AutomationProperties.HelpText="Следваща страница - Меню за повикване на такси." >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToTaxiPage"/>
                 </Frame.GestureRecognizers>

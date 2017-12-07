@@ -36,12 +36,7 @@ namespace XFApp1.Views.Call
             cancelSrc = new CancellationTokenSource();
             //TODO: get name from viewModel
            
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Видео обаждане с: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Видео разговор с: " + trustedPersonName, null, null, 1.5f, null, cancelSrc.Token));
         }
 
         async void PreviousPage(object sender, EventArgs e)

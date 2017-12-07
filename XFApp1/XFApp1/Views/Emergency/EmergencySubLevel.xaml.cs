@@ -30,14 +30,14 @@ namespace XFApp1.Views.Emergency
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на 112", null, null, null, null,cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разговор със спешна помощ", null, null, null, null,cancelSrc.Token));
         }
 
-        private void ReadPageText(object sender, EventArgs e)
-        {
-            cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Обади се на 112", null, null, null, null, cancelSrc.Token);
-        }
+        //private void ReadPageText(object sender, EventArgs e)
+        //{
+        //    cancelSrc = new CancellationTokenSource();
+        //    CrossTextToSpeech.Current.Speak("Обадете се на 112", null, null, 1.5f, null, cancelSrc.Token);
+        //}
 
         private void Call(object sender, EventArgs e)
         {
@@ -59,7 +59,7 @@ namespace XFApp1.Views.Emergency
             {
                 flag = false;
                 cancelSrc = new CancellationTokenSource();
-                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, null, null, cancelSrc.Token));
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token));
                 flag = true;
             }
         }

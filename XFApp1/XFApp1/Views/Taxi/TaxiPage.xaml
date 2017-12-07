@@ -34,7 +34,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label  Grid.Row="1" x:Name="TaxiLabel" Text="Такси" WidthRequest="350" FontSize="48" XAlign="Center">
+                    <Label  Grid.Row="1" x:Name="TaxiLabel" Text="Меню за повикване на такси." WidthRequest="350" FontSize="32" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToSubLevel"/>
                         </Label.GestureRecognizers>

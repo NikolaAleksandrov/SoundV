@@ -35,7 +35,7 @@
 
 
                 <StackLayout Grid.Row="1" Margin="5,5,5,0" VerticalOptions="Center"  AutomationProperties.IsInAccessibleTree="True">
-                    <Label  Grid.Row="1" x:Name="TellTheDateLabel" WidthRequest="350"  Text="" FontSize="48" XAlign="Center">
+                    <Label  Grid.Row="1" x:Name="TellTheDateLabel" WidthRequest="350"  Text="" FontSize="32" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TellTheDate"/>
                         </Label.GestureRecognizers>

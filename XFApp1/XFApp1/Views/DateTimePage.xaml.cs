@@ -36,7 +36,7 @@ namespace XFApp1.Views
         {
             base.OnAppearing();
 
-            currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
+            currentDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
             currentDayOfWeek = DateTime.Now.Date.DayOfWeek.ToString(); 
             switch (currentDayOfWeek)
             {
@@ -87,7 +87,7 @@ namespace XFApp1.Views
 
         private void TellTheDate(object sender, EventArgs e)
         {
-            var currentDate = DateTime.Now.Date.ToString("MM/dd/yyyy");
+            var currentDate = DateTime.Now.Date.ToString("dd/MM/yyyy");
 
             TellTheDateLabel.Text = currentDate + ",  " + currentDayOfWeek;
             cancelSrc = new CancellationTokenSource();

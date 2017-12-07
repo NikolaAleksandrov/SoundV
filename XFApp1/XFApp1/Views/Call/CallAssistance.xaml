@@ -34,8 +34,8 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label  Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="Обади се на" FontSize="32" XAlign="Center"/>
-                    <Label  Grid.Row="1" x:Name="CallLabel" Text="Поддръжка" FontSize="48" XAlign="Center">
+                    <Label  Grid.Row="1" x:Name="CommandLabel" WidthRequest="350" TextColor="Gray" Text="Разговор с" FontSize="32" XAlign="Center"/>
+                    <Label  Grid.Row="1" x:Name="CallLabel" WidthRequest="350" Text="Поддръжка" FontSize="32" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>
                         </Label.GestureRecognizers>

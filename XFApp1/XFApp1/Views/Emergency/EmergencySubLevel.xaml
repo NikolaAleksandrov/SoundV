@@ -28,14 +28,14 @@
                                            SwipedLeft="CautionMessage"
                                            SwipedDown="ClearNavigationStack"
                                            AutomationProperties.IsInAccessibleTree="True"
-                                           AutomationProperties.HelpText="Връщане в основно меню"
+                                           AutomationProperties.HelpText="Връщане в основно мениу."
                                            Tapped="ClearNavigationStack">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label Grid.Row="1" x:Name="CommandLabel" TextColor="Gray" Text="Обади се на" FontSize="32" XAlign="Center"></Label>
-                    <Label Grid.Row="1" x:Name="CallLabel" WidthRequest="350" Text="112" FontSize="48" XAlign="Center">
+                    <Label Grid.Row="1" x:Name="CommandLabel" WidthRequest="350" TextColor="Gray" Text="Разговор със" FontSize="32" XAlign="Center"></Label>
+                    <Label Grid.Row="1" x:Name="CallLabel" WidthRequest="350" Text="спешна помощ" FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Call"/>
                         </Label.GestureRecognizers>
@@ -57,7 +57,7 @@
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
-                   AutomationProperties.HelpText="Няма страници в тази посока." >
+                   AutomationProperties.HelpText="Няма страници в тази посока" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="CautionMessage"/>
                 </Frame.GestureRecognizers>

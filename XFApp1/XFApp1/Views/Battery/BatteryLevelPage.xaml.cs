@@ -38,7 +38,7 @@ namespace XFApp1.Views.Battery
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Батерия: ", null, null, null, null, cancelSrc.Token));
 
             batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
-            BatteryLevelLabel.Text = batteryLevel + "процента";
+            BatteryLevelLabel.Text = batteryLevel + " процента";
         }
 
         //private void ReadPageText(object sender, EventArgs e)

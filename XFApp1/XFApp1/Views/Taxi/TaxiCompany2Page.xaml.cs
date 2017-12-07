@@ -36,7 +36,7 @@ namespace XFApp1.Views.Taxi
             taxiCompany2Name = CrossSettings.Current.GetValueOrDefault("Company2Name", "No name");
 
             TaxiCompanyLabel.Text = taxiCompany2Name;
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Обади се на: " + taxiCompany2Name, null, null, null, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разговор с: " + taxiCompany2Name, null, null, null, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()
@@ -44,11 +44,11 @@ namespace XFApp1.Views.Taxi
             base.OnDisappearing();
         }
 
-        private void ReadPageText(object sender, EventArgs e)
-        {
-            cancelSrc = new CancellationTokenSource();
-            CrossTextToSpeech.Current.Speak("Обади се на: " + TaxiCompanyLabel.Text, null, null, null, null, cancelSrc.Token);
-        }
+        //private void ReadPageText(object sender, EventArgs e)
+        //{
+        //    cancelSrc = new CancellationTokenSource();
+        //    CrossTextToSpeech.Current.Speak("Разговор с: " + TaxiCompanyLabel.Text, null, null, null, null, cancelSrc.Token);
+        //}
 
         private void Call(object sender, EventArgs e)
         {

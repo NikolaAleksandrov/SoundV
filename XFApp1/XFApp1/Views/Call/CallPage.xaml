@@ -28,13 +28,13 @@
                                        SwipedLeft="GoToEmergency"
                                        SwipedRight="PreviousPage"
                                        AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Влезте в под меню."
+                                       AutomationProperties.HelpText="Влезте в под мениу"
                                        Tapped="GoToSubLevel">
                     </custom:SwipeableImage>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label x:Name="Info"  WidthRequest="350" Text="Обаждане" FontFamily="Roboto" FontSize="48" XAlign="Center">
+                    <Label x:Name="Info"  WidthRequest="350" Text="Меню за разговори" FontFamily="Roboto" FontSize="32" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToSubLevel"/>
                         </Label.GestureRecognizers>

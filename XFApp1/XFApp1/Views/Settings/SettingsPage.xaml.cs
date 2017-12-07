@@ -29,7 +29,7 @@ namespace XFApp1.Views.Settings
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Настройки. Използвайте с асистент", null, null, null, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Настройки. Моля, използвайте с асистент", null, null, null, null, cancelSrc.Token));
             flag = true;
         }
 
@@ -45,7 +45,7 @@ namespace XFApp1.Views.Settings
             {
                 flag = false;
                 cancelSrc = new CancellationTokenSource();
-                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, null, null, cancelSrc.Token));
+                Task.Run(async () => await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token));
                 flag = true;
             }
         }

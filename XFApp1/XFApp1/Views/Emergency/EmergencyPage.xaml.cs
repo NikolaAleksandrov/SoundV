@@ -30,7 +30,8 @@ namespace XFApp1.Views.Emergency
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за спешна помощ",null, null, null,null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за спешна помощ.",
+                null, null, null,null, cancelSrc.Token));
             flag = true;
         }
 
@@ -78,9 +79,5 @@ namespace XFApp1.Views.Emergency
         //    CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f, null, cancelSrc.Token);
         //}
 
-        private void Call(object sender, EventArgs e)
-        {
-            DependencyService.Get<IMakePhoneCall>().MakeQuickCall("112");
-        }
     }
 }
