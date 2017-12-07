@@ -77,10 +77,10 @@ namespace XFApp1.Views.Battery
             cancelSrc = new CancellationTokenSource();
 
             batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
-            BatteryLevelLabel.Text = "Батерия - " + batteryLevel + " процента";
+            BatteryLevelLabel.Text = "Батерия " + batteryLevel + " процента";
             if (int.Parse(batteryLevel) < 15)
             {
-                await CrossTextToSpeech.Current.Speak("Внимание, батерията ви е под 15 процента", null, null, null, null, cancelSrc.Token);
+                await CrossTextToSpeech.Current.Speak("Внимание, батерията ви е под петнадесет процента", null, null, null, null, cancelSrc.Token);
             }
             else
             {
