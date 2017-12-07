@@ -31,15 +31,15 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Margin="5,10,5,0" VerticalOptions="Center" AutomationProperties.IsInAccessibleTree="True">
-                    <Label  Grid.Row="1" x:Name="BatteryLabel" WidthRequest="350" Text="Батерия" TextColor="Gray" FontSize="48" XAlign="Center"></Label>
-                    <Label  Grid.Row="1" x:Name="BatteryLevelLabel"  FontSize="48" XAlign="Center">
+  
+                    <Label  Grid.Row="1" x:Name="BatteryLevelLabel"  WidthRequest="350" FontSize="48" XAlign="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GetBatteryLevel"/>
                         </Label.GestureRecognizers>
                     </Label>
 
                     <StackLayout Grid.Row="1" VerticalOptions="Center">
-                        <custom:SwipeableImage Grid.Row="2"
+                        <custom:SwipeableImage Grid.Row="1"
                                        x:Name="WalkerPicture"
                                        Source="__battery_gray.png"
                                        HeightRequest="200"
