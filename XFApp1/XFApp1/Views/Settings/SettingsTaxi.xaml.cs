@@ -77,7 +77,7 @@ namespace XFApp1.Views.Settings
             {
                 flag = false;
                 await CrossTextToSpeech.Current.Speak("Няма страници в тази посока."
-                    , null, null, 1.0f, null, cancelSrc.Token);
+                    , null, null, 1.5f, null, cancelSrc.Token);
                 flag = true;
             }
         }

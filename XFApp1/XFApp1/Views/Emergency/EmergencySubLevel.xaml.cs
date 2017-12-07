@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XFApp1.Interface;
+using XFApp1.ViewModels;
 using XFApp1.Views.Call;
 
 namespace XFApp1.Views.Emergency
@@ -17,18 +18,34 @@ namespace XFApp1.Views.Emergency
     public partial class EmergencySubLevel : ContentPage
     {
         private bool flag;
+        private bool cautionFlag;
         CancellationTokenSource cancelSrc = new CancellationTokenSource();
+
         public EmergencySubLevel()
         {
             InitializeComponent();
             flag = true;
             NavigationPage.SetHasNavigationBar(this, false);
+            BindingContext = new EmergencyViewModel();
+          
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
             flag = true;
+            cautionFlag = true;
+            var previous = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2].GetType();
+            var a = new EmergencyViewModel();
+            if (previous == typeof(CallAssistance))
+            {
+                a.Message = "Предишна страница- разговор с поддръжка";
+            }
+            else
+            {
+                a.Message = "Няма страници в тази посока";
+            }
+            this.BindingContext = a;
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разговор със спешна помощ", null, null, null, null,cancelSrc.Token));
         }
@@ -50,21 +67,48 @@ namespace XFApp1.Views.Emergency
             if (flag)
             {
                 flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                var previous = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2].GetType();
+                if (previous == typeof(CallAssistance))
+                {
+                    for (var counter = 1; counter < 4; counter++)
+                    {
+                        Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                    }
+                }
+
                 await Navigation.PopAsync();
+
             }
         }
         private void CautionMessage(object sender, EventArgs e)
         {
+            if (cautionFlag)
+            {
+                cautionFlag = false;
+                cancelSrc = new CancellationTokenSource();
+                Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, null, null, cancelSrc.Token); cautionFlag = true; });
+
+            }
+        }
+        private void SwipeLeft(object sender, EventArgs e)
+        {
             if (flag)
             {
                 flag = false;
-                cancelSrc = new CancellationTokenSource();
-                Task.Run(async () =>
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                var previous = Navigation.NavigationStack[(Navigation.NavigationStack.Count) - 2].GetType();
+                if (previous == typeof(CallAssistance))
                 {
-                    await CrossTextToSpeech.Current.Speak("Няма страници в тази посока.", null, null, null, null, cancelSrc.Token);
-                    flag = true;
-                });
-                
+                    Navigation.PopAsync();
+                }
+                else
+                {
+                    cancelSrc = new CancellationTokenSource();
+                    Task.Run(async () => { await CrossTextToSpeech.Current.Speak("Няма страници в тази посока. Моля, плъзнете надолу", null, null, null, null, cancelSrc.Token); cautionFlag = true; });
+                }
             }
         }
     }
