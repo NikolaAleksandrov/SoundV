@@ -32,7 +32,7 @@ namespace XFApp1.Views.Home
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разберете своето местоположение", null, null, null, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Местоположение", null, null, null, null, cancelSrc.Token));
         }
 
         protected override void OnDisappearing()

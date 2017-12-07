@@ -6,7 +6,7 @@
 
     <StackLayout Orientation="Horizontal">
         <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Red" HorizontalOptions="Start"
-               AutomationProperties.HelpText="Предишна страница - Дата">
+               AutomationProperties.HelpText="Предишна страница - Календар">
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="PreviousPage"/>
             </Frame.GestureRecognizers>

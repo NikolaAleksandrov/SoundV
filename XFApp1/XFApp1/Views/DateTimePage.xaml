@@ -30,7 +30,7 @@
                                        SwipedLeft="GoToHome"
                                        Tapped="TellTheDate"
                                        AutomationProperties.IsInAccessibleTree="True"
-                                       AutomationProperties.HelpText="Няма под меню">
+                                       AutomationProperties.HelpText="Няма под мениу">
                 </custom:SwipeableImage>
 
 
@@ -55,7 +55,7 @@
                 </StackLayout>
             </Grid>
             <Frame WidthRequest="20"  AutomationProperties.IsInAccessibleTree="True" OutlineColor="Green" HeightRequest="1"
-                   AutomationProperties.HelpText="Следваща страница Местоположение" >
+                   AutomationProperties.HelpText="Следваща страница - Местоположение" >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToHome"/>
                 </Frame.GestureRecognizers>

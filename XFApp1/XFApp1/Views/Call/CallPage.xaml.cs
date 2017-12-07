@@ -30,7 +30,7 @@ namespace XFApp1.Views.Call
         {
             base.OnAppearing();
             cancelSrc = new CancellationTokenSource();
-            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за обаждане", null, null, null, null, cancelSrc.Token));
+            Task.Run(async () => await CrossTextToSpeech.Current.Speak("Меню за разговори", null, null, null, null, cancelSrc.Token));
             flag = true;
         }
 
