@@ -24,13 +24,8 @@ namespace XFApp1.Droid
             }
         }
 
-        #region Setting Constants
-
         private const string SettingsKey = "settings_key";
         private static readonly string SettingsDefault = string.Empty;
-
-        #endregion
-
 
         public static string GeneralSettings
         {

@@ -51,21 +51,14 @@ namespace XFApp1.Views.Settings
                 await Navigation.PopAsync();
             }
         }
-        
 
         private void GetTrustedPersonData()
         {
-            //Application.Current.Properties["TrustedPersonName"] = TrustedPersonNameLabel.Text;
-            //Application.Current.Properties["TrustedPersonPhoneNumber"] = TrustedPersonNumberLabel.Text.Trim();
-
-
-            //add some data to the local storage i guess
             CrossSettings.Current.AddOrUpdateValue("TrustedPersonName", TrustedPersonNameLabel.Text);
             CrossSettings.Current.AddOrUpdateValue("TrustedPersonPhoneNumber", TrustedPersonNumberLabel.Text);
             CrossTextToSpeech.Current.Speak("Запaзено.");
-
-
         }
+
         private void CautionMessage(object sender, EventArgs e)
         {
             if (cautionFlag && flag)

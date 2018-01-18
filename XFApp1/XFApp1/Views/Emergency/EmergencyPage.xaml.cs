@@ -55,8 +55,6 @@ namespace XFApp1.Views.Emergency
                 cancelSrc.Dispose();
                 cancelSrc = null;
 
-                var a = Navigation.NavigationStack.Last();
-                var b = a.GetType();
                 await Navigation.PopAsync();
             }
         }
@@ -68,16 +66,8 @@ namespace XFApp1.Views.Emergency
                 flag = false;
                 cancelSrc.Cancel();
                 cancelSrc.Dispose();
-                cancelSrc = null;
                 await Navigation.PushAsync(new TaxiPage());
             }
         }
-
-        //private void ReadPageText(object sender, EventArgs e)
-        //{
-        //    cancelSrc = new CancellationTokenSource();
-        //    CrossTextToSpeech.Current.Speak("Emergency menu", null, null, 1.5f, null, cancelSrc.Token);
-        //}
-
     }
 }

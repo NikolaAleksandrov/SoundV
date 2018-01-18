@@ -25,6 +25,7 @@ namespace XFApp1.Views.Home
         public Home()
         {
             InitializeComponent();
+
             Title = "Home";
             flag = true;
             cancelSrc = new CancellationTokenSource();
@@ -39,11 +40,6 @@ namespace XFApp1.Views.Home
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Местоположение", null, null, null, null, cancelSrc.Token));
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
-
         private async void PreviousPage(object sender, EventArgs e)
         {
             if (flag)
@@ -55,20 +51,17 @@ namespace XFApp1.Views.Home
             }
         }
 
-        //async void ReadPageText(object sender, EventArgs e)
-        //{
-        //    await CrossTextToSpeech.Current.Speak("Double tap to get location", null, null, 1.5f, null, cancelSrc.Token);
-        //}
-
         async void GetLocation(object sender, EventArgs e)
         {
             TimeSpan timeout = new TimeSpan(0, 0, 8);
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => CrossTextToSpeech.Current.Speak("Взимане на местоположение. Моля, изчакайте.", null, null, null, null, cancelSrc.Token));
             AddressLabel.Text = "Взимане на местоположение. Моля, изчакайте.";
+
             var locator = CrossGeolocator.Current;
             IEnumerable<Address> address;
             locator.DesiredAccuracy = 30;
+
             try
             {
                 var position = await locator.GetPositionAsync(timeout: timeout);
@@ -88,25 +81,15 @@ namespace XFApp1.Views.Home
             }
         }
 
-    async void GoToCallPage(object sender, EventArgs e)
-    {
-        if (flag)
+        async void GoToCallPage(object sender, EventArgs e)
         {
-            flag = false;
-            cancelSrc.Cancel();
-            cancelSrc.Dispose();
-            await Navigation.PushAsync(new CallPage());
+            if (flag)
+            {
+                flag = false;
+                cancelSrc.Cancel();
+                cancelSrc.Dispose();
+                await Navigation.PushAsync(new CallPage());
+            }
         }
     }
-
-    //async void GoToSubLevel(object sender, EventArgs e)
-    //{
-    //    if (flag)
-    //    {
-    //        flag = false;
-    //        cancelSrc.Dispose();
-    //        await Navigation.PushAsync(new NavigateToHomePage());
-    //    }
-    //}
-}
 }

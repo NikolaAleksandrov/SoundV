@@ -36,12 +36,6 @@ namespace XFApp1.Views.Emergency
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Разговор със спешна помощ", null, null, null, null,cancelSrc.Token));
         }
 
-        //private void ReadPageText(object sender, EventArgs e)
-        //{
-        //    cancelSrc = new CancellationTokenSource();
-        //    CrossTextToSpeech.Current.Speak("Обадете се на 112", null, null, 1.5f, null, cancelSrc.Token);
-        //}
-
         private void Call(object sender, EventArgs e)
         {
             var number = "160";

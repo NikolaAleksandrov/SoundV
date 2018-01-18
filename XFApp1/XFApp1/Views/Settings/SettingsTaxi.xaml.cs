@@ -87,12 +87,6 @@ namespace XFApp1.Views.Settings
 
         private void GetTaxiData()
         {
-            //Application.Current.Properties["Company1Name"] = TaxiCompany1NameLabel.Text;
-            //Application.Current.Properties["Company1PhoneNumer"] = TaxiCompany1NumberLabel.Text;
-            //Application.Current.Properties["Company2Name"] = TaxiCompany2NameLabel.Text;
-            //Application.Current.Properties["Company2PhoneNumer"] = TaxiCompany2NumberLabel.Text;
-
-            //add data to local storage i guess
             CrossSettings.Current.AddOrUpdateValue("Company1Name", TaxiCompany1NameLabel.Text);
             CrossSettings.Current.AddOrUpdateValue("Company1PhoneNumer", TaxiCompany1NumberLabel.Text);
             CrossSettings.Current.AddOrUpdateValue("Company2Name", TaxiCompany2NameLabel.Text);

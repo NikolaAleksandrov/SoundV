@@ -14,9 +14,9 @@ namespace XFApp1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DateTimePage : ContentPage
     {
-        private string currentDate = string.Empty;
-        private string requestedTime = string.Empty;
-        private string currentDayOfWeek = string.Empty;
+        private string currentDate;
+        private string requestedTime;
+        private string currentDayOfWeek;
         private bool flag;
 
         CancellationTokenSource cancelSrc;

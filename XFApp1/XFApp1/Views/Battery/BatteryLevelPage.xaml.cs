@@ -33,21 +33,12 @@ namespace XFApp1.Views.Battery
             base.OnAppearing();
             flag = true;
             cancelSrc = new CancellationTokenSource();
-            //TODO: get battery level from viewmodel
 
             Task.Run(async () => await CrossTextToSpeech.Current.Speak("Батерия: ", null, null, null, null, cancelSrc.Token));
 
             batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
             BatteryLevelLabel.Text = "Батерия " + batteryLevel + " процента";
         }
-
-        //private void ReadPageText(object sender, EventArgs e)
-        //{
-        //    cancelSrc = new CancellationTokenSource();
-        //    //TODO:Battery level
-        //    batteryLevel = CrossBattery.Current.RemainingChargePercent.ToString();
-        //    CrossTextToSpeech.Current.Speak("Get battery level", null, null, null, null, cancelSrc.Token);
-        //}
 
         private async void PreviousPage(object sender, EventArgs e)
         {

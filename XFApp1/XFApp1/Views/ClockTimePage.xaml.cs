@@ -12,7 +12,7 @@ namespace XFApp1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ClockTimePage : ContentPage
     {
-        string currentTime = string.Empty;
+        string currentTime;
 
         bool flag;
         CancellationTokenSource cancelSrc;
@@ -36,7 +36,6 @@ namespace XFApp1.Views
             cancelSrc = new CancellationTokenSource();
             Task.Run(async () => {  await CrossTextToSpeech.Current.Speak("Проверете часа", null, null,null, null, cancelSrc.Token); });
             flag = true;
-
         }
 
         private async void PreviousPage(object sender, EventArgs e)
@@ -67,6 +66,7 @@ namespace XFApp1.Views
         private void TellTheTime(object sender, EventArgs e)
         {
             var currentTime = DateTime.Now.ToString("HH:mm");
+
             TellTheTimeLabel.Text = currentTime;
             cancelSrc = new CancellationTokenSource();
             CrossTextToSpeech.Current.Speak(currentTime, null, null, null, null, cancelSrc.Token);

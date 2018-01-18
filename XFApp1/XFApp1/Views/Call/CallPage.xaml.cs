@@ -34,12 +34,6 @@ namespace XFApp1.Views.Call
             flag = true;
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-         
-        }
-
         private async void GoToSubLevel(object sender, EventArgs e)
         {
             if (flag)
